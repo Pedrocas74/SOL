@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  items: [],          // array of {id, title, price, quantity, image}
+  items: [],
   totalQuantity: 0,
   totalPrice: 0,
 };
@@ -12,7 +12,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const product = action.payload;
-      const existingItem = state.items.find(item => item.id === product.id);
+      const existingItem = state.items.find((item) => item.id === product.id);
 
       if (existingItem) {
         existingItem.quantity += 1;
@@ -26,18 +26,17 @@ const cartSlice = createSlice({
 
     removeFromCart: (state, action) => {
       const id = action.payload;
-      const existingItem = state.items.find(item => item.id === id);
-
-      if (existingItem) {
-        state.totalQuantity -= existingItem.quantity;
-        state.totalPrice -= existingItem.price * existingItem.quantity;
-        state.items = state.items.filter(item => item.id !== id);
+      const item = state.items.find((i) => i.id === id);
+      if (item) {
+        state.totalQuantity -= item.quantity;
+        state.totalPrice -= item.price * item.quantity;
+        state.items = state.items.filter((i) => i.id !== id);
       }
     },
 
     increaseQuantity: (state, action) => {
       const id = action.payload;
-      const item = state.items.find(item => item.id === id);
+      const item = state.items.find((i) => i.id === id);
       if (item) {
         item.quantity += 1;
         state.totalQuantity += 1;
@@ -47,9 +46,14 @@ const cartSlice = createSlice({
 
     decreaseQuantity: (state, action) => {
       const id = action.payload;
-      const item = state.items.find(item => item.id === id);
+      const item = state.items.find((i) => i.id === id);
       if (item && item.quantity > 1) {
         item.quantity -= 1;
+        state.totalQuantity -= 1;
+        state.totalPrice -= item.price;
+      } else if (item && item.quantity === 1) {
+        // Remove item if quantity reaches 0
+        state.items = state.items.filter((i) => i.id !== id);
         state.totalQuantity -= 1;
         state.totalPrice -= item.price;
       }

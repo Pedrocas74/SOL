@@ -1,9 +1,10 @@
+'use client';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from './productsSlice';
 import ProductCard from '../../components/ProductCard';
 
-const ProductsList = () => {
+export default function ProductsList() {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
 
@@ -11,16 +12,18 @@ const ProductsList = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) return <p>Loading products...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="products-grid">
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+      gap: '1rem'
+    }}>
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
-};
-
-export default ProductsList;
+}

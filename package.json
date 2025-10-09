@@ -1,21 +1,18 @@
 {
   "name": "redux-shop",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "next start"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.5.4"
-  },
-  "devDependencies": {
-    "eslint": "^9",
-    "eslint-config-next": "15.5.4",
-    "@eslint/eslintrc": "^3"
+    "axios": "^1.12.2"
   }
 }

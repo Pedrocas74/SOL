@@ -1,4 +1,5 @@
-// src/app/product/[id]/page.jsx
+'use client';
+
 import { useParams } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/cart/cartSlice';
