@@ -13,7 +13,7 @@ export default function CurrencySelector() {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <label htmlFor="currency">Currency:</label>
+      <label htmlFor="currency"></label>
       <select id="currency" value={current} onChange={handleChange}>
         <option value="EUR">€ EUR</option>
         <option value="USD">$ USD</option>
