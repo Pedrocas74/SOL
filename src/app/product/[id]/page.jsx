@@ -1,25 +1,58 @@
-'use client';
+"use client";
 
-import { useParams } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '../../../features/cart/cartSlice';
+import { useParams } from "next/navigation";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../../features/cart/cartSlice";
 
 export default function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
+
   const product = useSelector((state) =>
     state.products.products.find((p) => p.id === parseInt(id))
   );
 
+  const { current, rates } = useSelector((state) => state.currency);
+
+  const convert = (price) => (price * rates[current]).toFixed(2);
+
+  const getSymbol = () => {
+    switch (current) {
+      case "USD":
+        return "$";
+      case "GBP":
+        return "£";
+      default:
+        return "€";
+    }
+  };
+
   if (!product) return <p>Product not found</p>;
 
   return (
-    <div>
+    <div style={{ padding: "1rem" }}>
       <h1>{product.title}</h1>
-      <img src={product.image} alt={product.title} width={200} />
+      <img
+        src={product.image}
+        alt={product.title}
+        width={300}
+        style={{ objectFit: "contain" }}
+      />
       <p>{product.description}</p>
-      <p>${product.price}</p>
-      <button onClick={() => dispatch(addToCart(product))}>
+
+      <p>
+        {getSymbol()}
+        {convert(product.price)}
+      </p>
+
+      <button
+        onClick={() => dispatch(addToCart(product))}
+        style={{
+          marginTop: "0.5rem",
+          padding: "0.5rem 1rem",
+          cursor: "pointer",
+        }}
+      >
         Add to Cart
       </button>
     </div>
