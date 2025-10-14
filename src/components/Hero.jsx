@@ -13,14 +13,13 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
-      {/* Background video */}
       <video
         autoPlay
         muted
         loop
         playsInline
         preload="none"
-        poster="/poster.jpg" // optional placeholder image
+        // poster="/images/poster.png" 
         style={{
           position: 'absolute',
           top: 0,
@@ -29,14 +28,13 @@ export default function Hero() {
           height: '100%',
           objectFit: 'cover',
           zIndex: '-1',
-          filter: 'brightness(0.6)', // darken for text contrast
+          filter: 'brightness(0.7)', // darken for text contrast
         }}
       >
         <source src="/videos/hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay content */}
       <div style={{ textAlign: 'center', zIndex: '1' }}>
         <h1 style={{ fontSize: '3rem', fontWeight: 'bold' }}>Welcome to Our Store</h1>
         <p style={{ fontSize: '1.2rem' }}>Discover amazing products at great prices</p>

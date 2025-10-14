@@ -3,6 +3,7 @@
 *::after {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
 }
 
 @keyframes shimmer {
@@ -13,3 +14,4 @@
     background-position: 200% 0;
   }
 }
+

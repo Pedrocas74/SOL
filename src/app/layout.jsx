@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import ReduxProvider from '../components/ReduxProvider';
 import Footer from '@components/Footer';
 
+
 export const metadata = {
   title: 'Redux Shop',
 };
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <Navbar />
           <main>{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </ReduxProvider>
       </body>
     </html>
