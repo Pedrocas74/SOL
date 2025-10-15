@@ -21,19 +21,23 @@
 
 .titleContainer {
     background-color: #c6a06821;
-    backdrop-filter: blur(3px); /* this creates the blur effect */
+    backdrop-filter: blur(15px); /* this creates the blur effect */
     -webkit-backdrop-filter: blur(10px); /* for Safari */
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    border-radius: 0px;  
+    height: 18vh; 
+    /* border-top: 1px inset #C6A168;
+    border-bottom: 1px outset #C6A168; */
 }
 
 .titleContainer h1 {
     font-family: var(--font-titillium), sans-serif;
-    font-size: 2.2rem;
+    font-size: clamp(2.2rem, 7vw, 10rem);
     font-weight: 900;
     color: #C6A168;
     -webkit-text-stroke: 2.5px #333333;
-    border-top: 1px inset #C6A168;
-    border-bottom: 1px outset #C6A168;
+    
 }

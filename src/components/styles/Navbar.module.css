@@ -1,12 +1,8 @@
 
 .navbar {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;  
-    background: transparent;
-    position: fixed;
+    padding: 1em;  
+    border: 1px solid red;
+    text-align: end;
+    position: sticky;
     top: 0;
-    
-
 }

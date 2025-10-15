@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div>
-        <Link href="/">Home</Link>
+        {/* <Link href="/">Home</Link> */}
          
         {mounted ? (
           <Link href="/cart">Cart ({totalQuantity})</Link>
@@ -28,7 +28,7 @@ export default function Navbar() {
         )}
       </div>
 
-      {mounted ? <CurrencySelector /> : <span>{currentCurrency}</span>}
+      {/* {mounted ? <CurrencySelector /> : <span>{currentCurrency}</span>} */}
     </nav>
   );
 }
