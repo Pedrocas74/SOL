@@ -6,9 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "./productsSlice";
 import ProductCard from "../../components/ProductCard";
 import Image from "next/image";
-// import clothing from "/images/clothing.webp";
-// import jewelry from "images/eletronics.webp";
-// import electronics from "/images/electronics.webp";
+import { motion } from "framer-motion";
 
 export default function ProductsList() {
   const dispatch = useDispatch();
@@ -24,6 +22,7 @@ export default function ProductsList() {
   return (
     <section className={styles.productsContainer}>
       <h2>Our Products</h2>
+
       <div className={styles.productsSelector}>
         <div className={styles.imageBox}>
           <Image
@@ -33,6 +32,7 @@ export default function ProductsList() {
             priority
             style={{ objectFit: "cover" }}
           />
+          <div className={styles.overlay}>Clothing</div>
         </div>
 
         <div className={styles.imageBox}>
@@ -43,6 +43,7 @@ export default function ProductsList() {
             priority
             style={{ objectFit: "cover" }}
           />
+          <div className={styles.overlay}>Jewelry</div>
         </div>
 
         <div className={styles.imageBox}>
@@ -53,10 +54,9 @@ export default function ProductsList() {
             priority
             style={{ objectFit: "cover" }}
           />
+          <div className={styles.overlay}>Electronics</div>
         </div>
       </div>
-
-      
       <div className={styles.grid}>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
