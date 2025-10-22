@@ -1,15 +1,18 @@
-'use client';
+"use client";
 
-import styles from './styles/Navbar.module.css';
-import { useSelector } from 'react-redux';
-import Link from 'next/link';
-import CurrencySelector from './CurrencySelector';
-import { useState, useEffect } from 'react';
+import styles from "./styles/Navbar.module.css";
+import { useSelector } from "react-redux";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+
+const CurrencySelector = dynamic(
+  () => import("./CurrencySelector"),
+  { ssr: false } // <- client-side only
+);
 
 export default function Navbar() {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  const { current: currentCurrency } = useSelector((state) => state.currency);
-  // Track if the component has mounted (hydration safe)
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -20,7 +23,7 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div>
         {/* <Link href="/">Home</Link> */}
-         
+
         {mounted ? (
           <Link href="/cart">Cart ({totalQuantity})</Link>
         ) : (
@@ -28,7 +31,7 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* {mounted ? <CurrencySelector /> : <span>{currentCurrency}</span>} */}
+      <CurrencySelector />
     </nav>
   );
 }

@@ -19,7 +19,7 @@ export default function ProductsList() {
   };
 
   useEffect(() => {
-    dispatch(fetchProducts());
+      dispatch(fetchProducts());
   }, [dispatch]);
 
   if (loading) return <p>Loading...</p>;
@@ -64,7 +64,7 @@ export default function ProductsList() {
           <div className={styles.overlay}>Electronics</div>
         </div>
       </div>
-      <button onClick={() => setSelectedCategory(null)}>Show All</button>
+      <button type="button" onClick={() => setSelectedCategory(null)}>Show All</button>
       <div className={styles.grid}>
         {products
           .filter(

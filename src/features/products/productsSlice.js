@@ -59,6 +59,7 @@ const productSlice = createSlice({
           return {
             ...p,
             title: nameMap[cleanTitle] || p.title,
+            stock: Math.random() > 0.2 ? "In stock" : "Sold out",
           }; 
         });
       })

@@ -26,13 +26,13 @@ export default function ProductCard({ product }) {
     }
   };
 
-  const getRandomStock = () => {
-    let randNum = Math.random();
-    if (randNum > 0.2) return "In stock";
-    return "Sold Out";
-  };
+  // const getRandomStock = () => {
+  //   let randNum = Math.random();
+  //   if (randNum > 0.2) return "In stock";
+  //   return "Sold Out";
+  // };
 
-  const stockStatus = getRandomStock();
+  const stockStatus = product.stock;
   const stockColor = stockStatus === "In stock" ? "#1a140ece " : "#630d0df3";
 
   if (!mounted) {
