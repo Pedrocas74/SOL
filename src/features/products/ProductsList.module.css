@@ -8,7 +8,7 @@
 
 .productsSelector {
     /* border: 1px solid rgb(33, 35, 139); */
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
     width: 100%;
     height: 60vh;
     display: flex;
@@ -53,6 +53,10 @@
 }
 .imageBox:hover .overlay {
   opacity: 1;
+}
+
+.showAll {
+    margin-bottom: 10vh;
 }
 
 

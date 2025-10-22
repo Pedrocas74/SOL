@@ -26,12 +26,6 @@ export default function ProductCard({ product }) {
     }
   };
 
-  // const getRandomStock = () => {
-  //   let randNum = Math.random();
-  //   if (randNum > 0.2) return "In stock";
-  //   return "Sold Out";
-  // };
-
   const stockStatus = product.stock;
   const stockColor = stockStatus === "In stock" ? "#1a140ece " : "#630d0df3";
 
@@ -67,14 +61,18 @@ export default function ProductCard({ product }) {
       <p
         className={styles.stockInfo}
         style={{
-          color: stockColor
+          color: stockColor,
         }}
       >
         {stockStatus}
       </p>
-      {stockStatus === "In stock" && (
+      {stockStatus === "In stock" ? (
         <button onClick={() => dispatch(addToCart(product))}>
           Add to Cart
+        </button>
+      ) : (
+        <button disabled style={{ opacity: 0.6, cursor: "not-allowed" }}>
+          Out of Stock
         </button>
       )}
     </div>

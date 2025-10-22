@@ -1,0 +1,51 @@
+.pageContainer {
+    width: 100vw;
+}
+
+.detailsContainer {
+    width: 90vw;
+    margin: 0 auto;
+    border: 1px solid blue;
+    margin-top: 2em;
+}
+
+.detailsContainer span {
+    border: 1px solid red;
+}
+
+.detailsContainer h1 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.price {
+    border: 1px solid red;
+}
+
+.detailsContainer figure {
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+    margin-top: 2em;
+}
+
+.detailsContainer img {
+    width: 150px;
+}
+
+.sizeSelector {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.sizeButton {
+    border-radius: 0px;
+}
+
+.buttonAdd {
+    margin-top: 1.5em;
+}
+

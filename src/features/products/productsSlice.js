@@ -54,12 +54,16 @@ const productSlice = createSlice({
           "danvouy womens t shirt casual cotton short": "Women's Casual Cotton T-Shirt"
         };
 
+        const sizes = ["XS", "S", "M", "L", "XL"];
+
         state.products = action.payload.map((p) => {
           const cleanTitle = p.title.trim().toLowerCase();
+          const hasSizes = p.category === "men's clothing" || p.category === "women's clothing";
           return {
             ...p,
             title: nameMap[cleanTitle] || p.title,
             stock: Math.random() > 0.2 ? "In stock" : "Sold out",
+            sizes: hasSizes ? sizes : null,
           }; 
         });
       })

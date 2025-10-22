@@ -1,14 +1,33 @@
 
 .navbar {
     padding: 0.7em;  
-    margin: 0 auto;
     background-color: #2C2A2D;
-    text-align: end;
     position: sticky;
     top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #f5f5e9;
+    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+}
 
+
+.visible {
+  transform: translateY(0);
+}
+
+
+.hidden {
+  transform: translateY(-100%);
 }
 
 .navbar a {
     color: #F5F5E9;
+}
+
+.cartAndCurrency {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
 }

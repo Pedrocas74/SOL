@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
       <body className={`${titillium.variable} ${lexend.variable}`} >
         <ReduxProvider>
           <main>{children}</main>
-          {/* <Footer /> */}
         </ReduxProvider>
       </body>
     </html>

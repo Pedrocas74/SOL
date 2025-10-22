@@ -64,7 +64,9 @@ export default function ProductsList() {
           <div className={styles.overlay}>Electronics</div>
         </div>
       </div>
-      <button type="button" onClick={() => setSelectedCategory(null)}>Show All</button>
+      <button className={styles.showAll} style={{
+        visibility: selectedCategory === null ? "hidden" : "visible"
+      }} type="button" onClick={() => setSelectedCategory(null)}>Show All</button>
       <div className={styles.grid}>
         {products
           .filter(

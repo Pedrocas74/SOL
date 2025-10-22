@@ -1,10 +1,13 @@
 "use client";
 
+import styles from "./ProductDetails.module.css";
 import { useParams } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../../features/cart/cartSlice";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
+import Link from "next/link";
 import Skeleton from "@components/Skeleton";
+import Navbar from "@components/Navbar";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -32,14 +35,9 @@ export default function ProductDetails() {
 
   if (!mounted || !product) {
     return (
-      <div style={{ padding: "1rem" }}>
+      <div style={{ padding: "1em" }}>
         <Skeleton
-          width="300px"
-          height="300px"
-          style={{ marginBottom: "1rem" }}
-        />
-        <Skeleton
-          width="50%"
+          width="30%"
           height="1.5rem"
           style={{ marginBottom: "0.5rem" }}
         />
@@ -47,6 +45,11 @@ export default function ProductDetails() {
           width="80%"
           height="1rem"
           style={{ marginBottom: "0.5rem" }}
+        />
+        <Skeleton
+          width="300px"
+          height="300px"
+          style={{ marginBottom: "1rem" }}
         />
         <Skeleton
           width="100px"
@@ -59,21 +62,45 @@ export default function ProductDetails() {
   }
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <button>Back</button>
-      <h1>{product.title}</h1>
-      <img
-        src={product.image}
-        alt={product.title}
-        width={150}
-        style={{ objectFit: "contain" }}
-      />
-      <p>{product.description}</p>
-      <p>
-        {getSymbol()}
-        {convert(product.price)}
-      </p>
-      <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
+    <div className={styles.pageContainer}>
+      <Navbar />
+      <section className={styles.detailsContainer}>
+        {/* <button>Back</button> */}
+        <span>HomePage/category</span>
+        <h1>{product.title}</h1>
+        <p className={styles.price}>
+          {getSymbol()}
+          {convert(product.price)}
+        </p>
+        <figure>
+          <img
+            src={product.image}
+            alt={product.title}
+            style={{ objectFit: "contain" }}
+          />
+        </figure>
+        
+        {product.sizes && (
+          <div className={styles.sizeSelector}>
+            {product.sizes.map((size) => (
+              <button key={size} className={styles.sizeButton}>
+                {size}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <Link href='/'><span>See the product description</span></Link>
+
+        {product.stock === "In stock" && (
+          <button
+            className={styles.buttonAdd}
+            onClick={() => dispatch(addToCart(product))}
+          >
+            Add to Cart
+          </button>
+        )}
+      </section>
     </div>
   );
 }
