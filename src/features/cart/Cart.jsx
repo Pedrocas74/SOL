@@ -11,6 +11,7 @@ import {
 
 export default function Cart() {
   const { items } = useSelector((state) => state.cart);
+  const { current, rates } = useSelector((state) => state.currency);
   const dispatch = useDispatch();
 
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -18,6 +19,23 @@ export default function Cart() {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  const convert = (price) => (price * rates[current]).toFixed(2);
+  let symbolPosition = "right"; //euro as default
+  const getSymbol = () => {
+    switch (current) {
+      case "USD":
+        symbolPosition = "left";
+        return "$";
+      case "GBP":
+        symbolPosition = "left";
+        return "£";
+      default:
+        symbolPosition = "right";
+        return "€";
+    }
+  };
+  const symbol = getSymbol();
 
   if (items.length === 0) return <p>Your cart is empty</p>;
 
@@ -40,7 +58,17 @@ export default function Cart() {
           }}
         >
           <h3>{item.title}</h3>
-          <p>Price: ${item.price}</p>
+          <p>Price:{" "}
+        {symbolPosition === "left" ? (
+          <>
+            {symbol}{convert(item.price)}
+          </>
+        ) : (
+          <>
+            {convert(item.price)}{symbol}
+          </>
+        )}
+      </p>
           <p>Quantity: {item.quantity}</p>
           {item.selectedSize && <p>Size: {item.selectedSize}</p>}
           <button onClick={() => dispatch(increaseQuantity(`${item.id}-${item.selectedSize || 'default'}`))}>+</button>
@@ -51,7 +79,15 @@ export default function Cart() {
         </div>
       ))}
       <h3>Total Items: {totalQuantity}</h3>
-      <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
+      <h3>Total Price:{" "} {symbolPosition === "left" ? (
+          <>
+            {symbol}{convert(totalPrice)}
+          </>
+        ) : (
+          <>
+            {convert(totalPrice)}{symbol}
+          </>
+        )}</h3>
     </div>
   );
 }

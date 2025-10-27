@@ -17,16 +17,21 @@ export default function ProductCard({ product }) {
   useEffect(() => setMounted(true), []);
 
   const convert = (price) => (price * rates[current]).toFixed(2);
+  let symbolPosition = "right"; //euro as default
   const getSymbol = () => {
     switch (current) {
       case "USD":
+        symbolPosition = "left";
         return "$";
       case "GBP":
+        symbolPosition = "left";
         return "£";
       default:
+        symbolPosition = "right";
         return "€";
     }
   };
+  const symbol = getSymbol();
 
   const stockStatus = product.stock;
   const stockColor = stockStatus === "In stock" ? "#1a140ece " : "#630d0df3";
@@ -70,8 +75,15 @@ export default function ProductCard({ product }) {
         <h3>{product.title}</h3>
       </Link>
       <p>
-        {getSymbol()}
-        {convert(product.price)}
+        {symbolPosition === "left" ? (
+          <>
+            {symbol}{convert(product.price)}
+          </>
+        ) : (
+          <>
+            {convert(product.price)}{symbol}
+          </>
+        )}
       </p>
       <p
         className={styles.stockInfo}
@@ -105,9 +117,7 @@ export default function ProductCard({ product }) {
               disabled={stockStatus !== "In stock"}
               aria-label="Select size"
             >
-              <option value="" disabled hidden>
-          
-              </option>
+              <option value="" disabled hidden></option>
               {product.sizes.map((size) => (
                 <option key={size} value={size}>
                   {size}
