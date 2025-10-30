@@ -46,7 +46,7 @@
   --pd-left-right: 0.7em;
 
   /* Border radius */
-  --radius: 8px;
+  --radius: 10px;
 
   /* Shadow */
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -55,12 +55,22 @@
 body {
   background-color: var(--clr-bg);
   font-family: var(--font-acma);
-  
+  color: var(--clr-text);
 }
 
 
 h1, h2, h3 {
   font-family: var(--font-gatwick-jet);
+}
+
+h2 {
+  font-size: clamp(1.3rem, 2vw, 1.5rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-weight: 200;
+  /* font-size: clamp(0.4rem, 2.5vw, 1.3rem); */
 }
 
 
@@ -72,11 +82,6 @@ button {
   box-shadow: var(--shadow);
   border: none;
   font-size: var(--fs-md);
-}
-
-
-h2 {
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
 a {

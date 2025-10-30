@@ -1,34 +1,165 @@
 .infoContainer {
-    height: 80vh;
-    width: 80vw;
+    height: auto;
+    width: 85%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
-    border: 1px solid rgb(11, 128, 0);
+    /* border: 1px solid rgb(11, 128, 0); */
+    margin-top: 20vh;
 }
 
 .infoContainer h2 {
     width: 100%;
-    border: 1px solid black;
+    margin-bottom: 7vh;
+    /* border: 1px solid black; */
+}
+
+.checksWrapper {
+    position: relative;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 7vh;
 }
  
+.infoChecks {
+    /* border: 2px solid #00000021; */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    padding: var(--pd-top-down) var(--pd-left-right);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 800px;
+    background-color: var(--clr-secondary);
+    box-shadow: 
+    0 0 10px #33333385,   
+    0 0 25px #33333349, 
+    0 0 40px rgba(255, 217, 0, 0.404);
+    
+}
+.bestSpan {
+    position: relative;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-size: 1.3rem;
+    color: white;
+}
+.check {
+    position: absolute;
+    top: 65%;
+    transform-style: preserve-3d;
+    transform-origin: center center; 
+    animation: infoChecks 10s linear infinite;
+}
+.check1,
+.check2,
+.check3 {
+    color: var(--clr-primary-dark);
+    font-weight: 900;
+}
+.check1 { animation-delay: 0s;}
+.check2 { animation-delay: 3s;}
+.check3 { animation-delay: 6s;}
+@keyframes infoChecks {
+  0% {
+    transform: rotateY(0deg) translateZ(80px) rotateY(0deg);
+    
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: rotateY(360deg) translateZ(80px) rotateY(-360deg);
+    
+  }
+}
+
+/* STARS */
+.starOrbit {
+  position: absolute;
+  top: 15%;
+  transform-style: preserve-3d;
+  animation: starOrbitSpin 20s linear infinite;
+}
+
+/* individual stars */
+.star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+}
+
+/* place each star along the orbit ring */
+.star1 { transform: rotateY(0deg) translateZ(70px); }
+.star2 { transform: rotateY(50deg) translateZ(70px); }
+.star3 { transform: rotateY(100deg) translateZ(70px); }
+.star4 { transform: rotateY(150deg) translateZ(70px); }
+.star5 { transform: rotateY(200deg) translateZ(70px); }
+.star6 { transform: rotateY(250deg) translateZ(70px); }
+.star7 { transform: rotateY(300deg) translateZ(70px); }
+
+/* orbit animation identical to infoChecks spans */
+@keyframes starOrbitSpin {
+  0% {
+    transform: translate(-50%, -50%) rotateY(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+}
+
+
+
+
 
 .infoStats {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 100%;
+    margin-bottom: 7vh;
 }
 
 .statsItems {
-    border: 1px solid orange;
-    padding: 0.5em;
+    /* border: 1px solid orange; */
+    padding: 0.5em 0;
     display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+.numbers {
+    display: inline-block;
+    font-family: var(--font-gatwick-jet);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 1px solid red;
+    width: 4em;
+    text-align: start;
+    /* padding-right: 0.1em; */
+}
+.statsItems p {
     
 }
 
-.infoChecks {
-    border: 1px solid red;
-
+.finalStatement {
+    width: 100%;
+    /* border: 1px solid; */
+    
+    border-radius: var(--radius);
+    margin-bottom: 20vh;
+    font-size: var(--fs-lg);
+    /* letter-spacing: 2px; */
+    /* text-decoration: underline; */
 }
