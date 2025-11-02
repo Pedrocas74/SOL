@@ -1,15 +1,107 @@
 .reviewSection {
-    border: 1px solid red;
-    width: 90%;
-    margin: auto;
+    overflow: hidden;
+    width: 100%;
+}
+.reviewSection h2 {
+    text-align: center;
+    margin-bottom: 5vh;
 }
 
-/* .cardGrid {
-    
-} */
-
+.sliderContainer {
+  position: relative;
+  margin-bottom: 7vh;
+  width: 100%;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+}
 
 .cardContainer {
-    border: 1px solid green;
-    
+  position: absolute;
+  width: 85%;
+  height: 75%;
+  max-height: 300px;
+  max-width: 400px;
+  background: var(--clr-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5em;
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  background: var(--clr-bg);
+  box-shadow: var(--shadow);
+  border: none;
+  cursor: pointer;
+  color: #333;
+  z-index: 2;
+  /* border: 1px solid blue; */
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: all 0.3 ease;
+}
+
+.navButton:hover {
+  background: rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%) scale(1.1);
+  opacity: 0.9;
+}
+
+.navButton:first-of-type {
+  left: 5px;
+}
+.navButton:last-of-type {
+  right: 6px;
+}
+
+
+.user {
+  /* border: 1px solid blueviolet; */
+  display: flex;
+  margin-bottom: 0.7em;
+}
+.authorAndStars {
+  /* border: 1px solid blueviolet; */
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 0.2em;
+}
+.authorAndStars h5 {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+}
+.reviewText {
+  /* border: 1px solid red; */
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  text-align: justify;
+}
+.reviewDate {
+  /* border: 1px solid gold; */
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  text-align: right;
+}
+
+/* Optional desktop layout */
+/* @media (min-width: 768px) {
+  .cardContainer {
+    flex: 0 0 50%; 
+  }
+} */

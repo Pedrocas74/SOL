@@ -34,12 +34,14 @@
     margin-bottom: 0.5em;
     /* border: 1px solid rgb(20, 136, 111); */
     max-height: 50px;
+    
 }
 
 .productCard h4 {
     font-size: clamp(1rem, 2.5vw, 1.4rem);
     margin-bottom: 2em;
     font-weight: 300;
+    letter-spacing: 0.5px;
 }
 
 .productCard p {
@@ -47,6 +49,7 @@
     font-weight: 100;
     /* border: 1px solid yellow; */
     margin-bottom: 0.7em;
+    
 }
 
 
@@ -73,7 +76,7 @@
 
 .sizeSelector option {
   color: #333;
-  background: var(--clr-primary-light);
+  background: var(--clr-bg);
   font-weight: 500;
   padding: 0.5em;
   cursor: pointer;
