@@ -125,6 +125,7 @@ button {
 
 a {
   text-decoration: none;
+  color: var(--clr-text);
 }
 
 

@@ -1,9 +1,10 @@
 .mainSection {
     width: 85%;
-    height: 70vh;
+    height: 85vh;
     margin: 0 auto;
     text-align: justify;
     position: relative;
+    /* border: 1px solid red; */
 }
 
 .mainSection h1 {
@@ -16,12 +17,14 @@
 .disclaimer {
     font-size: clamp(1rem, 2vw, 1.4rem);
 }
-.description {
+/* .description {
     margin-bottom: 0.7em;
-}
+} */
 
 .disclaimer {
     font-weight: 600;
+    margin-bottom: 2em;
+    /* border: 1px solid; */
 }
 
 .mainSection a {
@@ -29,6 +32,14 @@
     padding: var(--pd-top-down) var(--pd-left-right);
     border-radius: var(--radius);
     letter-spacing: 0.5px;
-    position: absolute;
-    bottom: 1em;
+    /* position: absolute;
+    bottom: 1em; */
+}
+
+.smile {
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2em 0;
 }
