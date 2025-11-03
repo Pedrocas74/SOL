@@ -5,7 +5,7 @@
 .detailsContainer {
     width: 90%;
     margin: 0 auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin-top: 2.5em;
 }
 
@@ -14,23 +14,28 @@
 } */
 
 .detailsContainer h1 {
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     text-transform: uppercase;
-    font-weight: 100;
+    font-weight: 600;
     margin-top: 1em;
 }
 
 .price {
+    font-size: clamp(1.1rem, 2vw, 1.2rem);
     margin-top: 0.2em;
+    font-family: var(--acma);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .detailsContainer figure {
-    border: 1px solid;
+    border: 1px solid #333;
     display: flex;
     justify-content: center;
     padding: 2em 0;
     margin-top: 2em;
     overflow: hidden;
+    
 }
 
 .productImage {
@@ -49,9 +54,10 @@
     width: 100%;
 }
 
-.sizeButton {
-    text-align: center;
+.sizeSelector button {
     width: 60px;
+    max-width: 80px;
+    border-radius: 0px;
 }
 
 .linkDescription {
@@ -61,32 +67,57 @@
 
 .buttonAddContainer {
     /* border: 1px solid red; */
-    margin: 1.5em 0;
+    margin: 1.5em 0 3em 0;
     display: flex;
     justify-content: center;
 }
 
+
+
 .instructions {
-    /* border: 1px solid red; */
-    padding: 0.7em 0;
-    
+    border: 1px solid #333;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    padding: var(--pd-top-down) var(--pd-left-right);
+    margin: 0.7em 0 0 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+.instructions span {
+    height: 24px;
 }
 .instructionsTitle {
-    margin: 0.5em 0;
+    padding: var(--pd-top-down) var(--pd-left-right);
     text-transform: uppercase;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 600;
+}
+
+.productDescription {
+    border-left: 1px solid #33333375;
+    border-right: 1px solid #33333375;
+    border-bottom: 1px solid #33333375;
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    padding: var(--pd-top-down) var(--pd-left-right);
+    text-align: justify;
 }
 
 .careList {
     list-style: none;
-    padding: 0;
+    padding: var(--pd-top-down) 0;
     margin: 0;
 }
 .careList li {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    font-size: clamp(0.85rem, 2vw, 1rem);
+    gap: 7px;
+    margin-bottom: 0.5em;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .iconWrapper {

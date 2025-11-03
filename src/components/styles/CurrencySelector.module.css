@@ -2,7 +2,7 @@
   all: unset;
   background: transparent;
   color: var(--clr-bg);
-  padding: 0.2em;
+  padding-top: 0.2em;
   cursor: pointer;
   display: flex;
   align-items: center;

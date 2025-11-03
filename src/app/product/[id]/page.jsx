@@ -7,9 +7,15 @@ import { addToCart } from "../../../features/cart/cartSlice";
 import { useState, useEffect } from "react";
 import Skeleton from "@components/Skeleton";
 import Image from "next/image";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState(null);
+  const [openStates, setOpenStates] = useState({
+    summary1: false,
+    summary2: false,
+    summary3: false,
+  });
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -24,17 +30,32 @@ export default function ProductDetails() {
   useEffect(() => setMounted(true), []);
 
   const convert = (price) => (price * rates[current]).toFixed(2);
+  let symbolPosition = "right"; //euro as default
   const getSymbol = () => {
     switch (current) {
       case "USD":
+        symbolPosition = "left";
         return "$";
       case "GBP":
+        symbolPosition = "left";
         return "£";
       default:
+        symbolPosition = "right";
         return "€";
     }
   };
+  const symbol = getSymbol();
 
+  const arrow1 = openStates.summary1 ? <ChevronUp color="white"/> : <ChevronDown color="#333"/>;
+  const arrow2 = openStates.summary2 ? <ChevronUp color="white"/> : <ChevronDown color="#333"/>;
+  const arrow3 = openStates.summary3 ? <ChevronUp color="white"/> : <ChevronDown color="#333"/>;
+
+  const toggleSummary = (key) => {
+    setOpenStates((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   if (!mounted || !product) {
     return (
@@ -79,8 +100,17 @@ export default function ProductDetails() {
         <span>Home/Category</span>
         <h1>{product.title}</h1>
         <h2 className={styles.price}>
-          {getSymbol()}
-          {convert(product.price)}
+          {symbolPosition === "left" ? (
+            <>
+              {symbol}
+              {convert(product.price)}
+            </>
+          ) : (
+            <>
+              {convert(product.price)}
+              {symbol}
+            </>
+          )}
         </h2>
         <figure>
           <img
@@ -96,7 +126,7 @@ export default function ProductDetails() {
             {product.sizes.map((size) => (
               <button
                 key={size}
-                className={`${styles.sizeButton} ${
+                className={`buttonTertiary ${
                   selectedSize === size ? styles.selected : ""
                 }`}
                 onClick={() => setSelectedSize(size)}
@@ -124,15 +154,30 @@ export default function ProductDetails() {
         </div>
 
         {/* DESCRIPTION OF THE PRODUCT */}
-        <details>
-          <summary className={styles.instructions}>Description</summary>
+        <details open={openStates.summary1} >
+          <summary
+            onClick={(e) => {
+              e.preventDefault();
+              toggleSummary("summary1");
+            }}
+            className={styles.instructions}
+            
+          >
+            Description <span>{arrow1}</span>
+          </summary>
           <p className={styles.productDescription}>{product.description}</p>
         </details>
 
         {/* DELIVERY AND RETURN RULES */}
-        <details>
-          <summary className={styles.instructions}>
-            Free delivery and returns
+        <details open={openStates.summary2}>
+          <summary
+            onClick={(e) => {
+              e.preventDefault();
+              toggleSummary("summary2");
+            }}
+            className={styles.instructions}
+          >
+            Free delivery and returns <span>{arrow2}</span>
           </summary>
           <ul className={styles.careList}>
             <li>✓ 30 Day Returns </li>
@@ -145,8 +190,16 @@ export default function ProductDetails() {
         {(product.category === "men's clothing" ||
           product.category === "women's clothing") &&
           !product.title.toLowerCase().includes("backpack") && (
-            <details>
-              <summary className={styles.instructions}>Care</summary>
+            <details open={openStates.summary3}>
+              <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleSummary("summary3");
+                }}
+                className={styles.instructions}
+              >
+                Care <span>{arrow3}</span>
+              </summary>
               <h3 className={styles.instructionsTitle}>Washing Instructions</h3>
               <ul className={styles.careList}>
                 <li>

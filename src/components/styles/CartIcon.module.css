@@ -1,8 +1,8 @@
 .wrapper {
     position: relative;
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     vertical-align: middle;
     cursor: pointer;
 }
@@ -10,21 +10,22 @@
     width: 100%;
     height: 100%;
     fill: currentColor;
-    color: #ffffff;
+    color: var(--clr-bg);
     transition: transform 120ms ease;
 }
 .badge {
     position: absolute;
-    top: -7px;
-    right: -7px;
+    top: -9px;
+    right: -9px;
     background: #d10221;
-    color: #fff;
-    padding: 2px 2px;
+    color: var(--clr-bg);
+    padding: 1px 1px;
     font-size: 0.7rem;
     border-radius: 50px;
     min-width: 18px;
     text-align: center;
     box-shadow: 0 1px 2px rgba(124, 124, 124, 0.473);
+    font-weight: 600;
     
 }
 .pulse {

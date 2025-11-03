@@ -112,14 +112,14 @@ button {
 /* ⚪️ Tertiary (subtle outline style) */
 .buttonTertiary {
   background: transparent;
-  color: var(--clr-secondary);
+  color: var(--clr-text);
   border: 3px solid var(--clr-primary);
   box-shadow: none;
 }
 .buttonTertiary:hover {
-  background: var(--clr-primary-light);
+  background: var(--clr-secondary);
   color: var(--clr-bg);
-  border-color: var(--clr-primary-dark);
+  border-color: var(--clr-text);
   transform: translateY(-2px);
 }
 
