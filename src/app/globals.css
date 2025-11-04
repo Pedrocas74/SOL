@@ -99,15 +99,15 @@ button {
   transform: translateY(-2px);
 }
 
-/* 🟠 Secondary (accent color) */
+/* black Secondary (secondary color) */
 .buttonSecondary {
-  background: var(--clr-accent);
+  background: var(--clr-secondary);
   color: var(--clr-bg);
 }
-.buttonSecondary:hover {
+/* .buttonSecondary:hover {
   background: var(--clr-accent-dark);
   transform: translateY(-2px);
-}
+} */
 
 /* ⚪️ Tertiary (subtle outline style) */
 .buttonTertiary {

@@ -55,42 +55,65 @@
 
 .selectWrapper {
   position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   top: 5px;
   right: 5px;
-  
+  /* border: 1px solid red; */
 }
 
+
+
 .sizeSelector {
-  appearance: none; 
-  padding: 0.5em; /* leave space for the icon */
-  border: 1px solid #33333370;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  padding: 0.2em 0.2em 0 0.2em;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
   background-color: white;
   cursor: pointer;
   text-align: center;
+  transition: all 0.3s ease;
+}
+.sizeSelector:hover {
+  background-color: #eeeeee;
+  opacity: 1;
 }
 
-.sizeSelector option {
+.sizeValue {
   color: #333;
-  background: var(--clr-bg);
-  font-weight: 500;
-  padding: 0.5em;
+  line-height: 1;         
+}
+
+.dropdownContent {
+  position: relative;
+  right: 2px;
+  background-color: var(--clr-bg);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 9999;
+  text-align: center;
+  list-style-type: none;
+  width: fit-content;
+}
+
+.dropdownList {
+  list-style: none;
+}
+
+.dropdownItem {
+  /* padding: 0.2em 0.1em; */
   cursor: pointer;
-  /* text-align: center; */
+  color: #333;
+  display: block;
+  padding: 0.2em;
+
+}
+.dropdownItem svg {
+  display: none;  /* hides the checkmark */
+}
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  height: min-content;
 }
 
-
-.selectIcon {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  color: #333333;
-  opacity: 0.7;
-  pointer-events: none; /* icon doesn’t block clicks */
-}
 
 

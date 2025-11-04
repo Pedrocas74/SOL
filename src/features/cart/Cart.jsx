@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./Cart.module.css";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -40,54 +41,92 @@ export default function Cart() {
   if (items.length === 0) return <p>Your cart is empty</p>;
 
   return (
-    <div>
-      <h2>Your Cart</h2>
-      <button
-        onClick={() => dispatch(clearCart())}
-        style={{ marginBottom: "1rem" }}
-      >
+    <section className={styles.cartSection}>
+      <h1>Your Cart</h1>
+
+      <div className={styles.itemsContainer}>
+        {items.map((item) => (
+          <article
+            key={`${item.id}-${item.selectedSize || "default"}`}
+            className={styles.cartItem}
+          >
+            <img src={item.image} alt={`Image of ${item.title}`} />
+          <div className={styles.rightContainer}>
+            <div className={styles.itemInformation}>
+              <p className={styles.title}>{item.title}</p>
+              <p className={styles.price}>
+                <span>Price:{" "}</span>
+                {symbolPosition === "left" ? (
+                  <>
+                    {symbol}
+                    {convert(item.price)}
+                  </>
+                ) : (
+                  <>
+                    {convert(item.price)}
+                    {symbol}
+                  </>
+                )}
+              </p>
+              <p className={styles.quantity}><span>Quantity:{" "} </span>{item.quantity}</p>
+              {item.selectedSize && <p className={styles.size}><span>Size:{" "} </span> {item.selectedSize}</p>}
+            </div>
+
+          <div className={styles.buttonsContainer}>
+            <button
+              className="buttonSecondary"
+              onClick={() =>
+                dispatch(
+                  increaseQuantity(
+                    `${item.id}-${item.selectedSize || "default"}`
+                  )
+                )
+              }
+            >
+              +
+            </button>
+            <button
+              className="buttonSecondary"
+              onClick={() =>
+                dispatch(
+                  decreaseQuantity(
+                    `${item.id}-${item.selectedSize || "default"}`
+                  )
+                )
+              }
+            >
+              -
+            </button>
+            <button
+              className="buttonSecondary"
+              onClick={() =>
+                dispatch(
+                  removeFromCart(`${item.id}-${item.selectedSize || "default"}`)
+                )
+              }
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+          </article>
+        ))}
+      </div>
+
+      <button className={`buttonTertiary ${styles.clearAllButton} `} onClick={() => dispatch(clearCart())}>
         Clear Cart
       </button>
-      {items.map((item) => (
-        <div
-          key={`${item.id}-${item.selectedSize || "default"}`}
-          style={{
-            marginBottom: "1rem",
-            borderBottom: "1px solid #ccc",
-            paddingBottom: "1rem",
-          }}
-        >
-          <h3>{item.title}</h3>
-          <p>Price:{" "}
-        {symbolPosition === "left" ? (
-          <>
-            {symbol}{convert(item.price)}
-          </>
-        ) : (
-          <>
-            {convert(item.price)}{symbol}
-          </>
-        )}
-      </p>
-          <p>Quantity: {item.quantity}</p>
-          {item.selectedSize && <p>Size: {item.selectedSize}</p>}
-          <button onClick={() => dispatch(increaseQuantity(`${item.id}-${item.selectedSize || 'default'}`))}>+</button>
-          <button onClick={() => dispatch(decreaseQuantity(`${item.id}-${item.selectedSize || 'default'}`))}>-</button>
-          <button onClick={() => dispatch(removeFromCart(`${item.id}-${item.selectedSize || 'default'}`))}>
-            Remove
-          </button>
-        </div>
-      ))}
-      <h3>Total Items: {totalQuantity}</h3>
-      <h3>Total Price:{" "} {symbolPosition === "left" ? (
-          <>
-            {symbol}{convert(totalPrice)}
-          </>
-        ) : (
-          <>
-            {convert(totalPrice)}{symbol}
-          </>
-        )}</h3>
-    </div>
+
+      <section className={styles.summarySection}>
+        <h2>Order Summary</h2>
+        <p className={styles.totalItems}>Total Items: {totalQuantity}</p>
+        <p className={styles.totalPrice}>
+          Total Price:{" "}
+          {symbolPosition === "left"
+            ? `${symbol}${convert(totalPrice)}`
+            : `${convert(totalPrice)}${symbol}`}
+        </p>
+      </section>
+    </section>
   );
 }

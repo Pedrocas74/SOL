@@ -1,0 +1,122 @@
+.cartSection {
+    /* border: 1px solid red; */
+    width: 85%;
+    margin: 0 auto;
+}
+
+.cartSection h1 {
+    font-size: clamp(1.2rem, 2vw, 1.3rem);
+    text-align: center;
+    margin: 0.7em 0 2em 0;
+}
+
+
+
+.itemsContainer {
+    
+}
+.cartItem {
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    display: flex;
+    margin-bottom: 3vh;
+    min-height: 130px;
+    border-radius: 5px;
+}
+.cartItem img {
+    flex: 1;
+    min-width: 35%;
+    padding: 0.2em;
+    min-height: 100%;
+    position: relative;
+    object-fit: contain;
+    border-right: 1px solid #3333338e;
+}
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    justify-content: space-between;
+}
+.itemInformation {
+    /* border: 1px solid; */
+    padding: 0.2em;
+    flex: 2;
+}
+.title {
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+.price {
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+.price span {
+    opacity: 0.8;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+}
+.quantity {
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+.quantity span {
+    opacity: 0.8;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+}
+.size {
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+.size span {
+    opacity: 0.8;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+}
+.buttonsContainer {
+    flex: 1;
+    /* border: 1px solid red; */
+    display: flex;
+}
+.cartItem button {
+    padding: 0;
+    border-radius: 0;
+    width: max-content;
+    font-size: 0.95rem;
+}
+.cartItem button:nth-child(1) {
+    flex: 1;
+}
+.cartItem button:nth-child(2) {
+    flex: 1;
+}
+.cartItem button:nth-child(3) {
+    flex: 2;
+}
+/* .cartItem button:hover {
+    
+} */
+
+.clearAllButton {
+    
+}
+
+
+
+
+.summarySection {
+    border: 1px solid orange;
+    margin-top: 10vh;
+}
+
+.summarySection h2 {
+    font-size: clamp(1.1rem, 2vw, 1.2rem);
+    text-align: center;
+}
+
+.totalItems {
+
+}
+.totalPrice {
+
+}
