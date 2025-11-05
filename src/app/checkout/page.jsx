@@ -1,7 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import styles from "./Checkout.module.css"; // optional CSS module
+import styles from "./Checkout.module.css";
+import Link from "next/link";
+import {
+  FaCcVisa,
+  FaCcMastercard,
+  FaCcAmex,
+  FaCcPaypal,
+  FaCcAmazonPay,
+  FaCcApplePay,
+  FaCcStripe,
+  FaGooglePay,
+} from "react-icons/fa";
 
 export default function Checkout() {
   const { items } = useSelector((state) => state.cart);
@@ -34,7 +45,7 @@ export default function Checkout() {
   const symbol = getSymbol();
 
   const applyDiscount = () => {
-    if (isApplied) return; // already applied
+    if (isApplied) return;
     if (code !== "PEDRO74") {
       alert("Invalid code");
       setCode("");
@@ -52,27 +63,36 @@ export default function Checkout() {
 
       <div className={styles.summarySection}>
         <h2>Order Summary</h2>
-        {items.map((item) => (
-          <div key={item.id} className={styles.itemRow}>
-            <p>
-              {item.title} × {item.quantity}
-            </p>
-            <p>
-              {symbolPosition === "left" ? (
-                <>
-                  {symbol}
+
+        <table className={styles.summaryTable}>
+          <thead>
+            <tr>
+              <th scope="col">Items</th>
+              <th scope="col">Subtotal ({symbol})</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((item) => (
+              <tr key={item.id} className={styles.itemRow}>
+                <td>
+                  {item.title} × {item.quantity}
+                </td>
+                <td className={styles.cellPrice}>
                   {convert(item.price * item.quantity)}
-                </>
-              ) : (
-                <>
-                  {convert(item.price * item.quantity)}
-                  {symbol}
-                </>
-              )}
-            </p>
-          </div>
-        ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Subtotal ({symbol})</th>
+              <td>{totalPrice}</td>
+            </tr>
+          </tfoot>
+        </table>
+
         <hr />
+
         <p className={styles.toggleCode} onClick={() => setShowCode(!showCode)}>
           Have a promo code?
         </p>
@@ -83,43 +103,90 @@ export default function Checkout() {
               placeholder="Enter code"
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              disabled={isApplied} // disable input if applied
+              disabled={isApplied}
             />
-            <button onClick={applyDiscount} disabled={isApplied}>
+            <button
+              className="buttonSecondary"
+              onClick={applyDiscount}
+              disabled={isApplied}
+              style={{ opacity: isApplied ? 0.7 : 1 }}
+            >
               {isApplied ? "Applied" : "Apply"}
             </button>
           </div>
         )}
 
-        {/* Show original price crossed out if discounted */}
-        {discountedTotal < totalPrice && (
-          <p className={styles.originalPrice}>
-            {symbolPosition === "left"
-              ? `${symbol}${convert(totalPrice)}`
-              : `${convert(totalPrice)}${symbol}`}
-          </p>
-        )}
+        {/* <p>Free Shipping. <Link href="/">Click for more information.</Link></p> */}
 
-        {/* Total Price */}
+        {/* subtotal Price */}
+        <p
+          className={styles.subtotalPrice}
+          style={{
+            opacity: isApplied ? 0.7 : 1,
+            textDecoration: isApplied ? "line-through" : "none",
+            textDecorationThickness: isApplied ? "2px" : 0,
+            textDecorationColor: isApplied ? "#333" : "none",
+          }}
+        >
+          Subtotal:{" "}
+          {symbolPosition === "left"
+            ? `${symbol}${convert(totalPrice)}`
+            : `${convert(totalPrice)}${symbol}`}
+        </p>
+        {/* total price */}
         <p className={styles.totalPrice}>
           Total:{" "}
           {symbolPosition === "left"
             ? `${symbol}${convert(discountedTotal)}`
-            : `${convert(discountedTotal)}${symbol}`}
+            : `${convert(discountedTotal)}${symbol}`}{" "}
         </p>
       </div>
 
-      <div className={styles.paymentSection}>
+      <section className={styles.paymentSection}>
         <h2>Payment</h2>
-        <label>
-          <input type="radio" name="payment" defaultChecked /> Credit Card
-        </label>
-        <label>
-          <input type="radio" name="payment" /> PayPal
-        </label>
-      </div>
+        <div className={styles.paymentMethodsContainer}>
+          <label>
+            <input type="radio" name="payment" defaultChecked /> Credit/Debit
+            Card
+            <span className={styles.paymentIcons}>
+              <FaCcVisa  />
+              <FaCcMastercard  />
+              <FaCcAmex  />
+            </span>
+          </label>
 
-      <button className="buttonPrimary" onClick={() => alert("Order placed!")}>
+          <label>
+            <input type="radio" name="payment" value="card" /> PayPal
+            <span className={styles.paymentIcons}>
+              <FaCcPaypal  />
+            </span>
+          </label>
+
+          <label>
+            <input type="radio" name="payment" value="applepay" /> Apple Pay
+            <span className={styles.paymentIcons}>
+              <FaCcApplePay  />
+            </span>
+          </label>
+
+          <label>
+            <input type="radio" name="payment" value="googlepay" /> Google Pay
+            <span className={styles.paymentIcons}>
+              <FaGooglePay  />
+            </span>
+          </label>
+
+          <label>
+            <input type="radio" name="payment" value="other" /> Other methods
+            <span className={styles.paymentIcons}>
+              <FaCcAmazonPay  />
+              <FaCcStripe  />
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <button className={`buttonPrimary ${styles.placeOrderButton}`} onClick={() => alert("Order placed!")}>
         Place Order
       </button>
     </section>

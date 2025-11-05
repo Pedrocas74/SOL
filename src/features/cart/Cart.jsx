@@ -98,6 +98,7 @@ export default function Cart() {
                   )
                 )
               }
+              disabled={item.quantity === 1 ? true : false}
             >
               <Minus size={15} />
             </button>

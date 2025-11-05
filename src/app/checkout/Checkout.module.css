@@ -1,7 +1,7 @@
 .checkoutSection {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 85%;
-    margin: 0 auto;
+    margin: 0 auto 20vh auto;
 }
 
 .checkoutSection h1 {
@@ -10,7 +10,8 @@
 }
 
 .summarySection {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
+    margin-bottom: 10vh;
 }
 .summarySection h2 {
     text-align: center;
@@ -18,8 +19,112 @@
     margin-bottom: 5vh;
 }
 
-.itemRow {
-    border-top: 1px solid;
-    /* border-bottom: 1px solid; */
+
+.summaryTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-bottom: 7vh;
+}
+.summaryTable th,
+.summaryTable td {
+    text-align: left;
+    padding: 0.5em;
+    border-bottom: 1px solid #e0e0e0;
+}
+.summaryTable thead th {
+    background-color: #f7f7f7;
+    border-top: 1px solid #e0e0e0;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.summaryTable tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+.summaryTable .cellPrice {
+    text-align: right;
+    letter-spacing: 0.5px;
+}
+.summaryTable tfoot {
+  background-color: #f2f4f8;
+  font-size: 1rem;
+  /* border-top: 2px solid #ccc; */
+}
+.summaryTable tfoot th {
+    text-align: left;
+}
+.summaryTable tfoot td {
+    font-weight: 600;
+    text-align: right;
+    letter-spacing: 0.5px;
 }
 
+.toggleCode {
+    margin: 0.5em 0 1em 0;
+}
+.promoCodeContainer {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+}
+.promoCodeContainer input {
+    min-height: fit-content;
+    width: 50%;
+    font-size: 1rem;
+    padding-left: 0.5em;
+    border-radius: 5px;
+    flex: 2;
+}
+.promoCodeContainer button {
+    border-radius: 5px;
+    flex: 1;
+}
+.subtotalPrice {
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+}
+.totalPrice {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+
+.paymentSection {
+    /* border: 1px solid red; */
+    margin-bottom: 5vh;
+}
+.paymentSection h2 {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.paymentMethodsContainer {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.paymentIcons {
+    /* border: 1px solid red; */
+    display: inline-flex;
+    min-height: fit-content;
+    margin-left: 0.3em;
+    width: 4em;
+    gap: 0.1em;
+}
+.paymentMethodsContainer label {
+    /* border: 1px solid green; */
+    display: flex;
+    align-items: center;
+
+}
+.paymentMethodsContainer input {
+    margin-right: 0.5em;
+}
+
+.placeOrderButton {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
