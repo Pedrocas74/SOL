@@ -14,6 +14,7 @@ import {
   FaGooglePay,
 } from "react-icons/fa";
 import FooterSimple from "@components/FooterSimple";
+import Breadcrumbs from "@components/Breadcrumbs";
 
 export default function Checkout() {
   const { items } = useSelector((state) => state.cart);
@@ -61,6 +62,9 @@ export default function Checkout() {
   return (
     <>
     <section className={styles.checkoutSection}>
+      <Breadcrumbs 
+        items={[{label: "Home", href: "/"}, {label: "Cart", href: "/cart"}, {label: "Checkout", href: "/checkout"}]} 
+      />
       <h1>Checkout</h1>
 
       <div className={styles.summarySection}>

@@ -12,6 +12,7 @@ import {
   clearCart,
 } from "./cartSlice";
 import FooterSimple from "@components/FooterSimple";
+import Breadcrumbs from "@components/Breadcrumbs";
 
 export default function Cart() {
   const { items } = useSelector((state) => state.cart);
@@ -46,6 +47,9 @@ export default function Cart() {
   return (
     <>
       <section className={styles.cartSection}>
+      <Breadcrumbs 
+        items={[{ label: "Home", href: "/" }, { label: "Cart", href: "/cart" }]}
+      />
         <h1>Your Cart</h1>
 
         <div className={styles.itemsContainer}>
