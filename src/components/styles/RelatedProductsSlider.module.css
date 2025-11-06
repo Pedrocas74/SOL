@@ -1,0 +1,35 @@
+.relatedProductsSection {
+    /* border: 1px solid red; */
+    width: 100%;
+    margin-bottom: 10vh;
+}
+
+.relatedProductsSection h3 {
+    /* border: 1px solid black; */
+    text-align: center;
+}
+
+.sliderContainer {
+  display: flex;
+  overflow-x: auto;
+  gap: 2em;
+  padding: 1.5em 1rem;
+}
+
+.productCard {
+    min-width: fit-content;
+    flex: 1;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+
+}
+.productCard img {
+    border-bottom: 1px solid #ccc;
+    padding: 0.5em;
+    width: 150px;
+    height: 200px;
+}
+.productCard p {
+    padding: 0.2em 0 0.2em 0.2em;
+}

@@ -8,6 +8,9 @@ import { useState, useEffect } from "react";
 import Skeleton from "@components/Skeleton";
 import Image from "next/image";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import RelatedProductsSlider from "@components/RelatedProductsSlider";
+import Footer from "@components/Footer";
+
 
 export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -23,6 +26,7 @@ export default function ProductDetails() {
   const product = useSelector((state) =>
     state.products.products.find((p) => p.id === parseInt(id))
   );
+  
   const { current, rates } = useSelector((state) => state.currency);
   useEffect(() => setMounted(true), []);
 
@@ -44,9 +48,9 @@ export default function ProductDetails() {
   const symbol = getSymbol();
   const stockStatus = product?.stock;
 
-  const arrow1 = openStates.summary1 ? <ChevronUp color="white"/> : <ChevronDown color="#333"/>;
-  const arrow2 = openStates.summary2 ? <ChevronUp color="white"/> : <ChevronDown color="#333"/>;
-  const arrow3 = openStates.summary3 ? <ChevronUp color="white"/> : <ChevronDown color="#333"/>;
+  const arrow1 = openStates.summary1 ? <ChevronUp color="#333"/> : <ChevronDown color="#333"/>;
+  const arrow2 = openStates.summary2 ? <ChevronUp color="#333"/> : <ChevronDown color="#333"/>;
+  const arrow3 = openStates.summary3 ? <ChevronUp color="#333"/> : <ChevronDown color="#333"/>;
 
   const toggleSummary = (key) => {
     setOpenStates((prev) => ({
@@ -151,6 +155,7 @@ export default function ProductDetails() {
           )}
         </div>
 
+      <div className={styles.summariesContainer}>
         {/* DESCRIPTION OF THE PRODUCT */}
         <details open={openStates.summary1} >
           <summary
@@ -257,8 +262,15 @@ export default function ProductDetails() {
                 </li>
               </ul>
             </details>
+          
           )}
+          </div>
+          
+          
+
       </section>
+      <RelatedProductsSlider id={product.id} category={product.category} />
+      <Footer />
     </div>
   );
 }

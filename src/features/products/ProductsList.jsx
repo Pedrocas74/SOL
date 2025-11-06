@@ -28,7 +28,7 @@ export default function ProductsList() {
   return (
     <section className={styles.productsContainer} id="products-list">
       <h2>Our Products</h2>
-      <p>Select one</p>
+      <p>Select a category</p>
 
       <div className={styles.productsSelector}>
         <div className={styles.imageBox} onClick={() => setSelectedCategory("Clothing")} >
