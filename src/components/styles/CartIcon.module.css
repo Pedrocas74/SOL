@@ -15,11 +15,11 @@
 }
 .badge {
     position: absolute;
-    top: -9px;
+    top: -7px;
     right: -9px;
     background: #d10221;
     color: var(--clr-bg);
-    padding: 1px 1px;
+    /* padding: 1px 1px; */
     font-size: 0.7rem;
     border-radius: 50px;
     min-width: 18px;

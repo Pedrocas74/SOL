@@ -1,11 +1,9 @@
-import Cart from '../../features/cart/Cart';
-import FooterSimple from '@components/FooterSimple';
+import ClientCart from "@components/ClientCard";
 
 export default function CartPage() {
   return (
     <>
-      <Cart />
-      <FooterSimple />
+      <ClientCart />
     </>
   );
 }

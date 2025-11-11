@@ -84,6 +84,7 @@ export default function Cart() {
     <>
       <section className={styles.cartSection}>
         <Breadcrumbs
+          id="warning" //to scroll the view to the top of the page
           items={[
             { label: "Home", href: "/" },
             { label: "Cart", href: "/cart" },
@@ -94,7 +95,7 @@ export default function Cart() {
         {/* WARNING if there are unavailable items */}
         {unavailableItems.length > 0 && (
           <div className={styles.warningBanner}>
-            <p>Some items in your cart are no longer available:</p>
+            <p>Some items in your cart are currently out of stock:</p>
             <ul>
               {unavailableItems.map((item) => (
                 <li
@@ -103,22 +104,11 @@ export default function Cart() {
                   }`}
                 >
                   {item.title}{" "}
-                  {item.selectedSize ? `(Size: ${item.selectedSize})` : ""}
-                  <button
-                    className="buttonTertiary"
-                    onClick={() =>
-                      dispatch(
-                        removeFromCart(
-                          `${item.id}-${item.selectedSize || "default"}`
-                        )
-                      )
-                    }
-                  >
-                    Remove
-                  </button>
+                  {item.selectedSize ? `(Size: ${item.selectedSize})` : ""}                     
                 </li>
               ))}
             </ul>
+            <div className={styles.removeAllContainer}>
             <button
               className="buttonSecondary"
               onClick={() => {
@@ -131,8 +121,10 @@ export default function Cart() {
                 );
               }}
             >
-              Remove All Unavailable Items
+              Remove Unavailable Items
             </button>
+            </div>
+            <p>Until this items are not removed, it is not possible to checkout.</p>
           </div>
         )}
 
@@ -202,6 +194,8 @@ export default function Cart() {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      opacity: item.quantity === 1 && !item.unavailable ? 0.2 : 1,
+                      color: item.quantity === 1 && !item.unavailable ? "black" : "white"
                     }}
                     className="buttonSecondary"
                     onClick={() =>
@@ -212,6 +206,7 @@ export default function Cart() {
                       )
                     }
                     disabled={item.quantity === 1 ? true : false}
+                    
                   >
                     <Minus size={15} />
                   </button>
@@ -258,7 +253,11 @@ export default function Cart() {
             <Link href="/#products-list" className="buttonSecondary">
               Continue Shopping
             </Link>
-            <Link href="/checkout" className="buttonPrimary">
+            <Link
+              href={unavailableItems.length > 0 ? "#warning" : "/checkout"}
+              scroll={true}
+              className="buttonPrimary"
+            >
               Proceed to Checkout
             </Link>
           </div>

@@ -13,21 +13,33 @@
 
 
 .warningBanner {
-  background: #fff3cd;
-  border: 1px solid #ffeeba;
-  color: #856404;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 4px;
+  background: var(--clr-primary-light);
+  /* border: 1px solid #927821; */
+  color: #836c1f;
+  /* color: #333; */
+  padding: 1em;
+  margin: 5vh 0;
+  border-radius: var(--radius);
 }
-
+.warningBanner p {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+}
+.removeAllContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .warningBanner button {
-  margin-left: 1rem;
+    margin: 1em 0;
 }
 
 .warningBanner ul {
-  margin: 0.5rem 0;
-  padding-left: 1.5rem;
+    margin-top: 0.5em;
+    padding-left: 1em;
+    color: #d10221;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    /* border: 1px solid black; */
 }
 
 .unavailableItem {
@@ -41,12 +53,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.856);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  color: #dc3545;
+  font-weight: 900;
+  font-size: clamp(1.3rem, 2vw, 1.5rem);
+  /* text-transform: uppercase; */
+  letter-spacing: 0.5px;
+  color: #d10221;
 }
 
 
@@ -68,13 +84,13 @@
     border-bottom: 1px solid #333;
     display: flex;
     margin-bottom: 3vh;
-    min-height: 130px;
+    height: 130px;
     border-radius: 5px;
 }
 .cartItem img {
     flex: 1;
     min-width: 35%;
-    padding: 0.2em;
+    padding: 0.3em;
     min-height: 100%;
     position: relative;
     object-fit: contain;
@@ -88,7 +104,7 @@
 }
 .itemInformation {
     /* border: 1px solid; */
-    padding: 0.2em;
+    padding: 0.3em;
     flex: 2;
 }
 .title {
@@ -129,12 +145,15 @@
     border-radius: 0;
     width: max-content;
     font-size: 0.95rem;
+    
 }
 .cartItem button:nth-child(1) {
     flex: 1;
+    border-right: 1px solid var(--clr-bg);
 }
 .cartItem button:nth-child(2) {
     flex: 1;
+    border-right: 1px solid var(--clr-bg);
 }
 .cartItem button:nth-child(3) {
     flex: 2;

@@ -128,3 +128,51 @@
     display: block;
     margin: 0 auto 10vh auto;
 }
+
+
+
+.placeContainer {
+    border: 3px outset var(--clr-secondary);
+    border-radius: var(--radius);
+    height: 60vh;
+    width: 75vw;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.placePaymentIcons {
+    /* border: 1px solid red; */
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.placeInfo {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.placeInfo h3 {
+    /* border: 1px solid rgb(141, 141, 15); */
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    padding: 0.7em;
+    text-align: center;
+    font-weight: 300;
+    margin-top: 1em;
+}
+.placeInfo svg {
+    /* border: 1px solid green; */
+    margin-top: 0.5em;
+    
+}

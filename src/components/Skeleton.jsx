@@ -1,6 +1,6 @@
 'use client';
 
-export default function Skeleton({ width = '100%', height = '1rem', borderRadius = '4px', style = {} }) {
+export default function Skeleton({ width = '90%', height = '1rem', borderRadius = '4px', style = {} }) {
   return (
     <div
       style={{

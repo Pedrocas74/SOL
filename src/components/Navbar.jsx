@@ -4,9 +4,8 @@ import styles from "./styles/Navbar.module.css";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CartIcon from "./CartIcon";
-
 
 const CurrencySelector = dynamic(
   () => import("./CurrencySelector"),
@@ -18,42 +17,48 @@ export default function Navbar() {
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
     setMounted(true);
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Hide navbar when scrolling down, show when scrolling up
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setVisible(false);
-      } else {
-        setVisible(true);
+      // requestAnimationFrame for smoother updates
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          // hide when scrolling down past 50px, show when scrolling up
+          if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+            setVisible(false);
+          } else {
+            setVisible(true);
+          }
+          lastScrollY.current = currentScrollY;
+          ticking.current = false;
+        });
+        ticking.current = true;
       }
-
-      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <nav
       className={`${styles.navbar} ${visible ? styles.visible : styles.hidden}`}
     >
       <div className={styles.navWrapper}>
-      <Link href="/">Home</Link>
-      <div className={styles.cartAndCurrency}>
-        <Link href="/cart" aria-label="Open cart">
-          <CartIcon count={mounted ? totalQuantity : 0} />
-        </Link>
-        <CurrencySelector />
+        <Link href="/">Home</Link>
+        <div className={styles.cartAndCurrency}>
+          <Link href="/cart" aria-label="Open cart">
+            <CartIcon count={mounted ? totalQuantity : 0} />
+          </Link>
+          <CurrencySelector />
+        </div>
       </div>
-    </div>
     </nav>
   );
 }
