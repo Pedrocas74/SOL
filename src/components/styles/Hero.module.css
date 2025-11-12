@@ -1,12 +1,14 @@
 .heroPage {
     height: 100vh;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; 
     position: relative;
     z-index: 1;
+    
     /* new */
     display: flex;
     align-items: center;
+    overflow-y: auto;
 }
 .heroContainer {
     /* border: 1px solid rgb(10, 211, 37); */
@@ -17,6 +19,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 0;
+    pointer-events: none;
 }
 .heroWrapper {
     /* border: 1px solid rgb(10, 187, 34); */
