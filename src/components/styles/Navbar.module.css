@@ -9,6 +9,7 @@
     transition: transform 0.3s ease-in-out;
     width: 100%;
     overflow-x: hidden;
+    will-change: transform, opacity;
 }
 
 .navWrapper {

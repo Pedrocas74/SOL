@@ -9,40 +9,46 @@ import CartIcon from "./CartIcon";
 
 const CurrencySelector = dynamic(
   () => import("./CurrencySelector"),
-  { ssr: false } // <- client-side only
+  { ssr: false } 
 );
 
 export default function Navbar() {
   const { items } = useSelector((state) => state.cart);
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
   const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
 
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      const current = window.scrollY;
 
-      // requestAnimationFrame for smoother updates
+
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
-          // hide when scrolling down past 50px, show when scrolling up
-          if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+          // hide completely for the first 450px
+          if (current < 450) {
             setVisible(false);
           } else {
-            setVisible(true);
+            // ✔ After 450px, use your original scroll direction behavior
+            if (current > lastScrollY.current && current > 50) {
+              setVisible(false); // scrolling DOWN
+            } else {
+              setVisible(true); // scrolling UP
+            }
           }
-          lastScrollY.current = currentScrollY;
+
+          lastScrollY.current = current;
           ticking.current = false;
         });
+
         ticking.current = true;
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

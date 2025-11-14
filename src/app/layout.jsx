@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${acma.variable} ${gatwickJet.variable}`}>
         <ReduxProvider>
-          {/* <Navbar /> */}
+          <Navbar />
           <main>
             {children}
             <Toaster

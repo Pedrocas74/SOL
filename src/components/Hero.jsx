@@ -9,50 +9,62 @@ import {
 } from "framer-motion";
 import { SquareArrowDown } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const [isMoving, setIsMoving] = useState(false);
+  const [isHeroGone, setIsHeroGone] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsMoving((prev) => (prev === latest > 0 ? prev : latest > 0));
+
+
+    if (latest > 850 && !isHeroGone) {
+      setIsHeroGone(true);
+    } else if (latest <= 850 && isHeroGone) {
+      setIsHeroGone(false);
+    }
   });
 
-  // const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   
 
-  const topCityY = useTransform(scrollY, [0, 1500], ["0%", "-50%"]);
-  const bottomCityY = useTransform(scrollY, [0, 1500], ["0%", "50%"]);
-  const titleOpacity = useTransform(
-    scrollY,
-    [200, 600, 2200, 2300],
-    [0, 1, 1, 0]
-  );
-  const sunBorder = useTransform(
-    scrollY,
-    [0, 1000],
-    ["22%", "5px solid black"]
-  );
-  // const sunZoom = useTransform(scrollYProgress, [0.8, 1], [1, 1.7]);
-  const sunOpacity = useTransform(scrollY, [2300, 2600], ["100%", "0%"]);
-  const planeX = useTransform(scrollY, [300, 1000], ["-100%", "100%"]);
 
+  const topCityY = useTransform(scrollY, [0, 425], ["0%", "-50%"]);
+  const bottomCityY = useTransform(scrollY, [0, 425], ["0%", "50%"]);
+  const titleOpacity = useTransform(scrollY, [100, 200], [0, 1]);
+  
   const letters = ["W", "E", "L", "C", "O", "M", "E"];
   const offsets = [
-    [300, 400, 1500, 1600],
-    [400, 500, 1600, 1700],
-    [500, 600, 1700, 1800],
-    [600, 700, 1800, 1900],
-    [700, 800, 1900, 2000],
-    [800, 900, 2000, 2100],
-    [900, 1000, 2100, 2200],
+    [125, 150, 425, 450],
+    [150, 175, 450, 475],
+    [175, 350, 475, 500],
+    [200, 225, 500, 525],
+    [225, 250, 525, 575],
+    [250, 275, 575, 625],
+    [275, 300, 625, 675],
   ];
+
   const opacities = offsets.map(([a, b, c, d]) =>
     useTransform(scrollY, [a, b, c, d], ["0%", "100%", "100%", "0%"])
   );
 
+  const planeX = useTransform(scrollY, [125, 300], ["-100%", "100%"]);
+  
+  const sunZoom = useTransform(scrollY, [125, 600], [1, 1.4]);
+  // const sunOpacity = useTransform(scrollY, [650, 700], [1, 0]);
+
+  // NEW: opacity for the whole overlay
+  // 0–600: fully visible, 600–800: fades out
+  const heroOpacity = useTransform(scrollY, [0, 600, 800], [1, 1, 0]);
+
   return (
-    <div className={styles.heroPage}>
+    <motion.div className={styles.heroPage}
+      style={{
+        opacity: heroOpacity,
+        pointerEvents: isHeroGone ? "none" : "auto",
+      }}
+    >
       <motion.div
         className={styles.topCity}
         style={{
@@ -60,15 +72,23 @@ export default function Hero() {
           scaleY: -1,
           scaleX: -1,
         }}
-      ></motion.div>
+      >
+        <Image
+          src="/images/city.webp"
+          alt="Top city skyline"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          style={{ objectFit: "cover" }}
+        />
+      </motion.div>
 
       <div className={styles.heroContainer}>
         <div className={`${styles.arrowLeft} ${styles.heartbeat}`}>
           <SquareArrowDown
             size={30}
             style={{
-              
-              opacity: isMoving ? 0 : 0.2,
+              opacity: isMoving ? 0 : 0.2
             }}
           />
         </div>
@@ -76,13 +96,13 @@ export default function Hero() {
           <SquareArrowDown
             size={30}
             style={{
-              opacity: isMoving ? 0 : 0.2,
+              opacity: isMoving ? 0 : 0.2
             }}
           />
         </div>
         <div className={styles.heroWrapper}>
           <div className={styles.topTitleContainer}>
-            <motion.div className={styles.plane} style={{ x: planeX }}>
+            <motion.div className={styles.plane} style={{ x: planeX, willChange: "transform" }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -113,7 +133,7 @@ export default function Hero() {
 
             <motion.div
               className={styles.sun}
-              style={{ border: sunBorder, opacity: sunOpacity }}
+              style={{ scale: sunZoom }}
             ></motion.div>
           </section>
 
@@ -137,7 +157,16 @@ export default function Hero() {
         style={{
           y: bottomCityY,
         }}
-      ></motion.div>
-    </div>
+      >
+        <Image
+          src="/images/city.webp"
+          alt="Bottom city skyline"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          style={{ objectFit: "cover" }}
+        />
+      </motion.div>
+    </motion.div>
   );
 }

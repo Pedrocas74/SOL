@@ -36,7 +36,7 @@ export default function ProductsList() {
             src="/images/clothing.jpg"
             alt="Clothing"
             fill
-            priority
+            // priority
             style={{ objectFit: "cover" }}
           />
           <div className={styles.overlay}>Clothing</div>

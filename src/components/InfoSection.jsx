@@ -12,8 +12,8 @@ export default function InfoSection() {
   });
 
   return (
-    <section ref={ref} className={styles.infoContainer}>
-      <h2>Why Shop With Us?</h2>
+    <section  className={styles.infoContainer}>
+      <h2>Why Us?</h2>
 
       <div className={styles.checksWrapper}>
         
@@ -73,7 +73,7 @@ export default function InfoSection() {
         
       </div>
 
-      <ul className={styles.infoStats}>
+      <ul ref={ref} className={styles.infoStats}>
         <li className={styles.statsItems}>
           {/* +3M products sold this year alone  */}
           <span className={styles.numbers}>+{inView && <CountUp end={3} duration={3} />}M&nbsp;</span>
