@@ -22,7 +22,7 @@ export default function Home() {
 
     
       <Hero />
-      <div style={{ height: "150vh" }} />
+      <div style={{ height: "180vh" }} />
       <InfoSection />
     
 

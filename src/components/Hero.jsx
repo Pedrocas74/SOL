@@ -14,36 +14,57 @@ import Image from "next/image";
 export default function Hero() {
   const { scrollY } = useScroll();
   const [isMoving, setIsMoving] = useState(false);
+  const [isHeroGone, setIsHeroGone] = useState(false);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsMoving((prev) => (prev === latest > 0 ? prev : latest > 0));
+
+
+    if (latest > 850 && !isHeroGone) {
+      setIsHeroGone(true);
+    } else if (latest <= 850 && isHeroGone) {
+      setIsHeroGone(false);
+    }
   });
 
-  const topCityY = useTransform(scrollY, [0, 375], ["0%", "-50%"]);
-  const bottomCityY = useTransform(scrollY, [0, 375], ["0%", "50%"]);
-  const titleOpacity = useTransform(scrollY, [50, 150, 550, 600], [0, 1, 1, 0]);
+  
+
+
+  const topCityY = useTransform(scrollY, [0, 425], ["0%", "-50%"]);
+  const bottomCityY = useTransform(scrollY, [0, 425], ["0%", "50%"]);
+  const titleOpacity = useTransform(scrollY, [100, 200], [0, 1]);
   
   const letters = ["W", "E", "L", "C", "O", "M", "E"];
   const offsets = [
-    [75, 100, 375, 400],
-    [100, 125, 400, 425],
-    [125, 300, 425, 450],
+    [125, 150, 425, 450],
     [150, 175, 450, 475],
-    [175, 200, 475, 500],
+    [175, 350, 475, 500],
     [200, 225, 500, 525],
-    [225, 250, 525, 550],
+    [225, 250, 525, 575],
+    [250, 275, 575, 625],
+    [275, 300, 625, 675],
   ];
 
   const opacities = offsets.map(([a, b, c, d]) =>
     useTransform(scrollY, [a, b, c, d], ["0%", "100%", "100%", "0%"])
   );
 
-  const planeX = useTransform(scrollY, [75, 250], ["-100%", "100%"]);
+  const planeX = useTransform(scrollY, [125, 300], ["-100%", "100%"]);
   
-  const sunZoom = useTransform(scrollY, [450, 550], [1, 1.5]);
-  const sunOpacity = useTransform(scrollY, [600, 650], [1, 0]);
+  const sunZoom = useTransform(scrollY, [125, 600], [1, 1.4]);
+  // const sunOpacity = useTransform(scrollY, [650, 700], [1, 0]);
+
+  // NEW: opacity for the whole overlay
+  // 0–600: fully visible, 600–800: fades out
+  const heroOpacity = useTransform(scrollY, [0, 600, 800], [1, 1, 0]);
 
   return (
-    <div className={styles.heroPage}>
+    <motion.div className={styles.heroPage}
+      style={{
+        opacity: heroOpacity,
+        pointerEvents: isHeroGone ? "none" : "auto",
+      }}
+    >
       <motion.div
         className={styles.topCity}
         style={{
@@ -112,7 +133,7 @@ export default function Hero() {
 
             <motion.div
               className={styles.sun}
-              style={{ opacity: sunOpacity, scale: sunZoom }}
+              style={{ scale: sunZoom }}
             ></motion.div>
           </section>
 
@@ -146,6 +167,6 @@ export default function Hero() {
           style={{ objectFit: "cover" }}
         />
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
