@@ -1,7 +1,7 @@
 
 .navbar {
     padding: 0.7em 0; 
-    background-color: #2C2A2D;
+    background-color: var(--clr-text);
     position: sticky;
     top: 0;
     color: #f5f5e9;

@@ -33,7 +33,7 @@ export default function ProductsList() {
       <div className={styles.productsSelector}>
         <div className={styles.imageBox} onClick={() => setSelectedCategory("Clothing")} >
           <Image
-            src="/images/clothing.jpg"
+            src="/images/clothing.webp"
             alt="Clothing"
             fill
             // priority
@@ -44,10 +44,10 @@ export default function ProductsList() {
 
         <div className={styles.imageBox} onClick={() => setSelectedCategory("Jewelry")}>
           <Image
-            src="/images/jewelry.jpg"
+            src="/images/jewelerySun.webp"
             alt="Jewelry"
             fill
-            priority
+            // priority
             style={{ objectFit: "cover" }}
           />
           <div className={styles.overlay}>Jewelry</div>
@@ -55,10 +55,10 @@ export default function ProductsList() {
 
         <div className={styles.imageBox} onClick={() => setSelectedCategory("Electronics")}>
           <Image
-            src="/images/electronics.jpg"
+            src="/images/electronicsOrange.webp"
             alt="Electronics"
             fill
-            priority
+            // priority
             style={{ objectFit: "cover" }}
           />
           <div className={styles.overlay}>Electronics</div>

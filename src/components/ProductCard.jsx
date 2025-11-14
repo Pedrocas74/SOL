@@ -105,7 +105,7 @@ export default function ProductCard({ product }) {
         <button
           className="buttonPrimary"
           disabled
-          style={{ opacity: 0.8, cursor: "not-allowed" }}
+          style={{ opacity: 0.5, cursor: "not-allowed" }}
         >
           Out of Stock
         </button>

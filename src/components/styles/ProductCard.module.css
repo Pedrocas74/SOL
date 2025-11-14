@@ -1,53 +1,60 @@
-/* .groupOfSkeletons {
+.groupOfSkeletons {
     border: 1px solid #ccc;
     padding: 0.5em;
     border-radius: 8px;
     text-align: center;
-} */
+}
 
 .productCard {
-    border: 1px solid #333333 ;
+    border: 1.5px outset var(--clr-grey) ;
     padding: var(--pd-top-down) var(--pd-left-right);
-    border-radius: var(--radius);
-    text-align: center;
+    /* border-radius: 5px; */
     margin: 0 auto;
     width: 90%;
     height: 350px;
     position: relative; 
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
+.productCard a {
+  /* border: 1px solid blue; */
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 .productCard img {
-    width: 60%;
+    width: 100%;
     height: 40%;
     object-fit: contain;
     /* border: 1px solid red; */
     margin-bottom: 0.5em;
+    flex: 3;
 }
-
 .productCard h3 {
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     font-weight: 600;
     color: var(--clr-text);
-    width: fit-content;
-    margin: 0 auto;
+    width: 100%;
     margin-bottom: 0.5em;
     /* border: 1px solid rgb(20, 136, 111); */
     max-height: 50px;
     
 }
-
 .productCard h4 {
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     margin-bottom: 2em;
     font-weight: 300;
     letter-spacing: 0.5px;
+    /* border: 1px solid rgb(170, 109, 109); */
 }
-
 .productCard p {
     font-size: clamp(0.9rem, 2vw, 1.2rem);
     font-weight: 100;
-    /* border: 1px solid yellow; */
+    /* border: 1px solid rgb(185, 185, 78); */
     margin-bottom: 0.7em;
     
 }

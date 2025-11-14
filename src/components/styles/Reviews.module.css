@@ -1,10 +1,16 @@
 .reviewSection {
     overflow: hidden;
     width: 100%;
+    /* border: 1px solid red; */
+    background-image: url("/images/city-sun.upscaled.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
 }
 .reviewSection h2 {
     text-align: center;
     margin-bottom: 5vh;
+    /* visibility: hidden; */
 }
 
 .sliderContainer {

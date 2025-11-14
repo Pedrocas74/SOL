@@ -1,6 +1,6 @@
 .bigContainer {
     /* border: 1px solid red; */
-    height: 80vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
 }
@@ -8,28 +8,30 @@
 .promotionContainer {
     /* border: 1px solid blue; */
     text-align: center;
-    flex: 3;
+    flex: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: var(--clr-accent-dark);
-    color: var(--clr-bg);
+    justify-content: start;
+    background-color: var(--clr-text);
+    color: var(--clr-secondary);
 }
 .promotionContainer h5 {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    letter-spacing: 1px;
+    width: 90%;
+    font-size: clamp(1.5rem, 2vw, 1.7rem);
+    letter-spacing: 2.5px;
 }
 .promotionContainer h6 {
-    font-size: clamp(0.8rem, 2vw, 1rem);
-    color: var(--clr-accent-light);
+    width: 90%;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    color: var(--clr-grey);
 }
 .promotionContainer h6 span {
     text-decoration: underline;
     font-size: larger;
     padding: 0 0.3em;
     color: var(--clr-bg);
-    letter-spacing: 1px;
+    letter-spacing: 1.3px;
 }
 
 
@@ -39,7 +41,7 @@
 }
 .leftContainer {
     flex: 1;
-    border-right: 1px solid #333;
+    border: 2px solid var(--clr-grey);
     display: flex;
     flex-direction: column;
     padding: var(--pd-top-down) var(--pd-left-right);
@@ -63,6 +65,8 @@
 }
 
 .rightContainer {
+    border-top: 2px solid var(--clr-grey);
+    border-bottom: 2px solid var(--clr-grey);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -72,6 +76,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--clr-primary);
 }
 .creditContainer {
     flex: 2;

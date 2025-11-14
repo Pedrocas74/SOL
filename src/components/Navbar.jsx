@@ -6,6 +6,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import CartIcon from "./CartIcon";
+import { usePathname } from "next/navigation";
 
 const CurrencySelector = dynamic(
   () => import("./CurrencySelector"),
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [visible, setVisible] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
+  const userLocation = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -29,7 +31,7 @@ export default function Navbar() {
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
           // hide completely for the first 450px
-          if (current < 450) {
+          if (current < 450 && userLocation === "/") {
             setVisible(false);
           } else {
             // ✔ After 450px, use your original scroll direction behavior

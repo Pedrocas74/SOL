@@ -17,21 +17,23 @@
 
 :root {
   /* Colors */
-  --clr-primary: #e9c46a;
-  --clr-primary-light: #fff3cd;
-  --clr-primary-dark: #d1ab4a;
+  --clr-primary: #FF7700;
+  --clr-primary-light: #FF7700;
+  --clr-primary-dark: #FF7700;
 
-  --clr-secondary: #333333;
+  --clr-secondary: #ffbf04;
+
+  --clr-grey: #e9ecef;
   --clr-bg: #ffffff;
 
-  --clr-accent: #f57d37;
-  --clr-accent-light: #ffc7a7;
-  --clr-accent-dark: #d96a25;  
+  --clr-accent: #440d06;
+  --clr-accent-light: #440d06;
+  --clr-accent-dark: #440d06;  
 
-  --clr-text: #1a1a1a;
+  --clr-text: #0E0C0D;
 
   /* Font families */
-  --font-acma: 'Acma', sans-serif;
+  --font-acma: 'Acma', sans-serif; 
   --font-gatwick-jet: 'PPGatwick-Jet', serif;
 
   /* Font sizes */
@@ -62,30 +64,34 @@ body {
   color: var(--clr-text);
 }
 
+/* p {
+  max-width: 65ch; 
+} */
 
 h1, h2, h3 {
   font-family: var(--font-gatwick-jet);
 }
+h1 {
 
+}
 h2 {
-  font-size: clamp(1.3rem, 2vw, 1.5rem);
+  font-size: clamp(1.7rem, 2vw, 2.5rem);
   font-weight: 600;
 }
 
 h3 {
-  font-weight: 200;
+  font-weight: 600;
   /* font-size: clamp(0.4rem, 2.5vw, 1.3rem); */
 }
 
 button {
   font-family: var(--font-acma);
   font-weight: 600;
-  letter-spacing: 0.05em;
-  background: var(--clr-primary);
+  letter-spacing: 1.5px;
   color: var(--clr-bg);
   padding: var(--pd-top-down) var(--pd-left-right);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  /* border-radius: var(--radius);
+  box-shadow: var(--shadow); */
   border: none;
   font-size: var(--fs-md);
   cursor: pointer;
@@ -93,19 +99,18 @@ button {
 }
 
 
-/* 🟡 Primary (default) */
+/* Primary (default) */
 .buttonPrimary {
-  background: var(--clr-primary);
+  background: var(--clr-text);
   color: var(--clr-bg);
 }
-.buttonPrimary:hover {
+/* .buttonPrimary:hover {
   background: var(--clr-primary-dark);
-  transform: translateY(-2px);
-}
+} */
 
 /* black Secondary (secondary color) */
 .buttonSecondary {
-  background: var(--clr-secondary);
+  background: var(--clr-text);
   color: var(--clr-bg);
 }
 /* .buttonSecondary:hover {
@@ -113,19 +118,19 @@ button {
   transform: translateY(-2px);
 } */
 
-/* ⚪️ Tertiary (subtle outline style) */
+/* Tertiary (subtle outline style) */
 .buttonTertiary {
   background: transparent;
   color: var(--clr-text);
   border: 3px solid var(--clr-primary);
   box-shadow: none;
 }
-.buttonTertiary:hover {
+/* .buttonTertiary:hover {
   background: var(--clr-secondary);
   color: var(--clr-bg);
   border-color: var(--clr-text);
   transform: translateY(-2px);
-}
+} */
 
 a {
   text-decoration: none;
