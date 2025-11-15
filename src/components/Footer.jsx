@@ -18,7 +18,9 @@ export default function Footer() {
   return (
     <section className={styles.bigContainer}>
       <div className={styles.promotionContainer}>
-        <h5>10% DISCOUNT</h5>
+        <h5>
+          10% DISCOUNT
+        </h5>
         <h6>
           Apply the code <span>PEDRO74</span> at the checkout
         </h6>

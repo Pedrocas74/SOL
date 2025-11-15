@@ -1,5 +1,5 @@
 .infoContainer {
-    height: auto;
+    /* height: auto; */
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -44,9 +44,9 @@
     perspective: 800px;
     background-color: var(--clr-text);
     box-shadow: 
-    0 0 10px #33333385,   
-    0 0 25px #33333349, 
-    0 0 40px var(--clr-secondary);
+    0 0 10px var(--clr-secondary),   
+    0 0 35px #3333335d, 
+    0 0 40px var(--clr-primary);
     
 }
 .bestSpan {
@@ -55,9 +55,9 @@
     letter-spacing: 3px;
     font-size: 1.6rem;
     background: radial-gradient(circle at center, #ff9d00 0%, #ff6a00 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
 }
 .check {
     position: absolute;
@@ -129,17 +129,22 @@
 
 .infoStats {
     /* border: 1px solid #333333; */
-    width: 100%;
+    width: fit-content;
+    max-width: 90%;
     margin-bottom: 7vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 
 .statsItems {
+    width: 100%;
     padding: 0.5em 0;
     display: flex;
     align-items: center;
     line-height: 1.7;
+    /* border: 1px solid; */
 }
-
 .numbers {
     display: inline-block;
     font-family: var(--font-gatwick-jet);
@@ -152,7 +157,7 @@
 }
 .statsItems p {
     font-weight: 100;
-    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
 }
 
 
@@ -163,21 +168,26 @@
 }
 .loopTrack {
   display: inline-flex;
+
   white-space: nowrap;
   will-change: transform;
-  animation: loop 15s linear infinite;
+  animation: loop 30s linear infinite;
 }
 .loopText {
-  padding-right: 2em;
+  padding-right: 3em;
   letter-spacing: 0.5px;
-  font-weight: 600;
-  font-size: clamp(1.6rem, 2vw, 1.3rem);
+  font-weight: 900;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
   background: radial-gradient(circle at center, #ff9d00 0%, #ff6a00 100%);
   -webkit-background-clip: text;
   background-clip: border-box;
   color: var(--clr-text); 
   border-top: 2px solid var(--clr-grey);
   border-bottom: 2px solid var(--clr-grey);
+}
+.loopText span {
+  color: var(--clr-bg);
+  font-weight: 100;
 }
 @keyframes loop {
   from {

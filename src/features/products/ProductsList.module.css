@@ -1,7 +1,7 @@
 
 .productsContainer {
     text-align: center;
-    margin-bottom: 20vh;
+    margin-bottom: 15vh;
     /* border: 1px solid; */
 }
 .productsContainer h2 + p {

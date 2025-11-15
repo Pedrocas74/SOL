@@ -10,7 +10,8 @@
 .reviewSection h2 {
     text-align: center;
     margin-bottom: 5vh;
-    /* visibility: hidden; */
+    padding-top: 0.5em;
+    color: var(--clr-bg);
 }
 
 .sliderContainer {
@@ -27,11 +28,11 @@
 .cardContainer {
   position: absolute;
   width: 85%;
-  height: 75%;
+  height: 70%;
   max-height: 300px;
   max-width: 400px;
   background: var(--clr-bg);
-  border-radius: var(--radius);
+  border-radius: var(--radius-small);
   box-shadow: var(--shadow);
   padding: 1.5em;
   /* border: 1px solid green; */

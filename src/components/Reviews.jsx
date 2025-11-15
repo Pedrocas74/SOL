@@ -46,10 +46,10 @@ export default function Reviews() {
     setPage([page + newDirection, newDirection]);
   }
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => paginate(1), 5000);
-  //   return () => clearTimeout(timer);
-  // }, [page]);
+  useEffect(() => {
+    const timer = setTimeout(() => paginate(1), 5000);
+    return () => clearTimeout(timer);
+  }, [page]);
 
   return (
     <section className={styles.reviewSection}>

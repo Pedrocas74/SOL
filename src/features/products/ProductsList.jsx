@@ -65,7 +65,7 @@ export default function ProductsList() {
         </div>
       </div>
       <button className="buttonTertiary" style={{
-        marginBottom: "10vh",
+        marginBottom: "7vh",
         visibility: selectedCategory === null ? "hidden" : "visible"
       }} type="button" onClick={() => setSelectedCategory(null)}>Show All</button>
       <div className={styles.grid}>

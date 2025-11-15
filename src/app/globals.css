@@ -23,6 +23,8 @@
 
   --clr-secondary: #ffbf04;
 
+  --clr-grey-dark: #333;
+  --clr-grey-medium: #999999;
   --clr-grey: #e9ecef;
   --clr-bg: #ffffff;
 
@@ -48,7 +50,9 @@
   --pd-left-right: 0.7em;
 
   /* Border radius */
-  --radius: 10px;
+  --radius-small: 3px;
+  --radius: 5px;
+  --radius-big: 10px;
 
   /* Shadow */
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
