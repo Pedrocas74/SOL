@@ -42,21 +42,22 @@
 
 
 .policiesContainer {
-    flex: 2;
+    flex: 1.5;
     display: flex;
     width: 100%;
     margin: 0 auto;
 }
 .leftContainer {
     flex: 1;
-    border-right: 1px solid var(--clr-grey-medium);
+    /* border-right: 1px solid var(--clr-grey-medium); */
     display: flex;
     flex-direction: column;
-    padding: var(--pd-top-down) var(--pd-left-right);
+    justify-content: center;
+    padding: 0.5em 0.5em 0.5em 5%;
+    /* border: 1px solid red; */
 }
 .leftContainer p {
-    font-size: clamp(1rem, 2vw, 1rem);
-    color: var(--clr-grey-dark);
+    font-size: clamp(1rem, 2vw, 1.2rem);
     flex: 1;
     /* border: 1px solid red; */
 }
@@ -65,7 +66,6 @@
     display: flex;
     flex-direction: column;
     flex: 2;
-    color: var(--clr-text);
     margin: 0.3em 0;
     line-height: 1.7;
     font-size: clamp(0.9rem, 2vw, 1.1rem);
@@ -73,38 +73,41 @@
 .leftContainer a {
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     flex: 1;
+    color: var(--clr-grey-dark);
+    text-decoration: underline;
 }
 
 .rightContainer {
-    /* border-top: 2px solid var(--clr-grey);
-    border-bottom: 2px solid var(--clr-grey); */
     flex: 1;
     display: flex;
     flex-direction: column;
-    border-left: 1px solid var(--clr-grey-medium);
+    padding: 0.5em 5% 0.5em 0.5em;
 }
 .rightContainer a {
-    flex: 1;
+    flex: 1.5;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--clr-grey-dark);
-    border-bottom: 2px inset var(--clr-grey-dark);
     letter-spacing: 0.5px;
     font-size: clamp(1.3rem, 3vw, 1.5rem);
+    
 }
 .creditContainer {
-    flex: 2;
-    display: flex;
-    gap: 0.3em;
-    flex-wrap: wrap;
-    padding: var(--pd-top-down) var(--pd-left-right);
+    flex: 1;
+    /* border: 1px solid blue; */
 }
 .creditContainer p {
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--clr-text);
     width: 100%;
-    padding: 0;
-    margin: 0;
+    text-align: center;
+    padding: 1em 0 0.2em 0;
+}
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 
@@ -112,17 +115,14 @@
 
 .footer {
     width: 100%;
-    min-height: fit-content;
     background: var(--clr-text);
     color: var(--clr-bg);
-    font-size: 0.7rem;
     /* border: 1px solid red; */
+    height: 7vh;
 }
 .footer a {
     color: var(--clr-bg);
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    padding: 0;
-    margin: 0;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     position: relative;
 }
 .footer a:not(.madeByPedro) {
@@ -143,9 +143,8 @@
 }
 .socials {
     /* border: 1px solid yellow; */
-    gap: 1.5em;
+    width: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 0;
 }

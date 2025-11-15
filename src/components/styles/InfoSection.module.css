@@ -163,12 +163,12 @@
 
 .loopContainer {
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
   margin-bottom: 20vh;
 }
 .loopTrack {
   display: inline-flex;
-
+  overflow-x: hidden;
   white-space: nowrap;
   will-change: transform;
   animation: loop 30s linear infinite;

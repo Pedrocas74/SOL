@@ -20,9 +20,9 @@ export default function CurrencySelector() {
   const current = useSelector((state) => state.currency.current);
 
   const currencies = [
-    { key: "EUR", icon: <Euro size={20} /> },
-    { key: "USD", icon: <DollarSign size={20} /> },
-    { key: "GBP", icon: <PoundSterling size={20} /> },
+    { key: "EUR", icon: <Euro size={25} /> },
+    { key: "USD", icon: <DollarSign size={25} /> },
+    { key: "GBP", icon: <PoundSterling size={25} /> },
   ];
 
   const handleSelect = (key) => {

@@ -30,7 +30,7 @@ export default function Footer() {
       <div className={styles.policiesContainer}>
         <div className={styles.leftContainer}>
           <p>
-            &copy; 2025 SOL, Inc. <br />
+            &copy; 2035 SOL, Inc. <br />
             All rights reserved.
           </p>
           <div className={styles.legalLinks}>
@@ -39,13 +39,17 @@ export default function Footer() {
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/returns-and-refunds">Returns & Refunds</Link>
           </div>
+          
+          <div className={styles.apiLink}>
+          Powered by{" "}
           <a
             href="https://fakestoreapi.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Powered by FakeStore API
+          FakeStore API
           </a>
+          </div>
         </div>
         <div className={styles.rightContainer}>
           <a href="/" className="buttonPrimary">
@@ -53,14 +57,16 @@ export default function Footer() {
           </a>
           <div className={styles.creditContainer}>
             <p>Methods of Payment:</p>
-            <FaCcVisa size={25} color="#333333" />
-            <FaCcMastercard size={25} color="#333333" />
-            <FaCcAmex size={25} color="#333333" />
-            <FaCcPaypal size={25} color="#333333" />
-            <FaCcAmazonPay size={25} color="#333333" />
-            <FaCcApplePay size={25} color="#333333" />
-            <FaCcStripe size={25} color="#333333" />
-            <FaGooglePay size={25} color="#333333" fill="#333333" />
+          <div className={styles.cards}>
+            <FaCcVisa size={35} color="#333333" />
+            <FaCcMastercard size={35} color="#333333" />
+            <FaCcAmex size={35} color="#333333" />
+            <FaCcPaypal size={35} color="#333333" />
+            <FaCcAmazonPay size={35} color="#333333" />
+            <FaCcApplePay size={35} color="#333333" />
+            <FaCcStripe size={35} color="#333333" />
+            <FaGooglePay size={35} color="#333333" fill="#333333" />
+            </div>
           </div>
         </div>
       </div>
@@ -83,8 +89,7 @@ export default function Footer() {
             >
               <Image
                 src="/images/icons/socials/github-mark-white.png"
-                fill
-                priority
+                fill         
                 alt="Github link"
               />
             </a>
@@ -95,8 +100,7 @@ export default function Footer() {
             >
               <Image
                 src="/images/icons/socials/InBug-White.png"
-                fill
-                priority
+                fill       
                 alt="Linkedin link"
               />
             </a>
