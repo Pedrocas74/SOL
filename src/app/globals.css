@@ -75,9 +75,7 @@ body {
 h1, h2, h3 {
   font-family: var(--font-gatwick-jet);
 }
-h1 {
 
-}
 h2 {
   font-size: clamp(1.7rem, 2vw, 2.5rem);
   font-weight: 600;

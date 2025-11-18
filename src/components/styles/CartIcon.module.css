@@ -1,8 +1,8 @@
 .wrapper {
     position: relative;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     vertical-align: middle;
     cursor: pointer;
 }
@@ -15,8 +15,8 @@
 }
 .badge {
     position: absolute;
-    top: -7px;
-    right: -9px;
+    top: -2px;
+    right: -5px;
     background: #d10221;
     color: var(--clr-bg);
     /* padding: 1px 1px; */

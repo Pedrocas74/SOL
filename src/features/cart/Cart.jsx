@@ -13,7 +13,7 @@ import {
   clearCart,
   reconcileWithProducts,
 } from "./cartSlice";
-// import FooterSimple from "@components/FooterSimple";
+import Footer from "@components/Footer";
 import Breadcrumbs from "@components/Breadcrumbs";
 import { fetchProducts } from "../products/productsSlice.js";
 
@@ -64,6 +64,7 @@ export default function Cart() {
   // EMPTY CARD MESSAGE
   if (!items?.length) {
     return (
+      <>
       <section className={styles.cartSection}>
         <Breadcrumbs
           items={[
@@ -72,11 +73,15 @@ export default function Cart() {
           ]}
         />
         <h1>Your Cart</h1>
-        <p className={styles.emptyCart}>Your cart is empty</p>
+        <div className={styles.emptyCartAction}>
+        <div className={styles.emptyCartImg}></div>
         <Link href="/#products-list" className="buttonSecondary">
           Continue Shopping
         </Link>
+          </div>
       </section>
+      <Footer />
+      </>
     );
   }
 
@@ -262,8 +267,9 @@ export default function Cart() {
             </Link>
           </div>
         </section>
+        {/* <FooterSimple /> */}
       </section>
-      {/* <FooterSimple /> */}
+      
     </>
   );
 }

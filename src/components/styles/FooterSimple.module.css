@@ -1,9 +1,9 @@
 .footer {
     width: 100%;
-    min-height: fit-content;
+    height: 10vh;
     background: #2C2A2D;
     color: white;
-    font-size: 0.7rem;
+    /* font-size: 0.7rem; */
     /* border: 1px solid red; */
 }
 

@@ -13,11 +13,16 @@ import {
   FaGooglePay,
 } from "react-icons/fa";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const isInHome = usePathname() === '/';
+
   return (
     <section className={styles.bigContainer}>
-      <div className={styles.promotionContainer}>
+      <div className={styles.promotionContainer}
+        style={{paddingBottom: isInHome ? "2em" : "0"}}
+      >
         <h5>
           10% DISCOUNT
         </h5>

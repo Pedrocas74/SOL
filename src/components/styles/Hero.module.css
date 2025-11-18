@@ -25,9 +25,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 150px;
+    /* min-height: 150px;
     height: 170px;
-    max-height: 200px;
+    max-height: 300px; */
+    height: clamp(150px, 170px, 350px);
 }
 .topTitleContainer {
     /* border: 1px solid red; */
@@ -56,30 +57,107 @@
     transform: rotate(45deg);
 }
 .bottomTitleContainer p {
-    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 2.5vw, 2.3rem);
     font-weight: 600;
     display: flex;
     justify-content: space-between;
 }
 .title {
     /* border: 1px solid rgb(141, 12, 153); */
-    font-size: 3.5rem;
     color: black;
-    width: 200px;
-    max-width: 350px;
+    width: 60vw;
     display: flex;
     justify-content: space-between;
-    
+    font-size: clamp(3.5rem, 9vw, 11rem);
 }
 .sun {
     position: absolute;
     width: 50px;
     height: 50px;
     background: radial-gradient(circle at center, #ff9d00 0%, #ff6a00 100%);
-  border-radius: 50%;
-
+    border-radius: 50%;
     z-index: 0;
     border: 5px solid black;
+} 
+@media(width >= 425px) {
+        /* .sun {
+                width: 50px;
+                height: 50px;
+        } */
+        .title {
+                width: 50vw;       
+        }
+}
+@media(width >= 550px) {
+        .sun {
+                width: 55px;
+                height: 55px;
+        }
+        .title {
+                width: 40vw;
+        }
+        .bottomTitleContainer {
+                bottom: -10px;
+        
+        }
+}
+@media(width >= 700px) {
+        .sun {
+                width: 70px;
+                height: 70px;
+        }
+        .title {
+                width: 35vw;
+        }
+        .bottomTitleContainer {
+                bottom: -5px;
+        
+        }
+}
+@media(width >= 1000px) {
+        .sun {
+                width: 95px;
+                height: 95px;
+        }
+        .title {
+                width: 35vw;
+        }
+        .bottomTitleContainer {
+                bottom: -25px;
+        }
+        .topTitleContainer {
+                top: -25px;
+        }
+}
+@media( width >= 1440px) {
+        .sun {
+                width: 120px;
+                height: 120px;
+        }
+        .title {
+                width: 35vw;       
+        }
+        .bottomTitleContainer {
+                bottom: -55px;
+        }
+        .topTitleContainer {
+                top: -55px;
+        }
+}
+@media(width >= 2000px) {
+        .sun {
+                width: 160px;
+                height: 160px;
+        }
+        .title {
+                width: 30vw;       
+        }
+        .bottomTitleContainer {
+                bottom: -110px;
+        }
+        .topTitleContainer {
+                top: -110px;
+        }
 }
 
 .topCity {
@@ -103,6 +181,8 @@
     /* z-index: -1; */
     will-change: transform;
 }
+/* @media */
+
 
 
 .heartbeat {
@@ -112,12 +192,12 @@
 .arrowLeft {
     /* border: 1px solid red; */
     position: absolute;
-    left: 5%; 
+    left: 15%; 
 }
 .arrowRight {
     /* border: 1px solid blue; */
     position: absolute;
-    right: 5%;
+    right: 15%;
     animation-name: heartbeat;
 }
 

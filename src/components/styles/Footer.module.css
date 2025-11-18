@@ -15,7 +15,6 @@
     justify-content: center;
     background-color: var(--clr-text);
     color: var(--clr-secondary);
-    padding-bottom: 2em;
 }
 .promotionContainer h5 {
     /* border: 1px solid white; */
@@ -118,7 +117,7 @@
     background: var(--clr-text);
     color: var(--clr-bg);
     /* border: 1px solid red; */
-    height: 7vh;
+    height: 10vh;
 }
 .footer a {
     color: var(--clr-bg);
