@@ -41,7 +41,7 @@ export default function Checkout() {
 
   setIsProcessing(true);
 
-  const totalDelay = 4000 + 3000; 
+  const totalDelay = 4000 + 4000; 
   const timer = setTimeout(() => {
     setIsProcessing(false);
     router.replace("/?payment=success");
@@ -163,7 +163,7 @@ export default function Checkout() {
           <hr />
 
           <p
-            className={styles.toggleCode}
+            className={`${styles.toggleCode} buttonTertiary`}
             onClick={() => setShowCode(!showCode)}
           >
             Have a promo code?

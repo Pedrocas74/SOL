@@ -16,23 +16,32 @@
 .badge {
     position: absolute;
     top: -2px;
-    right: -5px;
+    right: -8px;
     background: #d10221;
     color: var(--clr-bg);
     /* padding: 1px 1px; */
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     border-radius: 50px;
-    min-width: 18px;
+    min-width: 22px;
     text-align: center;
-    box-shadow: 0 1px 2px rgba(124, 124, 124, 0.473);
+    box-shadow: 0 1px 2px rgba(172, 171, 171, 0.473);
     font-weight: 600;
     
 }
 .pulse {
-    animation: pop 260ms ease;
+    animation: badgePulse 0.3s ease-out;
 }
-@keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
+@keyframes badgePulse {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.3);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

@@ -23,7 +23,8 @@ const saveCartToLocalStorage = (state) => {
 const initialState = {
   items: [],
   totalQuantity: 0,
-  totalPrice: 0
+  totalPrice: 0,
+  cartEvents: 0,  //to show navbar everytime user adds item to cart
 };
 
 const cartSlice = createSlice({
@@ -50,6 +51,7 @@ const cartSlice = createSlice({
           itemKey //special key
         });
       }
+      state.cartEvents += 1;
       state.totalQuantity = state.items.reduce((sum, item) => sum + item.quantity, 0);
       state.totalPrice = state.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       saveCartToLocalStorage(state);

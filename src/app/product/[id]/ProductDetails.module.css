@@ -29,19 +29,20 @@
 }
 
 .detailsContainer figure {
-    border: 1px solid #333;
+    border: 1px solid var(--border);
     display: flex;
     justify-content: center;
     padding: 2em 0;
     margin-top: 2em;
     overflow: hidden;
-    
+    box-shadow: var(--shadow-combined);
+    border-radius: var(--radius-small);
 }
 
 .productImage {
     width: 150px;
     height: 200px;
-    transition: transform 0.5s ease;
+    transition: var(--transition);
 }
 .productImage:hover {
   transform: scale(1.3);  
@@ -50,15 +51,14 @@
 .sizeSelector {
     display: flex;
     justify-content: center;
-    margin-top: 1em;
+    margin-top: 2em;
     width: 100%;
 }
 
 .sizeSelector button {
     width: 60px;
     max-width: 80px;
-    border-radius: 0px;
-    
+    /* border-radius: 0px; */
 }
 
 
@@ -79,10 +79,10 @@
 }
 
 .instructions {
-    border: 1px solid #333;
+    border: 1px solid var(--border);
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
-    padding: var(--pd-top-down) var(--pd-left-right);
+    padding: var(--pd-td) var(--pd-lr);
     margin: 0.7em 0 0 0;
     list-style: none;
     display: flex;
@@ -94,26 +94,27 @@
     height: 24px;
 }
 .instructionsTitle {
-    padding: var(--pd-top-down) var(--pd-left-right);
+    padding: var(--pd-td) var(--pd-lr);
     text-transform: uppercase;
     font-size: clamp(0.9rem, 2vw, 1rem);
     font-weight: 600;
 }
 
 .productDescription {
-    border-left: 1px solid #33333375;
-    border-right: 1px solid #33333375;
-    border-bottom: 1px solid #33333375;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius);
     font-size: clamp(0.9rem, 2vw, 1.1rem);
-    padding: var(--pd-top-down) var(--pd-left-right);
+    padding: var(--pd-td) var(--pd-lr);
     text-align: justify;
+    line-height: 1.7;
 }
 
 .careList {
     list-style: none;
-    padding: var(--pd-top-down) 0;
+    padding: var(--pd-td) 0;
     margin: 0;
 }
 .careList li {
@@ -122,6 +123,7 @@
     gap: 7px;
     margin-bottom: 0.5em;
     font-size: clamp(0.9rem, 2vw, 1rem);
+    padding: var(--pd-td) var(--pd-lr);
 }
 
 .iconWrapper {

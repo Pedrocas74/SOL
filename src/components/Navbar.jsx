@@ -8,13 +8,13 @@ import { useEffect, useRef, useState } from "react";
 import CartIcon from "./CartIcon";
 import { usePathname } from "next/navigation";
 
-const CurrencySelector = dynamic(
-  () => import("./CurrencySelector"),
-  { ssr: false } 
-);
+
+const CurrencySelector = dynamic(() => import("./CurrencySelector"), {
+  ssr: false,
+});
 
 export default function Navbar() {
-  const { items } = useSelector((state) => state.cart);
+  const { items, cartEvents } = useSelector((state) => state.cart);
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -27,14 +27,13 @@ export default function Navbar() {
     const handleScroll = () => {
       const current = window.scrollY;
 
-
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
-          // hide completely for the first 450px
+          // hide completely for the first 450px when at Home page
           if (current < 450 && userLocation === "/") {
             setVisible(false);
           } else {
-            // ✔ After 450px, use your original scroll direction behavior
+            // After 450px, use your original scroll direction behavior
             if (current > lastScrollY.current && current > 50) {
               setVisible(false); // scrolling DOWN
             } else {
@@ -54,12 +53,31 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (cartEvents > 0) {
+      setVisible(true);
+      // window.scrollTo({ top: 0, behavior: "smooth" });
+      // setTimeout(() => {
+      //   setVisible(false);
+      // }, 2000);
+    }
+  }, [cartEvents]);
+
   return (
     <nav
       className={`${styles.navbar} ${visible ? styles.visible : styles.hidden}`}
     >
       <div className={styles.navWrapper}>
-        <Link href="/">Home</Link>
+        <div className={styles.logoWrapper}>
+          <Link  href="/">
+          <div className={styles.logo}>
+            <span>S</span>
+            <span>-</span>
+            <span>L</span>
+          </div>
+          </Link>
+          <div className={styles.sun}></div>
+        </div>
         <div className={styles.cartAndCurrency}>
           <Link href="/cart" aria-label="Open cart">
             <CartIcon count={mounted ? totalQuantity : 0} />

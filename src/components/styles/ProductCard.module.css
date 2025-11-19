@@ -7,7 +7,7 @@
 
 .productCard {
     border: 1.5px outset var(--clr-grey) ;
-    padding: var(--pd-top-down) var(--pd-left-right);
+    padding: var(--pd-td) var(--pd-lr);
     /* border-radius: 5px; */
     margin: 0 auto;
     width: 90%;
@@ -17,6 +17,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: var(--transition);
+    
+}.productCard:hover {
+  box-shadow: var(--shadow-combined);
 }
 .productCard a {
   /* border: 1px solid blue; */
@@ -25,6 +29,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  
 }
 .productCard img {
     width: 100%;

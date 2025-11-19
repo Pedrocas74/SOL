@@ -4,7 +4,6 @@
     background-color: var(--clr-text);
     position: sticky;
     top: 0;
-    color: #f5f5e9;
     z-index: 999;
     transition: transform 0.3s ease-in-out;
     width: 100%;
@@ -12,6 +11,7 @@
     overflow-x: hidden;
     will-change: transform, opacity;
     display: flex;
+    align-items: center;
 }
 
 .navWrapper {
@@ -19,8 +19,9 @@
   align-items: center;
   justify-content: space-between;
   width: 90%;
+  height: fit-content;
   margin: 0 auto;
-  /* border: 1px solid red; */
+  /* border: 1px solid rgb(208, 255, 0); */
 }
 
 .visible {
@@ -30,8 +31,36 @@
   transform: translateY(-100%);
 }
 
-.navbar a {
-    color: #F5F5E9;
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  color: var(--clr-bg);
+  font-family: var(--font-gatwick-jet);
+  font-weight: 600;
+  width: 75px;
+  height: 100%;
+  font-size: 20px
+}
+.logo span {
+  /* border: 1px solid white; */
+  height: 100%;
+}
+.sun {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle at center, #ff9d00 0%, #ff6a00 100%);
+    border-radius: 50%;
+    border: 2px solid white;
+    pointer-events: none;
+    
 }
 
 .cartAndCurrency {
@@ -39,4 +68,5 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }

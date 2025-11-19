@@ -155,9 +155,7 @@ export default function ProductDetails() {
             {product.sizes.map((size) => (
               <button
                 key={size}
-                className={`buttonTertiary ${
-                  selectedSize === size ? styles.selected : ""
-                }`}
+                className="buttonSecondary" 
                 onClick={() => setSelectedSize(size)}
               >
                 {size}
@@ -168,12 +166,12 @@ export default function ProductDetails() {
 
         <div className={styles.buttonAddContainer}>
           {stockStatus === "In stock" ? (
-            <button onClick={handleAddToCart} className={styles.buttonAdd}>
+            <button onClick={handleAddToCart} className="buttonPrimary">
               Add to Cart
             </button>
           ) : (
             <button
-              className={styles.buttonAdd}
+              className="buttonPrimary"
               disabled
               style={{ opacity: 0.6 }}
             >

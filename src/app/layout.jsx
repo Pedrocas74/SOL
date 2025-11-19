@@ -1,8 +1,9 @@
-// "use client";
+
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import ReduxProvider from "../components/ReduxProvider";
 import { Toaster } from "sonner";
+
 
 import localFont from "next/font/local";
 

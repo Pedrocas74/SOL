@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
         <div className={styles.rightContainer}>
-          <a href="/" className="buttonPrimary">
+          <a href="/contact" className="buttonPrimary">
             Contact
           </a>
           <div className={styles.creditContainer}>

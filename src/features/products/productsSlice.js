@@ -33,7 +33,6 @@ export const fetchProducts = createAsyncThunk(
     }
   } catch {}
 }
-
             return { 
               products: response.data,
               cartItems 

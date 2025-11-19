@@ -183,7 +183,7 @@ export default function Cart() {
                       justifyContent: "center",
                       alignItems: "center",
                     }}
-                    className="buttonSecondary"
+                    className="buttonPrimary"
                     onClick={() =>
                       dispatch(
                         increaseQuantity(
@@ -200,9 +200,10 @@ export default function Cart() {
                       justifyContent: "center",
                       alignItems: "center",
                       opacity: item.quantity === 1 && !item.unavailable ? 0.2 : 1,
-                      color: item.quantity === 1 && !item.unavailable ? "black" : "white"
+                      color: item.quantity === 1 && !item.unavailable ? "black" : "white",
+                      cursor: item.quantity === 1 && !item.unavailable ? "not-allowed" : "pointer",
                     }}
-                    className="buttonSecondary"
+                    className="buttonPrimary"
                     onClick={() =>
                       dispatch(
                         decreaseQuantity(
@@ -235,7 +236,7 @@ export default function Cart() {
 
         <div className={styles.clearAllContainer}>
           <button
-            className={`buttonTertiary ${styles.clearAllButton} `}
+            className={`buttonSecondary ${styles.clearAllButton} `}
             onClick={() => dispatch(clearCart())}
           >
             Clear Cart

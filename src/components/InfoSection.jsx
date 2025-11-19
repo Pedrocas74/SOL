@@ -4,7 +4,7 @@ import styles from "./styles/InfoSection.module.css";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import { Star } from "lucide-react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 export default function InfoSection() {
   const { ref, inView } = useInView({
@@ -117,20 +117,20 @@ export default function InfoSection() {
     
       <div className={styles.loopContainer}>
         <div className={styles.loopTrack}>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
-          <span className={styles.loopText}><em>WE KNOW </em>• <span>WHAT</span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
+          <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
         </div>
       </div>
     </section>

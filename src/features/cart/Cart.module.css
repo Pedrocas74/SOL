@@ -3,6 +3,7 @@
     /* min-height: 100vh; */
     width: 90%;
     margin: 0 auto;
+    transition: var(--transition);
 }
 
 .cartSection h1 {
@@ -14,13 +15,13 @@
 
 
 .warningBanner {
-  background: var(--clr-primary-light);
+  background: var(--clr-warning);
   /* border: 1px solid #927821; */
-  color: #836c1f;
+  color: #fcedbb;
   /* color: #333; */
   padding: 1em;
   margin: 5vh 0;
-  border-radius: var(--radius);
+  border-radius: var(--radius-big);
 }
 .warningBanner p {
     font-size: clamp(1rem, 3vw, 1.3rem);
@@ -79,10 +80,11 @@
     margin-bottom: 10vh;
 }
 .cartItem {
-    border-left: 1px solid #333;
+    /* border-left: 1px solid #333;
     border-right: 1px solid #333;
     border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #333; */
+    border: 1px solid var(--border);
     display: flex;
     margin-bottom: 3vh;
     height: 130px;
@@ -141,13 +143,9 @@
     /* border: 1px solid red; */
     display: flex;
 }
-.cartItem button {
-    padding: 0;
-    border-radius: 0;
+/* .cartItem button {
     width: max-content;
-    font-size: 0.95rem;
-    
-}
+} */
 .cartItem button:nth-child(1) {
     flex: 1;
     border-right: 1px solid var(--clr-bg);
@@ -159,19 +157,11 @@
 .cartItem button:nth-child(3) {
     flex: 2;
 }
-/* .cartItem button:hover {
-    
-} */
 
 .clearAllContainer {
-    width: 100%;
-    /* border: 1px solid; */
     text-align: center;
     margin-bottom: 10vh;
 }
-/* .clearAllButton {
-    
-} */
 
 
 
@@ -207,17 +197,19 @@
 
 }
 .summaryButtonsContainer a {
-    letter-spacing: 0.05em;
-    padding: var(--pd-top-down) var(--pd-left-right);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border: none;
+    /* letter-spacing: 0.05em; */
+    padding: var(--pd-td) var(--pd-lr);
+    border-radius: var(--radius-small);
+    /* box-shadow: var(--shadow-light); */
     font-size: var(--fs-md);
     cursor: pointer;
-    transition: all 0.3s ease;
     text-align: center;
-    width: 70%;
+    width: 55%;
     margin: 0.2em auto;
+    transition: var(--transition);
+}
+.summaryButtonsContainer a:last-child {
+    color: var(--clr-bg);
 }
 
 

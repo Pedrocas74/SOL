@@ -16,38 +16,52 @@
 }
 
 :root {
-  /* Colors */
-  --clr-primary: #FF7700;
-  --clr-primary-light: #FF7700;
-  --clr-primary-dark: #FF7700;
+  --clr-bg: hsl(300 50% 100%);
+  --clr-bg-light: hsl(300 0% 95%);
+  --clr-bg-dark: hsl(0 0% 90%);
 
-  --clr-secondary: #ffbf04;
+  --clr-text: hsl(300 0% 4%);
+  --clr-text-muted: hsl(0 0% 28%);
 
   --clr-grey-dark: #333;
   --clr-grey-medium: #8f8f8f;
   --clr-grey: #e9ecef;
-  --clr-bg: #ffffff;
 
+  
+  --border: hsl(300 0% 50%);
+  --border-muted: hsl(340 0% 62%);
+
+  /* Colors */
+  --clr-primary-light: hsl(28, 100%, 60%);
+  --clr-primary: hsl(28, 100%, 50%);
+  --clr-primary-dark: hsl(28, 100%, 40%);
+
+  --clr-secondary: #ffbf04;
   --clr-accent: #440d06;
-  --clr-accent-light: #440d06;
-  --clr-accent-dark: #440d06;  
 
-  --clr-text: #0E0C0D;
+  --clr-warning: hsl(52 23% 34%);
+  --clr-success: hsl(147 19% 36%);
 
   /* Font families */
   --font-acma: 'Acma', sans-serif; 
   --font-gatwick-jet: 'PPGatwick-Jet', serif;
 
   /* Font sizes */
-  --fs-xs: 0.8rem;
-  --fs-sm: 0.9rem;
-  --fs-md: 1rem;
-  --fs-lg: 1.25rem;
-  --fs-xl: 2rem;
+/* Base fluid sizes */
+  --fs-xs: clamp(0.75rem, 0.68rem + 0.25vw, 0.8rem);   /* badges, micro text */
+  --fs-sm: clamp(0.85rem, 0.78rem + 0.3vw, 0.95rem);   /* small text, labels */
+  --fs-md: clamp(0.95rem, 0.88rem + 0.35vw, 1.05rem);  /* main body text */
+  --fs-lg: clamp(1.1rem, 1.0rem + 0.5vw, 1.3rem);      /* lead text, big buttons */
+
+  /* Headings */
+  --fs-h4: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+  --fs-h3: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --fs-h2: clamp(1.9rem, 1.5rem + 1.8vw, 2.6rem);
+  --fs-h1: clamp(2.3rem, 1.8rem + 2.4vw, 3.2rem);
 
   /* Button padding */
-  --pd-top-down: 0.5em;
-  --pd-left-right: 0.7em;
+  --pd-td: 0.5em;
+  --pd-lr: 0.7em;
 
   /* Border radius */
   --radius-small: 3px;
@@ -55,7 +69,11 @@
   --radius-big: 10px;
 
   /* Shadow */
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-combined: 0px 4px 4px #00000030, 0px 12px 12px #00000015;
+  --shadow-dark: 0px 4px 4px #00000030;
+  --shadow-light: 0px 12px 12px #00000015;
+
+  --transition: 0.3s ease-in-out;
 }
 
 html {
@@ -74,6 +92,7 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-gatwick-jet);
+  /* font-weight: 600; */
 }
 
 h2 {
@@ -81,62 +100,71 @@ h2 {
   font-weight: 600;
 }
 
-h3 {
-  font-weight: 600;
-  /* font-size: clamp(0.4rem, 2.5vw, 1.3rem); */
-}
 
 button {
   font-family: var(--font-acma);
   font-weight: 600;
   letter-spacing: 1.5px;
   color: var(--clr-bg);
-  padding: var(--pd-top-down) var(--pd-left-right);
-  /* border-radius: var(--radius);
-  box-shadow: var(--shadow); */
+  padding: var(--pd-td) var(--pd-lr);
+  border-radius: var(--radius-small);
   border: none;
   font-size: var(--fs-md);
   cursor: pointer;
-  transition: all 0.3s ease;
+  
+  transition: var(--transition);
 }
 
 
 /* Primary (default) */
 .buttonPrimary {
   background: var(--clr-text);
-  color: var(--clr-bg);
 }
-/* .buttonPrimary:hover {
+.buttonPrimary:hover {
+  background: var(--clr-primary);
+}
+.buttonPrimary:active {
   background: var(--clr-primary-dark);
-} */
+}
 
 /* black Secondary (secondary color) */
 .buttonSecondary {
-  background: var(--clr-text);
-  color: var(--clr-bg);
+  background: transparent;
+  color: var(--clr-text);              /* override base white text  */
+  border: 1px solid var(--clr-text);
 }
-/* .buttonSecondary:hover {
-  background: var(--clr-accent-dark);
-  transform: translateY(-2px);
-} */
+.buttonSecondary:hover {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+  background: var(--clr-bg-light);
+}
+.buttonSecondary:active {
+  background: var(--clr-bg-dark);
+  color: var(--clr-primary-dark);
+}
 
 /* Tertiary (subtle outline style) */
 .buttonTertiary {
   background: transparent;
-  color: var(--clr-text);
-  border: 3px solid var(--clr-primary);
-  box-shadow: none;
+  color: var(--clr-text-muted);           /* softer */
+  border: none;
+  padding-inline: 0;                      /* more link-ish */
 }
-/* .buttonTertiary:hover {
-  background: var(--clr-secondary);
-  color: var(--clr-bg);
-  border-color: var(--clr-text);
-  transform: translateY(-2px);
-} */
+
+.buttonTertiary:hover {
+  color: var(--clr-text);
+  background: var(--clr-bg-light);
+  text-decoration: underline;
+}
+
+.buttonTertiary:active {
+  background: transparent;
+  text-decoration: underline;
+}
 
 a {
   text-decoration: none;
-  color: var(--clr-text);
+  /* color: var(--clr-text); */
 }
 
 

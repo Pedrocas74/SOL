@@ -127,7 +127,7 @@ export default function Hero() {
               }}
             >
               <span>S</span>
-              <span>o</span>
+              <span>-</span>
               <span>L</span>
             </motion.h1>
 

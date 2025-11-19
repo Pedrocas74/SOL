@@ -1,0 +1,22 @@
+.contactSection {
+    width: 90%;
+    margin: 0 auto 10vh auto;
+}
+.contactSection h1 {
+    margin-bottom: 7vh;   
+}
+.contactInfo {
+    line-height: 2.5;
+}
+.contactInfoItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    letter-spacing: 0.5px;
+}
+.email {
+    cursor: pointer;
+    width: fit-content;
+    
+} 
