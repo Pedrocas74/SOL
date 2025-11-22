@@ -1,11 +1,10 @@
 
 .navbar {
-    /* padding: 0.7em 0;  */
     background-color: var(--clr-text);
     position: sticky;
     top: 0;
     z-index: 999;
-    transition: transform 0.3s ease-in-out;
+    transition: var(--transition);
     width: 100%;
     height: 10vh;
     overflow-x: hidden;
@@ -60,11 +59,10 @@
     border-radius: 50%;
     border: 2px solid white;
     pointer-events: none;
-    
 }
 
 .cartAndCurrency {
-    width: 70px;
+    width: 85px;
     display: flex;
     align-items: center;
     justify-content: space-between;

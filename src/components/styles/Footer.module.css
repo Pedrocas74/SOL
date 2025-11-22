@@ -1,3 +1,5 @@
+
+/* ----------------------------TOP SECTION------------------------------------ */
 .bigContainer {
     /* border: 1px solid red; */
     height: 70vh;
@@ -38,8 +40,7 @@
     color: var(--clr-bg);
     letter-spacing: 1.3px;
 }
-
-
+/* ------------------------------MIDDLE SECTION--------------------------------------- */
 .policiesContainer {
     flex: 1.5;
     display: flex;
@@ -109,8 +110,7 @@
     justify-content: space-between;
 }
 
-
-
+/* ---------------------------BOTTOM SECTION------------------------------------------ */
 
 .footer {
     width: 100%;
@@ -142,7 +142,8 @@
 }
 .socials {
     /* border: 1px solid yellow; */
-    width: 70px;
+    width: 85px;
+    height: 35px;
     display: flex;
     justify-content: space-between;
     align-items: center;

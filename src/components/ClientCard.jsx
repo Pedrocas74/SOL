@@ -1,10 +1,19 @@
 "use client";
 
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-const Cart = dynamic(() => import('../features/cart/Cart'), {
+
+const Cart = dynamic(() => import("../features/cart/Cart"), {
   ssr: false,
-  loading: () => <p>Loading cart...</p>
+  loading: () => (
+    <p
+      style={{
+        margin: "10vh 2vh" ,
+      }}
+    >
+      LOADING CART...
+    </p>
+  ),
 });
 
 export default function ClientCart() {

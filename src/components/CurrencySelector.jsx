@@ -13,8 +13,6 @@ import {
 } from "@heroui/dropdown";
 import { Button } from "@heroui/button";
 
-
-
 export default function CurrencySelector() {
   const dispatch = useDispatch();
   const current = useSelector((state) => state.currency.current);
@@ -33,39 +31,37 @@ export default function CurrencySelector() {
 
   return (
     <>
-    <Dropdown>
-      <DropdownTrigger>
-        <Button     
-          className={styles.triggerButton}
-          variant="ghost"
-          size="sm"
-          disableRipple
-        >
-          
-          {currentCurrency?.icon || "currency"}
-          
-        </Button>
-      </DropdownTrigger>
+      <Dropdown>
+        <DropdownTrigger>
+          <Button
+            className={styles.triggerButton}
+            variant="ghost"
+            size="sm"
+            disableRipple
+          >
+            {currentCurrency?.icon || "currency"}
+          </Button>
+        </DropdownTrigger>
 
-      <DropdownMenu
-        aria-label="Currency selection"
-        onAction={handleSelect}
-        className={styles.dropdownMenu}
-      >
-        {currencies
-          .filter(c => c.key !== current)
-          .map((currency) => (
-            <DropdownItem
-              key={currency.key}
-              className={styles.menuItem}
-              textValue={currency.key} 
-              onClick={() => handleSelect(currency.key)} 
-            >
-              {currency.icon}
-            </DropdownItem>
-          ))}
-      </DropdownMenu>
-    </Dropdown>
+        <DropdownMenu
+          aria-label="Currency selection"
+          onAction={handleSelect}
+          className={styles.dropdownMenu}
+        >
+          {currencies
+            .filter((c) => c.key !== current)
+            .map((currency) => (
+              <DropdownItem
+                key={currency.key}
+                className={styles.menuItem}
+                textValue={currency.key}
+                onClick={() => handleSelect(currency.key)}
+              >
+                {currency.icon}
+              </DropdownItem>
+            ))}
+        </DropdownMenu>
+      </Dropdown>
     </>
   );
 }

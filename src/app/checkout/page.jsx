@@ -17,7 +17,7 @@ import FooterSimple from "@components/FooterSimple";
 import Breadcrumbs from "@components/Breadcrumbs";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-
+import { toast } from "sonner";
 
 export default function Checkout() {
   const { items } = useSelector((state) => state.cart);
@@ -36,20 +36,19 @@ export default function Checkout() {
   const router = useRouter();
 
   useEffect(() => {
-  if (!isPlaced) return;
+    //show payment banner and redirect to home (showing success toaster)
+    if (!isPlaced) return;
 
-  setIsProcessing(true);
+    setIsProcessing(true);
 
-  const totalDelay = 4000 + 4000; 
-  const timer = setTimeout(() => {
-    setIsProcessing(false);
-    router.replace("/?payment=success");
-  }, totalDelay);
+    const totalDelay = 4000 + 4000;
+    const timer = setTimeout(() => {
+      setIsProcessing(false);
+      router.replace("/?payment=success");
+    }, totalDelay);
 
-  return () => clearTimeout(timer);
-
-}, [isPlaced, router]);
-
+    return () => clearTimeout(timer);
+  }, [isPlaced, router]);
 
   const convert = (price) => (price * rates[current]).toFixed(2);
 
@@ -72,15 +71,18 @@ export default function Checkout() {
   const applyDiscount = () => {
     if (isApplied) return;
     if (code !== "PEDRO74") {
-      alert("Invalid code");
       setCode("");
+      toast.info("Reminder: PEDRO74");
+      toast.error("Wrong code! :(");
       return;
     }
     const newTotal = totalPrice * 0.9; // 10% discount
     setDiscountedTotal(newTotal);
     setIsApplied(true); // disable further use
-    alert("Promo code applied! 10% discount");
+    toast.success("10% discount applied! :)");
   };
+
+  const isMobile = window.innerWidth <= 768;
 
   const renderPaymentIcons = () => {
     switch (paymentMethod) {
@@ -168,26 +170,36 @@ export default function Checkout() {
             Have a promo code?
           </p>
           {showCode && (
-            <div className={styles.promoCodeContainer}>
-              <input
-                type="text"
-                placeholder="Enter code"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                disabled={isApplied}
-              />
-              <button
-                className="buttonSecondary"
-                onClick={applyDiscount}
-                disabled={isApplied}
-                style={{ opacity: isApplied ? 0.7 : 1 }}
-              >
-                {isApplied ? "DONE" : "Apply"}
-              </button>
-            </div>
-          )}
+            <>
+              <div className={styles.promoCodeContainer}>
+                <input
+                  type="text"
+                  placeholder="Enter code"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !isApplied) {
+                      applyDiscount();
+                      e.target.blur();
+                    }
+                  }}
+                  disabled={isApplied}
+                />
 
-          {/* <p>Free Shipping. <Link href="/">Click for more information.</Link></p> */}
+                <button
+                  className="buttonSecondary"
+                  onClick={applyDiscount}
+                  disabled={isApplied}
+                  style={{
+                    opacity: isApplied ? 0.5 : 1,
+                    cursor: isApplied ? "not-allowed" : "pointer",
+                  }}
+                >
+                  {isApplied ? "DONE" : "Apply"}
+                </button>
+              </div>
+            </>
+          )}
 
           {/* subtotal Price */}
           <p
@@ -218,6 +230,7 @@ export default function Checkout() {
           <div className={styles.paymentMethodsContainer}>
             <label>
               <input
+                className={styles.paymentInput}
                 type="radio"
                 name="payment"
                 value="card"
@@ -226,14 +239,15 @@ export default function Checkout() {
               />{" "}
               Credit/Debit Card
               <span className={styles.paymentIcons}>
-                <FaCcVisa size={22} />
-                <FaCcMastercard size={22} />
-                <FaCcAmex size={22} />
+                <FaCcVisa size={isMobile ? 22 : 32 } />
+                <FaCcMastercard size={isMobile ? 22 : 32 } />
+                <FaCcAmex size={isMobile ? 22 : 32 } />
               </span>
             </label>
 
             <label>
               <input
+                className={styles.paymentInput}
                 type="radio"
                 name="payment"
                 value="paypal"
@@ -242,12 +256,13 @@ export default function Checkout() {
               />{" "}
               PayPal
               <span className={styles.paymentIcons}>
-                <FaCcPaypal size={22} />
+                <FaCcPaypal size={isMobile ? 22 : 32 } />
               </span>
             </label>
 
             <label>
               <input
+                className={styles.paymentInput}
                 type="radio"
                 name="payment"
                 value="applepay"
@@ -256,12 +271,13 @@ export default function Checkout() {
               />{" "}
               Apple Pay
               <span className={styles.paymentIcons}>
-                <FaCcApplePay size={22} />
+                <FaCcApplePay size={isMobile ? 22 : 32 } />
               </span>
             </label>
 
             <label>
               <input
+                className={styles.paymentInput}
                 type="radio"
                 name="payment"
                 value="googlepay"
@@ -270,12 +286,13 @@ export default function Checkout() {
               />{" "}
               Google Pay
               <span className={styles.paymentIcons}>
-                <FaGooglePay size={22} />
+                <FaGooglePay size={isMobile ? 22 : 32 } />
               </span>
             </label>
 
             <label>
               <input
+                className={styles.paymentInput}
                 type="radio"
                 name="payment"
                 value="other"
@@ -284,8 +301,8 @@ export default function Checkout() {
               />{" "}
               Other methods
               <span className={styles.paymentIcons}>
-                <FaCcAmazonPay size={22} />
-                <FaCcStripe size={22} />
+                <FaCcAmazonPay size={isMobile ? 22 : 32 } />
+                <FaCcStripe size={isMobile ? 22 : 32 } />
               </span>
             </label>
           </div>
@@ -297,7 +314,6 @@ export default function Checkout() {
         >
           Place Order
         </button>
-
         {isPlaced && (
           <section className={styles.placeContainer}>
             <span className={styles.placePaymentIcons}>
@@ -331,8 +347,7 @@ export default function Checkout() {
               ) : (
                 <>
                   <h3>Payment successful!</h3>
-                  <CheckCircle size={50}/>
-                  
+                  <CheckCircle size={50} />
                 </>
               )}
             </div>

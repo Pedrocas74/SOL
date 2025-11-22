@@ -236,7 +236,7 @@ export default function Cart() {
 
         <div className={styles.clearAllContainer}>
           <button
-            className={`buttonSecondary ${styles.clearAllButton} `}
+            className={`buttonTertiary ${styles.clearAllButton} `}
             onClick={() => dispatch(clearCart())}
           >
             Clear Cart
@@ -244,7 +244,8 @@ export default function Cart() {
         </div>
         <hr />
         <section className={styles.summarySection}>
-          <h2>Order Summary</h2>
+          <h2>Summary</h2>
+          <div className={styles.summaryInfoContainer}>
           <p className={styles.totalItems}>
             <span>Total Items:</span> {totalQuantity}
           </p>
@@ -254,7 +255,7 @@ export default function Cart() {
               ? `${symbol}${convert(totalPrice)}`
               : `${convert(totalPrice)}${symbol}`}
           </p>
-
+              </div>
           <div className={styles.summaryButtonsContainer}>
             <Link href="/#products-list" className="buttonSecondary">
               Continue Shopping

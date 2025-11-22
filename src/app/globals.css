@@ -17,8 +17,9 @@
 
 :root {
   --clr-bg: hsl(300 50% 100%);
-  --clr-bg-light: #f2f2f2;
   --clr-bg-dark: hsl(0 0% 90%);
+  --clr-bg-light: hsl(0, 0%, 97%);
+  --clr-hover: #f2f2f21c;
 
   --clr-text: hsl(300 0% 4%);
   --clr-text-muted: hsl(0 0% 28%);
@@ -37,10 +38,12 @@
   --clr-primary-dark: hsl(28, 100%, 40%);
 
   --clr-secondary: #ffbf04;
-  --clr-accent: #440d06;
+  --clr-accent: #83190b;
 
-  --clr-warning: hsl(52 23% 34%);
+  --clr-bg-warning: hsl(51, 100%, 81%);
+  --clr-warning: hsl(48, 22%, 24%);
   --clr-success: hsl(147 19% 36%);
+  --clr-error: hsl(0, 39%, 36%);
 
   /* Font families */
   --font-acma: 'Acma', sans-serif; 
@@ -66,12 +69,17 @@
   /* Border radius */
   --radius-small: 3px;
   --radius: 5px;
-  --radius-big: 10px;
+  --radius-big: 15px;
+
+  /*letter spacing */
+  --ls: 0.5px;
+  --ls-big: 1px;
 
   /* Shadow */
   --shadow-combined: 0px 4px 4px #00000030, 0px 12px 12px #00000015;
   --shadow-dark: 0px 4px 4px #00000030;
-  --shadow-light: 0px 12px 12px #00000015;
+  --shadow-light: 7px 4px 7px #00000015;
+  --shadow-button: 3px 3px 1px #00000018;
 
   --transition: 0.3s ease-in-out;
 }
@@ -86,17 +94,13 @@ body {
   color: var(--clr-text);
 }
 
-/* p {
-  max-width: 65ch; 
-} */
-
 h1, h2, h3 {
   font-family: var(--font-gatwick-jet);
   /* font-weight: 600; */
 }
 
 h2 {
-  font-size: clamp(1.7rem, 2vw, 2.5rem);
+  font-size: clamp(1.2rem, 2vw, 1.3rem);
   font-weight: 600;
 }
 
@@ -115,6 +119,7 @@ a.buttonTertiary {
   font-size: var(--fs-md);
   cursor: pointer;
   transition: var(--transition);
+  text-align: center;
 }
 
 
@@ -152,15 +157,13 @@ a.buttonSecondary {
   background: transparent;
   color: var(--clr-text-muted);           /* softer */
   border: none;
-  padding-inline: 0;                      /* more link-ish */
+  padding-inline: 1.5em;                      /* more link-ish */
 }
-
 .buttonTertiary:hover {
   color: var(--clr-text);
   background: var(--clr-bg-light);
   text-decoration: underline;
 }
-
 .buttonTertiary:active {
   background: transparent;
   text-decoration: underline;

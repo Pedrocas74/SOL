@@ -35,7 +35,7 @@ export default function Footer() {
       <div className={styles.policiesContainer}>
         <div className={styles.leftContainer}>
           <p>
-            &copy; 2035 SOL, Inc. <br />
+            &copy; 2025 SOL, Inc. <br />
             All rights reserved.
           </p>
           <div className={styles.legalLinks}>

@@ -1,32 +1,38 @@
 .wrapper {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: var(--radius-big);
+    transition: var(--transition);
+}
+.wrapper:hover {
+  background-color: var(--clr-hover);
+}
+
+.icon {
     width: 25px;
     height: 25px;
-    vertical-align: middle;
-    cursor: pointer;
-}
-.icon {
-    width: 100%;
-    height: 100%;
     fill: currentColor;
     color: var(--clr-bg);
     transition: transform 120ms ease;
 }
 .badge {
     position: absolute;
-    top: -2px;
-    right: -8px;
+    z-index: 222;
+    top: 0px;
+    right: -5px;
     background: #d10221;
     color: var(--clr-bg);
-    /* padding: 1px 1px; */
-    font-size: 0.75rem;
-    border-radius: 50px;
-    min-width: 22px;
+    font-size: 0.8rem;
+    border-radius: var(--radius-big);
+    width: 22px;
     text-align: center;
-    box-shadow: 0 1px 2px rgba(172, 171, 171, 0.473);
+    box-shadow: 0 1px 2px rgba(172, 171, 171, 0.336);
     font-weight: 600;
-    
 }
 .pulse {
     animation: badgePulse 0.3s ease-out;

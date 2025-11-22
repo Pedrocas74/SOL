@@ -5,7 +5,7 @@ import ReduxProvider from "../components/ReduxProvider";
 import { Toaster } from "sonner";
 
 import localFont from "next/font/local";
-import dynamic from "next/dynamic";
+
 
 export const acma = localFont({
   src: [
@@ -75,10 +75,10 @@ export default function RootLayout({ children }) {
             <Toaster
               position="top-center"
               expand
-              theme="light"
+              richColors
               duration={4000}
               toastOptions={{
-                style: { fontSize: "1rem", borderRadius: "10px", color: "black" },
+                style: { fontSize: "1rem", borderRadius: "15px", color: "black" },
               }}
             />
           </main>

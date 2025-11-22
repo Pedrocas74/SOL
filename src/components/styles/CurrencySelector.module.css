@@ -2,38 +2,37 @@
   all: unset;
   background: transparent;
   color: var(--clr-bg);
-  padding-top: 0.2em;
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: var(--radius);
-  transition: background-color 0.2s;
+  justify-content: center;
+  border-radius: var(--radius-big);
+  transition: var(--transition);
+  width: 35px;
+  height: 35px;
 }
-
 .triggerButton:hover {
-  background-color: #00000026;
+  background-color: var(--clr-hover);
 }
 
 .dropdownMenu {
-  background: var(--clr-secondary);
-  color: var(--clr-bg);
+  background: var(--clr-bg);
+  color: var(--clr-text-muted);
   border-radius: var(--radius);
-  box-shadow: 0 2px 8px #00000026;
+  box-shadow: var(--shadow-combined);
   min-width: fit-content;
-  
 }
 
 .menuItem {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 100%;
   cursor: pointer;
   border-radius: var(--radius);
-  transition: background-color 0.2s;
-  padding: 5px; 
+  transition: var(--transition);
+  padding: 5px 5px;
 }
-
 .menuItem:hover {
-  background-color: rgba(255, 255, 255, 0.123);
+  background-color: var(--clr-bg-light);
 }

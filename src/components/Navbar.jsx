@@ -54,13 +54,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (cartEvents > 0) {
-      setVisible(true);
-      // window.scrollTo({ top: 0, behavior: "smooth" });
-      // setTimeout(() => {
-      //   setVisible(false);
-      // }, 2000);
-    }
+    if (cartEvents > 0) setVisible(true);
   }, [cartEvents]);
 
   return (

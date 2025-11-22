@@ -40,7 +40,7 @@ export default function CartIcon({ count = 0 }) {
 
 
     return (
-        <span
+        <div
             className={styles.wrapper}
             aria-live="polite"
             aria-atomic="true"
@@ -48,6 +48,6 @@ export default function CartIcon({ count = 0 }) {
         >
             <ShoppingCart className={styles.icon}/>
             {displayCount  > 0 && <span className={`${styles.badge} ${pulse ? styles.pulse : ""}`}>{displayCount}</span>}
-        </span>
+        </div>
     );
 }
