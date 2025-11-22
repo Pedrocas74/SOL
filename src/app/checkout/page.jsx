@@ -33,7 +33,9 @@ export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("card"); //defaul for card payment method
   const [isPlaced, setIsPlaced] = useState(false); //place order button click
   const [isProcessing, setIsProcessing] = useState(false); //payment processing -> successful
+
   const router = useRouter();
+
 
   useEffect(() => {
     //show payment banner and redirect to home (showing success toaster)
@@ -82,7 +84,6 @@ export default function Checkout() {
     toast.success("10% discount applied! :)");
   };
 
-  const isMobile = window.innerWidth <= 768;
 
   const renderPaymentIcons = () => {
     switch (paymentMethod) {
@@ -239,9 +240,9 @@ export default function Checkout() {
               />{" "}
               Credit/Debit Card
               <span className={styles.paymentIcons}>
-                <FaCcVisa size={isMobile ? 22 : 32 } />
-                <FaCcMastercard size={isMobile ? 22 : 32 } />
-                <FaCcAmex size={isMobile ? 22 : 32 } />
+                <FaCcVisa size={27} />
+                <FaCcMastercard size={27} />
+                <FaCcAmex size={27} />
               </span>
             </label>
 
@@ -256,7 +257,7 @@ export default function Checkout() {
               />{" "}
               PayPal
               <span className={styles.paymentIcons}>
-                <FaCcPaypal size={isMobile ? 22 : 32 } />
+                <FaCcPaypal size={27} />
               </span>
             </label>
 
@@ -271,7 +272,7 @@ export default function Checkout() {
               />{" "}
               Apple Pay
               <span className={styles.paymentIcons}>
-                <FaCcApplePay size={isMobile ? 22 : 32 } />
+                <FaCcApplePay size={27} />
               </span>
             </label>
 
@@ -286,7 +287,7 @@ export default function Checkout() {
               />{" "}
               Google Pay
               <span className={styles.paymentIcons}>
-                <FaGooglePay size={isMobile ? 22 : 32 } />
+                <FaGooglePay size={27} />
               </span>
             </label>
 
@@ -301,8 +302,8 @@ export default function Checkout() {
               />{" "}
               Other methods
               <span className={styles.paymentIcons}>
-                <FaCcAmazonPay size={isMobile ? 22 : 32 } />
-                <FaCcStripe size={isMobile ? 22 : 32 } />
+                <FaCcAmazonPay size={27} />
+                <FaCcStripe size={27} />
               </span>
             </label>
           </div>
