@@ -101,13 +101,13 @@ export default function ProductDetails() {
   const handleAddToCart = () => {
     if (product.sizes && !sizeSelected) {
       toast.warning("Must select a size before adding to cart.");
-  
-      setShowSizeError(true); 
-      setTimeout(() => setShowSizeError(false), 2000); 
-  
+
+      setShowSizeError(true);
+      setTimeout(() => setShowSizeError(false), 2000);
+
       return;
     }
-  
+
     dispatch(
       addToCart({
         product,
@@ -131,6 +131,7 @@ export default function ProductDetails() {
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
+            {label: "Products", href: "/#products-list", scroll: true},
             { label: upperFirstChars(product.category) },
           ]}
         />
@@ -149,29 +150,29 @@ export default function ProductDetails() {
             </>
           )}
         </h2>
-        <figure>
-          {/* <img
+        <figure style={{
+          position: "relative", zIndex: 1
+        }}>
+          <ImageMagnifier
             src={product.image}
             alt={product.title}
-            style={{ objectFit: "contain" }}
-            className={styles.productImage}
-          /> */}
-          <ImageMagnifier
-  src={product.image}
-  alt={product.title}
-  width={240}
-  height={240}
-  zoom={2.5}
-  lensSize={280}
-/>
+            width={240}
+            height={240}
+            zoom={1.5}
+            lensSize={150}
+          />
         </figure>
 
         {stockStatus === "In stock" && product.sizes && (
-          <div className={`${styles.sizeSelector} ${showSizeError ? styles.sizeError : ""}`}>
+          <div
+            className={`${styles.sizeSelector} ${
+              showSizeError ? styles.sizeError : ""
+            }`}
+          >
             {product.sizes.map((size) => (
               <button
                 key={size}
-                className="buttonSecondary" 
+                className="buttonSecondary"
                 onClick={() => setSizeSelected(size)}
               >
                 {size}
@@ -186,11 +187,7 @@ export default function ProductDetails() {
               Add to Cart
             </button>
           ) : (
-            <button
-              className="buttonPrimary"
-              disabled
-              style={{ opacity: 0.6 }}
-            >
+            <button className="buttonPrimary" disabled style={{ opacity: 0.6 }}>
               Out of Stock
             </button>
           )}
@@ -243,7 +240,7 @@ export default function ProductDetails() {
                 >
                   Care <span>{arrow3}</span>
                 </summary>
-               
+
                 <ul className={styles.careList}>
                   <li>
                     <span className={styles.iconWrapper}>

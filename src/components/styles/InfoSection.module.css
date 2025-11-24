@@ -92,7 +92,7 @@
 /* STARS */
 .starOrbit {
   position: absolute;
-  top: 15%;
+  top: 22%;
   transform-style: preserve-3d;
   animation: starOrbitSpin 20s linear infinite;
 }

@@ -22,11 +22,11 @@ export default function ProductsList() {
       dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p style={{ textAlign: "center", marginBottom: "10vh"}}>Loading...</p>;
+  if (error) return <p style={{ textAlign: "center", marginBottom: "10vh"}}>Error: {error}</p>;
 
   return (
-    <section className={styles.productsContainer} id="products-list">
+    <section className={styles.productsContainer}>
       <h2>Our Products</h2>
       <p>Select a category</p>
 

@@ -69,6 +69,7 @@ export default function Cart() {
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
+            {label: "Products", href: "/#products-list" },
             { label: "Cart", href: "/cart" },
           ]}
         />

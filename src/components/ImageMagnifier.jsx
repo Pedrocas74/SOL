@@ -6,25 +6,47 @@ import styles from "./styles/ImageMagnifier.module.css";
 export default function ImageMagnifier({
   src,
   alt = "",
-  width = 200,
-  height = 200,
-  zoom = 2,
+  width = 240,
+  height = 240,
+  zoom = 1.5,
   lensSize = 150,
 }) {
   const containerRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e) => {
+  const updatePosition = (clientX, clientY) => {
+    if (!containerRef.current) return;
+    
     const bounds = containerRef.current.getBoundingClientRect();
-
-    const x = e.clientX - bounds.left;
-    const y = e.clientY - bounds.top;
+    const x = clientX - bounds.left;
+    const y = clientY - bounds.top;
 
     const clampedX = Math.max(0, Math.min(x, bounds.width));
     const clampedY = Math.max(0, Math.min(y, bounds.height));
 
     setPos({ x: clampedX, y: clampedY });
+  };
+
+  
+  const handleMouseMove = (e) => {
+    updatePosition(e.clientX, e.clientY);
+  };
+
+  const handleTouchStart = (e) => {
+    setIsActive(true);
+    const touch = e.touches[0];
+    updatePosition(touch.clientX, touch.clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault(); // Prevent scroll while magnifying
+    const touch = e.touches[0];
+    updatePosition(touch.clientX, touch.clientY);
+  };
+
+  const handleTouchEnd = () => {
+    setIsActive(false);
   };
 
   const lensHalf = lensSize / 2;
@@ -50,6 +72,9 @@ export default function ImageMagnifier({
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <img src={src} alt={alt} className={styles.image} />
 

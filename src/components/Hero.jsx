@@ -10,26 +10,14 @@ import {
 import { SquareArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Hero() {
   const { scrollY } = useScroll();
-  const [isMobile, setIsMobile] = useState(false);
-  const [planeScale, setPlaneScale] = useState(1);
   const [isMoving, setIsMoving] = useState(false);
   const [isHeroGone, setIsHeroGone] = useState(false);
 
-  useEffect(() => {
-    const checkWidth = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      const scale = isMobile ? 1 : window.innerWidth > 1440 ? 2.5 : 1.8;
-      setPlaneScale(scale);
-    };
-    checkWidth();
-    window.addEventListener("resize", checkWidth);
-    return () => window.removeEventListener("resize", checkWidth);
-  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsMoving((prev) => (prev === latest > 0 ? prev : latest > 0));
@@ -75,6 +63,18 @@ export default function Hero() {
         pointerEvents: isHeroGone ? "none" : "auto",
       }}
     >
+
+      <div className={`${styles.motto} ${styles.mottoTop}`}>
+        A Store Born From <span>Sunlight</span>
+      </div>
+      <div className={`${styles.motto} ${styles.mottoBottom}`}>
+        Crafted For Those Who <span>Shine</span>
+      </div>
+
+      
+        <Link href="/cart" className={`${styles.heroLinks} ${styles.toCartLink}`}>[ to Cart ]</Link>
+        <Link href="/#products-list" className={`${styles.heroLinks} ${styles.toProductsLink}`}>[ to Products ]</Link>
+
       <motion.div
         className={styles.topCity}
         style={{
@@ -98,28 +98,40 @@ export default function Hero() {
 
       <div className={styles.heroContainer}>
         <div className={`${styles.arrowLeft} ${styles.heartbeat}`}>
+          <span style={{
+              opacity: isMoving ? 0 : 0.3
+            }}>SCROLL</span>
           <SquareArrowDown   
             size={45}
             style={{
               opacity: isMoving ? 0 : 0.3
             }}
           />
+          <span style={{
+              opacity: isMoving ? 0 : 0.3
+            }}>DOWN</span>
         </div>
         <div className={`${styles.arrowRight} ${styles.heartbeat}`}>
+          <span style={{
+              opacity: isMoving ? 0 : 0.3
+            }}>SCROLL</span>
           <SquareArrowDown
             size={45}
             style={{
               opacity: isMoving ? 0 : 0.3
             }}
           />
+          <span style={{
+              opacity: isMoving ? 0 : 0.3
+            }}>DOWN</span>
         </div>
         <div className={styles.heroWrapper}>
           <div className={styles.topTitleContainer}>
-            <motion.div className={styles.plane} style={{ x: planeX, scale: planeScale, willChange: "transform" }}>
+            <motion.div className={styles.plane} style={{ x: planeX, willChange: "transform" }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="40"
+                height="40"
                 viewBox="0 0 24 24"
                 fill="#000000"
                 stroke="#000000"

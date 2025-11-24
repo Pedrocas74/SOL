@@ -133,6 +133,7 @@ export default function Checkout() {
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
+            { label: "Products", href: "/#products-list" },
             { label: "Cart", href: "/cart" },
             { label: "Checkout", href: "/checkout" },
           ]}

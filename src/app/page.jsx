@@ -9,9 +9,8 @@ import Footer from '@components/Footer';
 import PaymentBanner from '@components/PaymentBanner.';
 import LazyProductsSection from '@components/LazyProductsSection';
 
-
 export default function Home() {
-  
+
 
   return (
     <main>

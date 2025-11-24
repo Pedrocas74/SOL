@@ -115,7 +115,7 @@ export default function InfoSection() {
         </li>
       </ul>
     
-      <div className={styles.loopContainer}>
+      <div id="products-list" className={styles.loopContainer}>
         <div className={styles.loopTrack}>
           <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>
           <span className={styles.loopText}><em>WE KNOW </em>• <span><em>WHAT</em></span> • <em>YOU NEED</em> </span>

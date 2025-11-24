@@ -14,11 +14,18 @@ export default function Breadcrumbs({ items = [] }) {
           return (
             <li key={`${item.label}-${index}`} className={styles.item}>
               {item.href && !isLast ? (
-                <Link href={item.href} className={styles.link}>
+                <Link
+                  href={item.href}
+                  className={styles.link}
+                  scroll={item.scroll !== false}
+                >
                   {item.label}
                 </Link>
               ) : (
-                <span aria-current={isLast ? "page" : undefined} className={styles.current}>
+                <span
+                  aria-current={isLast ? "page" : undefined}
+                  className={styles.current}
+                >
                   {item.label}
                 </span>
               )}
