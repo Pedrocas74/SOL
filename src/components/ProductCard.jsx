@@ -8,9 +8,11 @@ import { useState, useEffect } from "react";
 import Skeleton from "./Skeleton";
 import { Ruler } from "lucide-react";
 import { Select, SelectItem } from "@heroui/select";
+import { toast } from "sonner";
 
 export default function ProductCard({ product }) {
   const [sizeSelected, setSizeSelected] = useState("");
+  const [showSizeError, setShowSizeError] = useState(false);
   const dispatch = useDispatch();
   const { current, rates } = useSelector((state) => state.currency);
 
@@ -57,17 +59,23 @@ export default function ProductCard({ product }) {
   }
 
   const handleAddToCart = () => {
-    if (product.sizes && !sizeSelected) {
-      alert("Please select a size");
-      return;
-    }
-    dispatch(
-      addToCart({
-        product,
-        selectedSize: product.sizes ? sizeSelected : null,
-      })
-    );
-  };
+  if (product.sizes && !sizeSelected) {
+    toast.warning("Must select a size before adding to cart.");
+
+    setShowSizeError(true); 
+    setTimeout(() => setShowSizeError(false), 2000); 
+
+    return;
+  }
+
+  dispatch(
+    addToCart({
+      product,
+      selectedSize: product.sizes ? sizeSelected : null,
+    })
+  );
+};
+
 
   return (
     <div className={styles.productCard}>
@@ -135,7 +143,7 @@ export default function ProductCard({ product }) {
   }
   className={styles.sizeSelector}
   classNames={{
-    trigger: styles.sizeTrigger,
+    trigger: `${styles.sizeTrigger} ${showSizeError ? styles.sizeError : ""}`,
     value: styles.sizeValue,
     popoverContent: styles.dropdownContent,
     listbox: styles.dropdownList,

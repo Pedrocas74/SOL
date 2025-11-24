@@ -135,7 +135,7 @@
     padding: var(--pd-td) var(--pd-lr);
     border-radius: 40px;
     box-shadow: var(--shadow-light);
-    background: var(--clr-bg-light);
+    background: var(--clr-bg);
     transition: var(--transition);
 }
 .paymentMethodsContainer label:hover {
@@ -146,11 +146,11 @@
 .paymentMethodsContainer label:active, 
 .paymentMethodsContainer label:has(input[type="radio"]:checked) {
     box-shadow: var(--shadow-combined);
-    background: var(--clr-bg);
+    background: var(--clr-bg-light);
 }
 .paymentInput {
     margin-right: 0.5em;
-    accent-color: var(--clr-primary);
+    accent-color: var(--clr-text);
 }
 .paymentInput:focus-visible {
   outline: 2px solid var(--clr-primary);
@@ -182,8 +182,8 @@
 }
 
 .placeContainer {
-    border: 3px outset var(--clr-secondary);
-    border-radius: var(--radius);
+    border: 2px inset var(--clr-primary);
+    border-radius: var(--radius-big);
     height: 60vh;
     width: 75vw;
     position: fixed;
@@ -191,11 +191,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background: var(--clr-bg);
+    box-shadow: var(--shadow-combined);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 100;
 }
 
 .placePaymentIcons {

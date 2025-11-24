@@ -33,24 +33,29 @@ export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("card"); //defaul for card payment method
   const [isPlaced, setIsPlaced] = useState(false); //place order button click
   const [isProcessing, setIsProcessing] = useState(false); //payment processing -> successful
-
+  const [showSuccess, setShowSuccess] = useState(false); //payment sucessfull before redirection to homepage 
   const router = useRouter();
 
 
   useEffect(() => {
-    //show payment banner and redirect to home (showing success toaster)
-    if (!isPlaced) return;
+  if (!isPlaced) return;
 
-    setIsProcessing(true);
+  setIsProcessing(true);
 
-    const totalDelay = 4000 + 4000;
-    const timer = setTimeout(() => {
-      setIsProcessing(false);
-      router.replace("/?payment=success");
-    }, totalDelay);
+  const processingTimer = setTimeout(() => {
+    setIsProcessing(false);
+    setShowSuccess(true);
+  }, 4000);
 
-    return () => clearTimeout(timer);
-  }, [isPlaced, router]);
+  const successTimer = setTimeout(() => {
+    router.replace("/?payment=success");
+  }, 6000);
+
+  return () => {
+    clearTimeout(processingTimer);
+    clearTimeout(successTimer);
+  };
+}, [isPlaced, router]);
 
   const convert = (price) => (price * rates[current]).toFixed(2);
 
@@ -74,7 +79,9 @@ export default function Checkout() {
     if (isApplied) return;
     if (code !== "PEDRO74") {
       setCode("");
-      toast.info("Reminder: PEDRO74");
+      setTimeout(() => {
+        toast.info("Reminder: PEDRO74");
+      }, 2000);
       toast.error("Wrong code! :(");
       return;
     }
@@ -120,7 +127,9 @@ export default function Checkout() {
 
   return (
     <>
-      <section className={styles.checkoutSection}>
+      <section 
+      style={{ }}
+      className={styles.checkoutSection}>
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
@@ -315,7 +324,9 @@ export default function Checkout() {
         >
           Place Order
         </button>
-        {isPlaced && (
+        
+      </section>
+      {isPlaced && (
           <section className={styles.placeContainer}>
             <span className={styles.placePaymentIcons}>
               {renderPaymentIcons()}
@@ -354,7 +365,6 @@ export default function Checkout() {
             </div>
           </section>
         )}
-      </section>
       <FooterSimple />
     </>
   );

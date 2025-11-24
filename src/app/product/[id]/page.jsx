@@ -11,9 +11,12 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import RelatedProductsSlider from "@components/RelatedProductsSlider";
 import Footer from "@components/Footer";
 import Breadcrumbs from "@components/Breadcrumbs";
+import { toast } from "sonner";
+import ImageMagnifier from "@components/ImageMagnifier";
 
 export default function ProductDetails() {
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [sizeSelected, setSizeSelected] = useState("");
+  const [showSizeError, setShowSizeError] = useState(false);
   const [openStates, setOpenStates] = useState({
     summary1: false,
     summary2: false,
@@ -96,14 +99,19 @@ export default function ProductDetails() {
   }
 
   const handleAddToCart = () => {
-    if (product.sizes && !selectedSize) {
-      alert("Please select a size");
+    if (product.sizes && !sizeSelected) {
+      toast.warning("Must select a size before adding to cart.");
+  
+      setShowSizeError(true); 
+      setTimeout(() => setShowSizeError(false), 2000); 
+  
       return;
     }
+  
     dispatch(
       addToCart({
         product,
-        selectedSize: product.sizes ? selectedSize : null,
+        selectedSize: product.sizes ? sizeSelected : null,
       })
     );
   };
@@ -142,21 +150,29 @@ export default function ProductDetails() {
           )}
         </h2>
         <figure>
-          <img
+          {/* <img
             src={product.image}
             alt={product.title}
             style={{ objectFit: "contain" }}
             className={styles.productImage}
-          />
+          /> */}
+          <ImageMagnifier
+  src={product.image}
+  alt={product.title}
+  width={240}
+  height={240}
+  zoom={2.5}
+  lensSize={280}
+/>
         </figure>
 
         {stockStatus === "In stock" && product.sizes && (
-          <div className={styles.sizeSelector}>
+          <div className={`${styles.sizeSelector} ${showSizeError ? styles.sizeError : ""}`}>
             {product.sizes.map((size) => (
               <button
                 key={size}
                 className="buttonSecondary" 
-                onClick={() => setSelectedSize(size)}
+                onClick={() => setSizeSelected(size)}
               >
                 {size}
               </button>
@@ -227,9 +243,7 @@ export default function ProductDetails() {
                 >
                   Care <span>{arrow3}</span>
                 </summary>
-                <h3 className={styles.instructionsTitle}>
-                  Washing Instructions
-                </h3>
+               
                 <ul className={styles.careList}>
                   <li>
                     <span className={styles.iconWrapper}>

@@ -1,11 +1,10 @@
 .relatedProductsSection {
-    /* border: 1px solid red; */
     width: 100%;
     margin-bottom: 10vh;
+    transition: var(--transition);
 }
 
 .relatedProductsSection h3 {
-    /* border: 1px solid black; */
     width: 90%;
     margin: 0 auto;
 }
@@ -14,28 +13,55 @@
   display: flex;
   overflow-x: auto;
   gap: 2em;
-  padding: 1.5em 1rem;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  padding: 1.5em 5%;
+  border-top: 1px solid var(--border-muted);
+  border-bottom: 1px solid var(--border-muted);
+  scrollbar-width: thin; 
+  scrollbar-color: var(--clr-text) var(--clr-bg); 
+  background: var(--clr-bg-light);
+}
+.sliderContainer::-webkit-scrollbar {
+  height: 8px; 
+}
+.sliderContainer::-webkit-scrollbar-track {
+  background: var(--clr-bg-light);
+  border-radius: 10px;
+}
+.sliderContainer::-webkit-scrollbar-thumb {
+  background: var(--clr-primary);
+  border-radius: 10px;
+}
+.sliderContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-primary-dark);
+  cursor: pointer;
 }
 
 .productCard {
     min-width: fit-content;
-    flex: 1;
-    border: 1px solid #333;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
     display: flex;
     flex-direction: column;
-
+    box-shadow: var(--shadow-light);
+    background: var(--clr-bg);
+    width: 200px;
+}
+.productCard:hover {
+    box-shadow: var(--shadow-combined);
 }
 .productCard img {
     padding: 0.5em;
     width: 150px;
     height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 .productTitle {
-
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--clr-bg-dark);
+    color: var(--clr-text);
+    font-weight: 600;
 }
 .productCard p {
-    padding: 0.2em 0 0.2em 0.2em;
+    padding: 0.2em 0.4em;
 }

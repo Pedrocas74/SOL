@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+* {
+  -webkit-tap-highlight-color: var(--clr-hover);
+}
+
+
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -20,8 +25,9 @@
   --clr-bg-dark: hsl(0 0% 90%);
   --clr-bg-light: hsl(0, 0%, 98%);
   --clr-hover: #f2f2f21c;
+  --clr-hoverInLight: #f2f2f271;
 
-  --clr-text: hsl(300 0% 4%);
+  --clr-text: #0a0a0a;
   --clr-text-muted: hsl(0 0% 28%);
 
   --clr-grey-dark: #333;

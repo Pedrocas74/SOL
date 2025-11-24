@@ -29,11 +29,11 @@ export default function Navbar() {
 
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
-          // hide completely for the first 450px when at Home page
-          if (current < 450 && userLocation === "/") {
+          //hide completely for the first 800px when at Home page
+          if (current < 800 && userLocation === "/") {
             setVisible(false);
           } else {
-            // After 450px, use your original scroll direction behavior
+            //after 800px, use your original scroll direction behavior
             if (current > lastScrollY.current && current > 50) {
               setVisible(false); // scrolling DOWN
             } else {

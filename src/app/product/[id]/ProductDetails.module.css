@@ -51,8 +51,14 @@
 .sizeSelector {
     display: flex;
     justify-content: center;
-    margin-top: 2em;
+    margin: 2em auto;
     width: 100%;
+    gap: 5px;
+}
+.sizeError {
+    width: fit-content;
+    border-color: #c62828 !important;
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.4) !important;
 }
 
 .sizeSelector button {
@@ -80,8 +86,8 @@
 
 .instructions {
     border: 1px solid var(--border);
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius-small);
+    border-top-right-radius: var(--radius-small);
     padding: var(--pd-td) var(--pd-lr);
     margin: 0.7em 0 0 0;
     list-style: none;
@@ -89,6 +95,9 @@
     justify-content: space-between;
     align-items: center;
     font-weight: 600;
+}
+.instructions:hover {
+    cursor: pointer;
 }
 .instructions span {
     height: 24px;
@@ -100,30 +109,30 @@
     font-weight: 600;
 }
 
-.productDescription {
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    padding: var(--pd-td) var(--pd-lr);
-    text-align: justify;
-    line-height: 1.7;
-}
+/* .productDescription {
 
+} */
 .careList {
     list-style: none;
-    padding: var(--pd-td) 0;
-    margin: 0;
 }
 .careList li {
     display: flex;
     align-items: center;
     gap: 7px;
-    margin-bottom: 0.5em;
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    margin: 0.5em 0;
+    /* border: 1px solid red; */
+}
+.productDescription,
+.careList {
+    border-left: 1px solid var(--border-muted);
+    border-right: 1px solid var(--border-muted);
+    border-bottom: 1px solid var(--border-muted);
+    border-bottom-left-radius: var(--radius-small);
+    border-bottom-right-radius: var(--radius-small);
     padding: var(--pd-td) var(--pd-lr);
+    text-align: justify;
+    line-height: 1.7;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .iconWrapper {

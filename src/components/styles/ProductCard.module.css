@@ -72,6 +72,10 @@
 
   /* border: 1px solid red; */
 }
+.sizeError {
+  border-color: #c62828 !important;
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.4) !important;
+}
 .sizeTrigger {
   width: 40px;
   height: 40px;
@@ -94,7 +98,7 @@
 
 /* Hover / focus / active states */
 .sizeTrigger:hover {
-  background-color: var(--clr-bg);
+  background-color: var(--clr-hoverInLight);
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
   transform: translateY(-1px);
 }
@@ -169,7 +173,7 @@
   display: none; 
 }
 .dropdownItem:hover {
-  background-color: var(--clr-bg-light);
+  background-color: var(--clr-hoverInLight);
   border-radius: var(--radius);
 }
 

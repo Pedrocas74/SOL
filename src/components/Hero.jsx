@@ -8,13 +8,28 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { SquareArrowDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+
 
 export default function Hero() {
   const { scrollY } = useScroll();
+  const [isMobile, setIsMobile] = useState(false);
+  const [planeScale, setPlaneScale] = useState(1);
   const [isMoving, setIsMoving] = useState(false);
   const [isHeroGone, setIsHeroGone] = useState(false);
+
+  useEffect(() => {
+    const checkWidth = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      const scale = isMobile ? 1 : window.innerWidth > 1440 ? 2.5 : 1.8;
+      setPlaneScale(scale);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsMoving((prev) => (prev === latest > 0 ? prev : latest > 0));
@@ -26,8 +41,6 @@ export default function Hero() {
       setIsHeroGone(false);
     }
   });
-
-  
 
 
   const topCityY = useTransform(scrollY, [0, 425], ["0%", "-50%"]);
@@ -49,14 +62,11 @@ export default function Hero() {
     useTransform(scrollY, [a, b, c, d], ["0%", "100%", "100%", "0%"])
   );
 
-  const planeX = useTransform(scrollY, [125, 300], ["-100%", "100%"]);
+  const planeX = useTransform(scrollY, [125, 500], ["-100%", "110%"]);
   
   const sunZoom = useTransform(scrollY, [125, 600], [1, 1.4]);
-  // const sunOpacity = useTransform(scrollY, [650, 700], [1, 0]);
-
-  // NEW: opacity for the whole overlay
-  // 0–600: fully visible, 600–800: fades out
   const heroOpacity = useTransform(scrollY, [0, 600, 800], [1, 1, 0]);
+
 
   return (
     <motion.div className={styles.heroPage}
@@ -78,31 +88,34 @@ export default function Hero() {
           alt="Top city skyline"
           fill
           priority
-          sizes="(max-width: 768px) 100vw, 50vw"
-          style={{ objectFit: "cover" }}
+          sizes="(max-width: 425px) 100vw,
+         (max-width: 768px) 90vw,
+         (max-width: 1440px) 100vw,
+         100vw"
+          
         />
       </motion.div>
 
       <div className={styles.heroContainer}>
         <div className={`${styles.arrowLeft} ${styles.heartbeat}`}>
-          <SquareArrowDown
-            size={30}
+          <SquareArrowDown   
+            size={45}
             style={{
-              opacity: isMoving ? 0 : 0.2
+              opacity: isMoving ? 0 : 0.3
             }}
           />
         </div>
         <div className={`${styles.arrowRight} ${styles.heartbeat}`}>
           <SquareArrowDown
-            size={30}
+            size={45}
             style={{
-              opacity: isMoving ? 0 : 0.2
+              opacity: isMoving ? 0 : 0.3
             }}
           />
         </div>
         <div className={styles.heroWrapper}>
           <div className={styles.topTitleContainer}>
-            <motion.div className={styles.plane} style={{ x: planeX, willChange: "transform" }}>
+            <motion.div className={styles.plane} style={{ x: planeX, scale: planeScale, willChange: "transform" }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -163,8 +176,11 @@ export default function Hero() {
           alt="Bottom city skyline"
           fill
           priority
-          sizes="(max-width: 768px) 100vw, 50vw"
-          style={{ objectFit: "cover" }}
+          sizes="(max-width: 425px) 100vw,
+         (max-width: 768px) 90vw,
+         (max-width: 1440px) 100vw,
+         100vw"
+          // style={{ objectFit: "contain" }}
         />
       </motion.div>
     </motion.div>

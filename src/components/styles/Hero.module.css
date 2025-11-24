@@ -77,13 +77,9 @@
     background: radial-gradient(circle at center, #ff9d00 0%, #ff6a00 100%);
     border-radius: 50%;
     z-index: 0;
-    border: 5px solid black;
+    border: 5px solid var(--clr-text);
 } 
 @media(width >= 425px) {
-        /* .sun {
-                width: 50px;
-                height: 50px;
-        } */
         .title {
                 width: 50vw;       
         }
@@ -161,29 +157,41 @@
 }
 
 .topCity {
-    /* border: 1px solid rgb(184, 27, 27); */
-    height: 100vh;
-    width: 135%;
     position: fixed;
     top: 0;
     left: 0;
-    /* z-index: 0; */
-    will-change: transform;
 }
-
 .bottomCity {
-    /* border: 1px solid rgb(211, 29, 29); */
-    height: 100vh;
-    width: 135%;
     position: fixed;
     bottom: 0;
     right: 0;
-    /* z-index: -1; */
+}
+.topCity,
+.bottomCity {
+    height: 100vh;
+    width: 130%;
     will-change: transform;
 }
-/* @media */
-
-
+.topCity img,
+.bottomCity img {
+    object-fit: cover;
+}
+@media (width >= 600px) {
+        .bottomCity,
+        .topCity {
+                width: 115%;
+        }
+        .topCity img,
+        .bottomCity img {
+                object-fit: contain;
+        }
+}
+@media (width >= 1024px) {
+        .bottomCity,
+        .topCity {
+                width: 115%;
+        }
+}
 
 .heartbeat {
 	-webkit-animation: heartbeat 1.5s ease-in-out infinite both;
