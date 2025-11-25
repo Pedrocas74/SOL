@@ -11,7 +11,6 @@ import LazyProductsSection from '@components/LazyProductsSection';
 
 export default function Home() {
 
-
   return (
     <main>
       <Suspense>

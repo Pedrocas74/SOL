@@ -78,6 +78,7 @@
     color: var(--clr-text-muted);
     text-decoration: underline;
     transition: var(--transition);
+    width: fit-content;
 }
 .leftContainer a:hover {
     color: var(--clr-text);

@@ -29,7 +29,7 @@
 .summaryTable th,
 .summaryTable td {
     text-align: left;
-    padding: 0.5em;
+    padding: 0.7em 1.5em;
     border-bottom: 1px solid #e0e0e0;
     
 }
@@ -113,38 +113,40 @@
 }
 
 .paymentMethodsContainer {
-    border: 1px solid var(--border-muted);
+    border: 1px solid var(--clr-bg-light);
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1em;
-    padding: 1.5em;
-    border-radius: 40px;
+    padding: 2em;
+    border-radius: var(--radius);
     box-shadow: var(--shadow-light);
     margin: 0 auto;
     background: var(--clr-bg-dark);
+    /* border: none; */
 }
 .paymentMethodsContainer label {
     display: flex;
     align-items: center;
     font-size: clamp(1.1rem, 2vw, 1.2rem);
-    border: 1px solid var(--border);
+    border: 1px solid transparent;
     width: 100%;
     padding: var(--pd-td) var(--pd-lr);
     border-radius: 40px;
     box-shadow: var(--shadow-light);
-    background: var(--clr-bg);
+    background: var(--clr-bg-light);
     transition: var(--transition);
 }
 .paymentMethodsContainer label:hover {
     box-shadow: var(--shadow-combined);
-    background: var(--clr-hover);
+    border: 1px solid var(--clr-hoverInLight);
+    background: var(--clr-bg);
     cursor: pointer;
 }
 .paymentMethodsContainer label:active, 
 .paymentMethodsContainer label:has(input[type="radio"]:checked) {
     box-shadow: var(--shadow-combined);
-    background: var(--clr-bg-light);
+    background: var(--clr-bg);
 }
 .paymentInput {
     margin-right: 0.5em;
@@ -164,9 +166,9 @@
 
 
 @media(width >= 850px) {
-    .summaryTable {
+    /* .summaryTable {
         width: 55%;
-    }
+    } */
     .paymentMethodsContainer {
         width: 55%;
     }

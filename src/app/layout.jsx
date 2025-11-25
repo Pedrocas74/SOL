@@ -1,8 +1,8 @@
-
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import ReduxProvider from "../components/ReduxProvider";
 import { Toaster } from "sonner";
+
 
 import localFont from "next/font/local";
 
@@ -65,6 +65,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body className={`${acma.variable} ${gatwickJet.variable}`}>

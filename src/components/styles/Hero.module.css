@@ -12,7 +12,7 @@
 }
 .motto {
     /* border: 1px solid red; */
-    font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.85rem, 3vw, 1.5rem);
     font-weight: 900;
     letter-spacing: var(--ls-big);
     text-transform: uppercase;
@@ -20,20 +20,20 @@
     background: var(--clr-bg);
     border: none;
     z-index: 999;
-    max-width: 55%;
+    max-width: 80%;
     word-wrap: break-word;
 }
 .mottoTop {
     top: 3%;
     left: 0;
-    padding: 0 0.7em;
+    padding: 0 0.7em 0 3%;
     border-top-right-radius: var(--radius-big);
     border-bottom-right-radius: var(--radius-big);
 }
 .mottoBottom {
     bottom: 3%;
     right: 0;
-    padding: 0 0.7em;
+    padding: 0 3% 0 0.7em;
     border-top-left-radius: var(--radius-big);
     border-bottom-left-radius: var(--radius-big);
     text-align: right;
@@ -47,26 +47,26 @@
     position: fixed;
     color: var(--clr-text);
     font-weight: 600;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
     transition: var(--transition);
-    padding: 0 0.7em;
     z-index: 999;
     background: var(--clr-bg);
-    min-width: 120px; 
+    min-width: 50px; 
     max-width: 250px;
 }
 .heroLinks:hover {
         cursor: pointer;
-        color: var(--clr-primary-dark);
+        color: var(--clr-primary);
 }
 .heroLinks:active {
-        color: var(--clr-primary);
+        color: var(--clr-primary-dark);
 }
 .toProductsLink {
     bottom: 3%;
     left: 0;
     border-top-right-radius: var(--radius-small);
     border-bottom-right-radius: var(--radius-small);
+    padding: 0 0.7em 0 3%;
 }
 .toCartLink {
     top: 3%;
@@ -74,8 +74,16 @@
     border-top-left-radius: var(--radius-small);
     border-bottom-left-radius: var(--radius-small);
     text-align: right;
+    padding: 0 3% 0 0.7em;
 }
-
+@media(width <= 350px) {
+        .toProductsLink {
+                bottom: 7%;
+        }
+        .toCartLink {
+                top: 7%;
+        }
+}
 
 .heroContainer {
     /* border: 1px solid rgb(10, 211, 37); */

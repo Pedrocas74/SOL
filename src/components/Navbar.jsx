@@ -8,7 +8,6 @@ import { useEffect, useRef, useState } from "react";
 import CartIcon from "./CartIcon";
 import { usePathname } from "next/navigation";
 
-
 const CurrencySelector = dynamic(() => import("./CurrencySelector"), {
   ssr: false,
 });
@@ -16,28 +15,38 @@ const CurrencySelector = dynamic(() => import("./CurrencySelector"), {
 export default function Navbar() {
   const { items, cartEvents } = useSelector((state) => state.cart);
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
+
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
-  const userLocation = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     setMounted(true);
+    lastScrollY.current = window.scrollY;
+
+    const HERO_END = 850;
+
     const handleScroll = () => {
       const current = window.scrollY;
 
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
-          //hide completely for the first 800px when at Home page
-          if (current < 800 && userLocation === "/") {
+          const onHome = pathname === "/";
+
+          if (onHome && current < HERO_END) {
             setVisible(false);
           } else {
-            //after 800px, use your original scroll direction behavior
             if (current > lastScrollY.current && current > 50) {
-              setVisible(false); // scrolling DOWN
+              //down
+              setVisible(false);
             } else {
-              setVisible(true); // scrolling UP
+              //up
+              setVisible(true);
             }
           }
 
@@ -49,13 +58,27 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    //run once so the navbar is correct immediately on mount/route change
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [pathname]);
 
   useEffect(() => {
-    if (cartEvents > 0) setVisible(true);
-  }, [cartEvents]);
+    if (typeof window === "undefined") return;
+    if (cartEvents <= 0) return;
+
+    const HERO_END = 850;
+    const current = window.scrollY;
+    const onHome = pathname === "/";
+
+    if (!onHome || current >= HERO_END) {
+      setVisible(true);
+    }
+  }, [cartEvents, pathname]);
 
   return (
     <nav
@@ -63,15 +86,16 @@ export default function Navbar() {
     >
       <div className={styles.navWrapper}>
         <div className={styles.logoWrapper}>
-          <Link  href="/">
-          <div className={styles.logo}>
-            <span>S</span>
-            <span>-</span>
-            <span>L</span>
-          </div>
+          <Link href="/">
+            <div className={styles.logo}>
+              <span>S</span>
+              <span>-</span>
+              <span>L</span>
+            </div>
           </Link>
           <div className={styles.sun}></div>
         </div>
+
         <div className={styles.cartAndCurrency}>
           <Link href="/cart" aria-label="Open cart">
             <CartIcon count={mounted ? totalQuantity : 0} />

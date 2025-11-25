@@ -85,13 +85,14 @@ export default function ProductDetails() {
           justifyContent: "space-around",
         }}
       >
-        <Skeleton width="70%" height="1.5rem" style={{ marginLeft: "2em" }} />
-        <Skeleton width="25%" height="1rem" style={{ marginLeft: "2em" }} />
-        <Skeleton width="80%" height="50vh" style={{ margin: "0 auto" }} />
+        <Skeleton width="20%" height="1rem" style={{ margin: "0 5%" }} />
+        <Skeleton width="45%" height="2rem" style={{ margin: "0 5%" }} />
+        <Skeleton width="15%" height="1.5rem" style={{ margin: "0 5%" }} />
+        <Skeleton width="90%" height="50vh" style={{ margin: "0 auto" }} />
         <Skeleton
           width="120px"
-          height="2rem"
-          borderRadius="8px"
+          height="2.5rem"
+          borderRadius="5px"
           style={{ margin: "0 auto" }}
         />
       </div>
@@ -159,7 +160,8 @@ export default function ProductDetails() {
             width={240}
             height={240}
             zoom={1.5}
-            lensSize={150}
+            lensSize={180}
+            lensOffsetX={50}
           />
         </figure>
 

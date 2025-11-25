@@ -96,12 +96,15 @@
     color: var(--clr-text-muted);
     transition: var(--transition);
     cursor: pointer;
+    font-size: clamp(1.1rem, 3vw, 1.2rem);
 }
 .instructions:hover {
-    color: var(--clr-text)
+    color: var(--clr-text);
+    border-color: var(--clr-text);
 }
 details[open] > .instructions {
   color: var(--clr-text);
+  border-color: var(--clr-text);
 }
 
 .instructions span {
@@ -139,14 +142,13 @@ details[open] > .instructions {
 }
 
 @media (width >= 850px) {
-    .detailsContainer {
-        width: 75%;
-    }
-
     .instructions,
     .productDescription,
     .careList {
-        padding: 0.5em 2em;
+        padding: 0.5em 10%;
+        /* width: 90%; */
     }
-    
+    .productDescription {
+        padding-right: 40%;
+    }
 }

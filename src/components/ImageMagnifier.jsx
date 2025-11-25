@@ -10,6 +10,8 @@ export default function ImageMagnifier({
   height = 240,
   zoom = 1.5,
   lensSize = 150,
+  lensOffsetX = 0,
+  lensOffsetY = 0,
 }) {
   const containerRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
@@ -17,7 +19,7 @@ export default function ImageMagnifier({
 
   const updatePosition = (clientX, clientY) => {
     if (!containerRef.current) return;
-    
+
     const bounds = containerRef.current.getBoundingClientRect();
     const x = clientX - bounds.left;
     const y = clientY - bounds.top;
@@ -28,7 +30,6 @@ export default function ImageMagnifier({
     setPos({ x: clampedX, y: clampedY });
   };
 
-  
   const handleMouseMove = (e) => {
     updatePosition(e.clientX, e.clientY);
   };
@@ -40,7 +41,7 @@ export default function ImageMagnifier({
   };
 
   const handleTouchMove = (e) => {
-    e.preventDefault(); // Prevent scroll while magnifying
+    e.preventDefault();
     const touch = e.touches[0];
     updatePosition(touch.clientX, touch.clientY);
   };
@@ -54,14 +55,15 @@ export default function ImageMagnifier({
   const lensStyle = {
     width: lensSize,
     height: lensSize,
-    left: pos.x - lensHalf,
-    top: pos.y - lensHalf,
+    left: pos.x - lensHalf + lensOffsetX,
+    top: pos.y - lensHalf + lensOffsetY,
     backgroundImage: `url(${src})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: `${width * zoom}px ${height * zoom}px`,
-    backgroundPosition: `${
-      -(pos.x * zoom - lensHalf)
-    }px ${-(pos.y * zoom - lensHalf)}px`,
+    backgroundPosition: `${-(pos.x * zoom - lensHalf)}px ${-(
+      pos.y * zoom -
+      lensHalf
+    )}px`,
   };
 
   return (

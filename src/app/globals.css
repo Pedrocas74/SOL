@@ -7,7 +7,7 @@
 }
 
 * {
-  -webkit-tap-highlight-color: var(--clr-hover);
+  -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -28,7 +28,7 @@
   --clr-hoverInLight: #f2f2f271;
 
   --clr-text: #0a0a0a;
-  --clr-text-muted: hsl(0 0% 28%);
+  --clr-text-muted: #474747;
 
   --clr-grey-dark: #333;
   --clr-grey-medium: #8f8f8f;

@@ -20,7 +20,7 @@ export default function Footer() {
 
   return (
     <section className={styles.bigContainer}>
-      <div id="footer-section" className={styles.promotionContainer}
+      <div className={styles.promotionContainer}
         style={{paddingBottom: isInHome ? "2em" : "0"}}
       >
         <h5>
@@ -63,14 +63,14 @@ export default function Footer() {
           <div className={styles.creditContainer}>
             <p>Methods of Payment:</p>
           <div className={styles.cards}>
-            <FaCcVisa size={35} color="#333333" />
-            <FaCcMastercard size={35} color="#333333" />
-            <FaCcAmex size={35} color="#333333" />
-            <FaCcPaypal size={35} color="#333333" />
-            <FaCcAmazonPay size={35} color="#333333" />
-            <FaCcApplePay size={35} color="#333333" />
-            <FaCcStripe size={35} color="#333333" />
-            <FaGooglePay size={35} color="#333333" fill="#333333" />
+            <FaCcVisa size={35} color="#474747" />
+            <FaCcMastercard size={35} color="#474747" />
+            <FaCcAmex size={35} color="#474747" />
+            <FaCcPaypal size={35} color="#474747" />
+            <FaCcAmazonPay size={35} color="#474747" />
+            <FaCcApplePay size={35} color="#474747" />
+            <FaCcStripe size={35} color="#474747" />
+            <FaGooglePay size={35} color="#474747" fill="#474747" />
             </div>
           </div>
         </div>

@@ -83,14 +83,14 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0}}
         animate={{ opacity: 1}}
-        transition={{ duration: 1, delay: 0.7, ease: "easeIn"}}
+        transition={{ duration: 1, delay: 1, ease: "easeIn"}}
       >
         <Link href="/cart" className={`${styles.heroLinks} ${styles.toCartLink}`}>[ to Cart ]</Link>
       </motion.div>
       <motion.div
         initial={{ opacity: 0}}
         animate={{ opacity: 1}}
-        transition={{ duration: 1, delay: 0.7, ease: "easeIn"}}
+        transition={{ duration: 1, delay: 1, ease: "easeIn"}}
       >
         <Link href="/#products-list" className={`${styles.heroLinks} ${styles.toProductsLink}`}>[ to Products ]</Link>
       </motion.div>
@@ -179,6 +179,9 @@ export default function Hero() {
             <motion.div
               className={`${styles.sun} ${isMoving ? "" : styles.sunFlicker}`}
               style={{ scale: sunZoom }}
+              initial={{borderWidth: 40}}
+              animate={{borderWidth: 5}}
+              transition={{duration: 1, delay: 0.5, ease: "easeInOut"}}
             ></motion.div>
           </section>
 

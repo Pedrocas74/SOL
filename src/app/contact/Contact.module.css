@@ -16,7 +16,14 @@
     letter-spacing: 0.5px;
 }
 .email {
+    transition: var(--transition);
     cursor: pointer;
     width: fit-content;
-    
+    color: var(--clr-primary);
 } 
+.email:hover {
+    text-decoration: underline;
+}
+.email:active {
+    color: var(--clr-primary-dark);
+}
