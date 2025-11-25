@@ -73,7 +73,7 @@ export default function Cart() {
             { label: "Cart", href: "/cart" },
           ]}
         />
-        <h1>Your Cart</h1>
+        <h1>Cart</h1>
         <div className={styles.emptyCartAction}>
         <div className={styles.emptyCartImg}></div>
         <Link href="/#products-list" className="buttonSecondary">
@@ -96,7 +96,7 @@ export default function Cart() {
             { label: "Cart", href: "/cart" },
           ]}
         />
-        <h1>Your Cart</h1>
+        <h1>Cart</h1>
 
         {/* WARNING if there are unavailable items */}
         {unavailableItems.length > 0 && (
@@ -272,7 +272,7 @@ export default function Cart() {
         </section>
         {/* <FooterSimple /> */}
       </section>
-      
+      <Footer />
     </>
   );
 }

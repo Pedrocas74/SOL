@@ -15,13 +15,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #0E0C0D;
+    background-color: #0E0C0D; /*don't change*/
     color: var(--clr-secondary);
 }
 .promotionContainer h5 {
     /* border: 1px solid white; */
     width: 90%;
-    font-size: clamp(1.7rem, 3vw, 3rem);
+    font-size: clamp(1.7rem, 5vw, 2.7rem);
     letter-spacing: 5px;
 }
 .promotionContainer span {
@@ -31,7 +31,8 @@
     /* border: 1px solid orange; */
     width: 90%;
     font-size: clamp(0.8rem, 3vw, 1.3rem);
-    color: var(--clr-grey);
+    color: var(--clr-bg-light);
+    font-weight: 100;
 }
 .promotionContainer h6 span {
     text-decoration: underline;
@@ -70,11 +71,16 @@
     line-height: 1.7;
     font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
+
 .leftContainer a {
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     flex: 1;
-    color: var(--clr-grey-dark);
+    color: var(--clr-text-muted);
     text-decoration: underline;
+    transition: var(--transition);
+}
+.leftContainer a:hover {
+    color: var(--clr-text);
 }
 
 .rightContainer {
@@ -84,12 +90,10 @@
     padding: 0.5em 5% 0.5em 0.5em;
 }
 .rightContainer a {
-    flex: 1.5;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--clr-grey-dark);
-    letter-spacing: 0.5px;
     font-size: clamp(1.3rem, 3vw, 1.5rem);
     
 }

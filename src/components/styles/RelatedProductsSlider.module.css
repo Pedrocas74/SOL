@@ -1,7 +1,7 @@
 .relatedProductsSection {
     width: 100%;
     margin-bottom: 10vh;
-    transition: var(--transition);
+
 }
 
 .relatedProductsSection h3 {
@@ -45,6 +45,7 @@
     box-shadow: var(--shadow-light);
     background: var(--clr-bg);
     width: 200px;
+    transition: var(--transition);
 }
 .productCard:hover {
     box-shadow: var(--shadow-combined);

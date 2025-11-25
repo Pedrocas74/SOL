@@ -5,10 +5,10 @@ import {
   motion,
   useScroll,
   useTransform,
-  useMotionValueEvent,
+  useMotionValueEvent
 } from "framer-motion";
 import { SquareArrowDown } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -63,18 +63,38 @@ export default function Hero() {
         pointerEvents: isHeroGone ? "none" : "auto",
       }}
     >
-
-      <div className={`${styles.motto} ${styles.mottoTop}`}>
-        A Store Born From <span>Sunlight</span>
-      </div>
-      <div className={`${styles.motto} ${styles.mottoBottom}`}>
-        Crafted For Those Who <span>Shine</span>
-      </div>
-
       
+      <motion.div  className={`${styles.motto} ${styles.mottoTop}`}
+        initial={{ x: "-100%"}}
+        animate={{ x: 0 }}
+        transition={{ duration: 1, delay: 0.5}}
+        
+      >
+        A Store Born From <span>Sunlight</span>
+      </motion.div>
+      <motion.div className={`${styles.motto} ${styles.mottoBottom}`}
+        initial={{ x: "100%"}}
+        animate={{ x: 0 }}
+        transition={{ duration: 1, delay: 0.4, ease: "easeInOut"}}
+      >
+        Crafted For Those Who <span>Shine</span>
+      </motion.div>
+  
+      <motion.div
+        initial={{ opacity: 0}}
+        animate={{ opacity: 1}}
+        transition={{ duration: 1, delay: 0.7, ease: "easeIn"}}
+      >
         <Link href="/cart" className={`${styles.heroLinks} ${styles.toCartLink}`}>[ to Cart ]</Link>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0}}
+        animate={{ opacity: 1}}
+        transition={{ duration: 1, delay: 0.7, ease: "easeIn"}}
+      >
         <Link href="/#products-list" className={`${styles.heroLinks} ${styles.toProductsLink}`}>[ to Products ]</Link>
-
+      </motion.div>
+      
       <motion.div
         className={styles.topCity}
         style={{
@@ -146,7 +166,7 @@ export default function Hero() {
 
           <section className={styles.mainTitleContainer}>
             <motion.h1
-              className={styles.title}
+              className={`${styles.title} heroTitle`}
               style={{
                 opacity: titleOpacity,
               }}
@@ -157,7 +177,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.div
-              className={styles.sun}
+              className={`${styles.sun} ${isMoving ? "" : styles.sunFlicker}`}
               style={{ scale: sunZoom }}
             ></motion.div>
           </section>

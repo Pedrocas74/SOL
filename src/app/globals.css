@@ -92,6 +92,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--clr-text) var(--clr-bg);
 }
 
 body {
@@ -102,11 +103,12 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-gatwick-jet);
-  /* font-weight: 600; */
 }
 
-h2 {
-  font-size: clamp(1.2rem, 2vw, 1.3rem);
+
+h2,
+h1:not(.heroTitle) {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 600;
 }
 
@@ -145,7 +147,7 @@ a.buttonPrimary {
 .buttonSecondary,
 a.buttonSecondary {
   background: transparent;
-  color: var(--clr-text);              /* override base white text  */
+  color: var(--clr-text);             
   border: 1px solid var(--clr-text);
 }
 .buttonSecondary:hover {
@@ -161,9 +163,9 @@ a.buttonSecondary {
 /* Tertiary (subtle outline style) */
 .buttonTertiary {
   background: transparent;
-  color: var(--clr-text-muted);           /* softer */
+  color: var(--clr-text-muted);           
   border: none;
-  padding-inline: 1.5em;                      /* more link-ish */
+  padding-inline: 1.5em;                   
 }
 .buttonTertiary:hover {
   color: var(--clr-text);
@@ -177,7 +179,6 @@ a.buttonSecondary {
 
 a {
   text-decoration: none;
-  /* color: var(--clr-text); */
 }
 
 

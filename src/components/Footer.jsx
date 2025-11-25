@@ -20,7 +20,7 @@ export default function Footer() {
 
   return (
     <section className={styles.bigContainer}>
-      <div className={styles.promotionContainer}
+      <div id="footer-section" className={styles.promotionContainer}
         style={{paddingBottom: isInHome ? "2em" : "0"}}
       >
         <h5>
@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
         <div className={styles.rightContainer}>
-          <a href="/contact" className="buttonPrimary">
+          <a href="/contact" className="buttonSecondary">
             Contact
           </a>
           <div className={styles.creditContainer}>
@@ -76,7 +76,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <footer className={styles.footer} id="footer">
+      <footer className={styles.footer}>
         <div className={styles.footerWrapper}>
           <a
             href="https://www.pedromagalhaes.vercel.app"

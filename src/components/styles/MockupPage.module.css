@@ -3,43 +3,22 @@
     height: 85vh;
     margin: 0 auto;
     text-align: justify;
-    position: relative;
-    /* border: 1px solid red; */
+ 
 }
-
 .mainSection h1 {
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
-    text-align: center;
     margin: 1em 0 7vh 0;
 }
-
 .description,
 .disclaimer {
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    letter-spacing: var(--ls);
+    max-width: 60ch;
 }
-/* .description {
-    margin-bottom: 0.7em;
-} */
-
 .disclaimer {
     font-weight: 600;
-    margin-bottom: 2em;
-    /* border: 1px solid; */
-}
-
-.mainSection a {
-    padding: var(--pd-td) var(--pd-lr);
-    border-radius: var(--radius);
-    color: var(--clr-bg);
-    transition: var(--transition);
-    
-}
-
-.smile {
-    /* border: 1px solid; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 2em 0;
+}
+.smile {
+    margin-top: 2em;
+    text-align: center;
 }

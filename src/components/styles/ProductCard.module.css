@@ -8,10 +8,12 @@
 .productCard {
     border: 1.5px outset var(--clr-grey) ;
     padding: var(--pd-td) var(--pd-lr);
-    /* border-radius: 5px; */
+    border-radius: var(--radius-small);
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
+    max-width: 315px;
     height: 350px;
+    max-height: 400px;
     position: relative; 
     display: flex;
     flex-direction: column;
@@ -40,7 +42,7 @@
     flex: 3;
 }
 .productCard h3 {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: 1rem;
     font-weight: 600;
     color: var(--clr-text);
     width: 100%;
@@ -50,14 +52,14 @@
     
 }
 .productCard h4 {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.95rem, 3vw, 1rem);
     margin-bottom: 2em;
     font-weight: 300;
     letter-spacing: 0.5px;
     /* border: 1px solid rgb(170, 109, 109); */
 }
 .productCard p {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
     font-weight: 100;
     /* border: 1px solid rgb(185, 185, 78); */
     margin-bottom: 0.7em;

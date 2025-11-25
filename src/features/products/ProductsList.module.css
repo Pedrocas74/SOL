@@ -62,7 +62,7 @@
     align-items: flex-end;
     justify-content: center;
     color: white;
-    font-size: 1.7rem;
+    font-size: clamp(1.7rem, 3vw, 2.1rem);
     font-weight: bold;
     background: rgba(0, 0, 0, 0.199);
     opacity: 0;
@@ -75,7 +75,31 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5em;
+    gap: 30px;
+    margin: 0 auto;
+    width: 90%;
+    justify-content: center;
+    max-width: 1200px;
 }
 
+@media (max-width: 599px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ----- TABLET: 1–2 columns ----- */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    max-width: 80%; 
+  }
+}
+
+/* ----- DESKTOP: 3 columns ----- */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    max-width: 75%; 
+  }
+}
