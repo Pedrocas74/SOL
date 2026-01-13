@@ -21,7 +21,6 @@ export default function NotFound() {
     <section
       style={{
         width: "90%",
-        minHeight: "80vh",
         margin: "0 auto",
         display: "flex",
         flexDirection: "column",
@@ -35,14 +34,14 @@ export default function NotFound() {
           fontSize: isMobile ? "2rem" : "2.5rem",
         }}
       >
-        <CircleX fill="#a31f0eff" color="white" /> 404{" "}
-        <CircleX fill="#a31f0eff" color="white" /> <br />
+        <CircleX fill="#D10221" color="white" /> 404{" "}
+        <CircleX fill="#D10221" color="white" /> <br />
         Page Not Found
       </h1>
       <p
         style={{
           fontSize: isMobile ? "1rem" : "1.5rem",
-          marginTop: "15px",
+          marginTop: "var(--space-sm)",
         }}
       >
         The page you requested does not exist.
@@ -51,7 +50,7 @@ export default function NotFound() {
         href="/"
         className="buttonSecondary"
         style={{
-          marginTop: "30px",
+          marginTop: "var(--space-sm)",
         }}
       >
         <CornerDownLeft size={13} /> Back

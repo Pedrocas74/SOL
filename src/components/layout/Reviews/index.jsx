@@ -150,7 +150,7 @@ const Slide = forwardRef(function Slide(
           />
 
           <div className={styles.authorAndStars}>
-            <h5>{review.author}</h5>
+            <p>{review.author}</p>
             <div
               className={styles.starRow}
               role="img"
@@ -159,9 +159,9 @@ const Slide = forwardRef(function Slide(
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  size={10}
-                  color="#0a0a0a"
-                  fill="#0a0a0a"
+                  size={11}
+                  color="var(--clr-text)"
+                  fill="var(--clr-text)"
                   aria-hidden="true"
                   focusable="false"
                 />

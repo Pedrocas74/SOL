@@ -23,12 +23,12 @@ export default function Footer() {
       <div className={styles.promotionContainer}
         style={{paddingBottom: isInHome ? "2em" : "0"}}
       >
-        <h5>
+        <h4>
           10% DISCOUNT
-        </h5>
-        <h6>
+        </h4>
+        <p>
           Apply the code <span>PEDRO74</span> at the checkout
-        </h6>
+        </p>
       </div>
 
       <div className={styles.policiesContainer}>
@@ -61,16 +61,15 @@ export default function Footer() {
             Contact
           </a>
           <div className={styles.creditContainer}>
-            <p>Methods of Payment:</p>
           <div className={styles.cards}>
-            <FaCcVisa size={35} color="#474747" />
-            <FaCcMastercard size={35} color="#474747" />
-            <FaCcAmex size={35} color="#474747" />
-            <FaCcPaypal size={35} color="#474747" />
-            <FaCcAmazonPay size={35} color="#474747" />
-            <FaCcApplePay size={35} color="#474747" />
-            <FaCcStripe size={35} color="#474747" />
-            <FaGooglePay size={35} color="#474747" fill="#474747" />
+            <FaCcVisa size={35} color="#0A0A0A" />
+            <FaCcMastercard size={35} color="#0A0A0A" />
+            <FaCcAmex size={35} color="#0A0A0A" />
+            <FaCcPaypal size={35} color="#0A0A0A" />
+            <FaCcAmazonPay size={35} color="#0A0A0A" />
+            <FaCcApplePay size={35} color="#0A0A0A" />
+            <FaCcStripe size={35} color="#0A0A0A" />
+            <FaGooglePay size={35} color="#0A0A0A" fill="#0A0A0A" />
             </div>
           </div>
         </div>

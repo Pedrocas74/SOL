@@ -8,20 +8,18 @@
   transition: var(--transition);
   width: 35px;
   height: 35px;
-  border: 2px ridge var(--clr-hover);
-  border-radius: 50%;
-  background: rgba(105, 105, 105, 0.075);
+  border-radius: var(--radius-full);
 }
 .triggerButton:hover {
   background-color: var(--clr-hover);
 }
 .triggerButton:active {
-  transform: translateY(2px);
+  background-color: var(--clr-hover-light);
 }
 .dropdownMenu {
   background: var(--clr-bg);
   color: var(--clr-text-muted);
-  border-radius: var(--radius);
+  border-radius: var(--radius-small);
   box-shadow: var(--shadow-combined);
   min-width: fit-content;
 }
@@ -31,10 +29,14 @@
   justify-content: center;
   width: 100%;
   cursor: pointer;
-  border-radius: var(--radius);
+  border-radius: var(--radius-small);
   transition: var(--transition);
   padding: 5px 5px;
 }
 .menuItem:hover {
-  background-color: var(--clr-bg-light);
+  background-color: var(--clr-hover);
+  color: var(--clr-text);
+}
+.menuItem:active {
+  background-color: var(--clr-hover-light);
 }

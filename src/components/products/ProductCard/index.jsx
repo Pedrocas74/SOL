@@ -94,7 +94,7 @@ export default function ProductCard({ product }) {
           loading="lazy"
           style={{ objectFit: "contain" }}
         />
-        <h3 id={`product-title-${product.id}`}>{product.title}</h3>
+        <h3 className={styles.productTitle} id={`product-title-${product.id}`}>{product.title}</h3>
       </Link>
       <h4>
         {symbolPosition === "left" ? (

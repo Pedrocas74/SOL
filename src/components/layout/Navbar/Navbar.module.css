@@ -61,13 +61,3 @@
     align-items: center;
     justify-content: space-between;
 }
-
-.cartAndCurrency a {
-  border: 2px ridge var(--clr-hover);
-  border-radius: 50%;
-  background: rgba(105, 105, 105, 0.075);
-  transition: var(--transition);
-}
-.cartAndCurrency a:active {
-  transform: translateY(2px);
-}

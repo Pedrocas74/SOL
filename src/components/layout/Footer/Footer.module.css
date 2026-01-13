@@ -1,5 +1,5 @@
 .bigContainer {
-    height: 70vh;
+    /* height: 75vh; */
     display: flex;
     flex-direction: column;
 }
@@ -14,26 +14,26 @@
     background-color: #0E0C0D; /*don't change*/
     color: var(--clr-secondary);
 }
-.promotionContainer h5 {
+.promotionContainer h4 {
     width: 90%;
-    font-size: clamp(1.7rem, 5vw, 2.7rem);
-    letter-spacing: 5px;
+    font-size: var(--fs-xl);
+    letter-spacing: var(--ls);
 }
 .promotionContainer span {
     font-weight: 900;
 }
-.promotionContainer h6 {
+.promotionContainer p {
     width: 90%;
-    font-size: clamp(0.8rem, 3vw, 1.3rem);
+    font-size: var(--fs-md);
     color: var(--clr-bg-light);
     font-weight: 100;
 }
-.promotionContainer h6 span {
+.promotionContainer p span {
     text-decoration: underline;
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    padding: 0 0.3em;
+    font-size: var(--fs-lg);
+    padding: 0 var(--space-xs);
     color: var(--clr-bg);
-    letter-spacing: 1.3px;
+    letter-spacing: var(--ls-big);
 }
 /* ------------------------------MIDDLE SECTION--------------------------------------- */
 .policiesContainer {
@@ -47,14 +47,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0.5em 0.5em 0.5em 5%;
+    padding: 1rem 0.5rem 1rem 5%;
 }
 .leftContainer p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: var(--fs-md);
     flex: 1;
 }
 .leftContainer a {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-size: var(--fs-sm);
     flex: 1;
     width: fit-content;
 }
@@ -62,36 +62,31 @@
     display: flex;
     flex-direction: column;
     flex: 2;
-    line-height: 1.8;
+    line-height: var(--lh-list);
 }
 
 .rightContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 0.5em 5% 0.5em 0.5em;
+    padding: 1rem 5% 1rem 0.5rem;
 }
 .rightContainer a {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.3rem, 3vw, 1.5rem);
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-lg);
 }
 .creditContainer {
-    flex: 1;
-}
-.creditContainer p {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    color: var(--clr-text);
-    width: 100%;
-    text-align: center;
-    padding: 1em 0 0.2em 0;
+    flex: 0.3;
 }
 .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: var(--space-xxs);
 }
 /* ---------------------------BOTTOM SECTION------------------------------------------ */
 .footer {
@@ -101,7 +96,7 @@
 }
 .footer a {
     color: var(--clr-bg);
-    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-size: var(--fs-sm);
     position: relative;
 }
 .footer a:not(.madeByPedro) {

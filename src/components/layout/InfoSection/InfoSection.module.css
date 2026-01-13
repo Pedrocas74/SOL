@@ -7,22 +7,21 @@
     justify-content: space-evenly;
     text-align: center;
     overflow-x: hidden;
+    /* border: 1px solid red; */
 }
-.infoContainer h2 {
-    margin-bottom: 10vh;
-}
+
 
 .checksWrapper {
     position: relative;
-    height: 20vh;
+    min-height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10vh;
+    margin-bottom: var(--space-xl);
 }
 .infoChecks {
     border: 2px solid #ffffffe1;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -43,8 +42,7 @@
 .bestSpan {
     position: relative;
     font-weight: 900;
-    letter-spacing: 3px;
-    font-size: 1.6rem;
+    font-size: 2rem;
     background: radial-gradient(circle at center, #ff9d00 0%, #ff6a00 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -113,26 +111,26 @@
 .infoStats {
     width: fit-content;
     max-width: 90%;
-    margin-bottom: 7vh;
+    margin-bottom: var(--space-xl);
     display: flex;
     flex-direction: column;
     align-items: start;
 }
 .statsItems {
-    padding: 0.5em 0;
+    padding: 0.5rem 0;
     display: flex;
     align-items: center;
-    line-height: 1.7;
+    line-height: var(--lh-text);
 }
 .statsItems p {
-    font-weight: 100;
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 300;
+    font-size: var(--fs-md);
 }
 .numbers {
     display: inline-block;
     font-family: var(--font-gatwick-jet);
     font-weight: 600;
-    font-size: clamp(1.1rem, 2vw, 1.9rem);
+    font-size: calc(var(--fs-lg) - 0.5rem);
     width: 4em;
     text-align: end;
     padding-right: 0.7em;
@@ -141,7 +139,7 @@
 .loopContainer {
   width: 100vw;
   overflow-x: hidden;
-  margin-bottom: 20vh;
+  margin-bottom: var(--space-xxl);
 }
 .loopTrack {
   display: inline-flex;
@@ -153,7 +151,7 @@
   padding-right: 3em;
   letter-spacing: var(--ls);
   font-weight: 900;
-  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-size: var(--fs-lg);
   background: radial-gradient(circle at center, #ff9d00 0%, #ff6a00 100%);
   -webkit-background-clip: text;
   background-clip: border-box;

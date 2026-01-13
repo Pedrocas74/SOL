@@ -6,13 +6,15 @@
     width: 35px;
     height: 35px;
     cursor: pointer;
-    border-radius: var(--radius-big);
+    border-radius: var(--radius-full);
     transition: var(--transition);
 }
 .wrapper:hover {
   background-color: var(--clr-hover);
 }
-
+.wrapper:active {
+  background-color: var(--clr-hover-light);
+}
 
 
 .icon {
@@ -30,7 +32,7 @@
     background: #d10221;
     color: var(--clr-bg);
     font-size: 0.8rem;
-    border-radius: var(--radius-big);
+    border-radius: var(--radius-large);
     width: 22px;
     text-align: center;
     box-shadow: 0 1px 2px rgba(172, 171, 171, 0.336);

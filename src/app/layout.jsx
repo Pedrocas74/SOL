@@ -4,6 +4,7 @@ import ReduxProvider from "../components/ReduxProvider";
 import { Toaster } from "sonner";
 
 import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 
 export const gatwickJet = localFont({
   src: [
@@ -22,6 +23,12 @@ export const gatwickJet = localFont({
   display: "swap",
 });
 
+export const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export const metadata = {
   title: "SOL | For Those Who Shine",
   description: "Awesome e-commerce store.",
@@ -33,7 +40,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="google" content="notranslate" />
       </head>
-      <body className={`${gatwickJet.variable}`}>
+      <body className={`${inter.variable} ${gatwickJet.variable}`}>
         <ReduxProvider>
           <Navbar />
           <main>

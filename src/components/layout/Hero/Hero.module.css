@@ -12,12 +12,10 @@
 
 .motto {
     font-size: clamp(0.85rem, 3vw, 1.5rem);
-    font-weight: 900;
-    letter-spacing: var(--ls-big);
+    font-weight: 800;
     text-transform: uppercase;
     position: fixed;
     background: var(--clr-bg);
-    border: none;
     z-index: 999;
     max-width: 80%;
     word-wrap: break-word;
@@ -25,21 +23,21 @@
 .mottoTop {
     top: 3%;
     left: 0;
-    padding: 0 0.7em 0 3%;
-    border-top-right-radius: var(--radius-big);
-    border-bottom-right-radius: var(--radius-big);
+    padding: 0.3rem 0.7rem 0.3rem 3%;
+    border-top-right-radius: var(--radius-large);
+    border-bottom-right-radius: var(--radius-large);
 }
 .mottoBottom {
     bottom: 3%;
     right: 0;
-    padding: 0 3% 0 0.7em;
-    border-top-left-radius: var(--radius-big);
-    border-bottom-left-radius: var(--radius-big);
+    padding: 0.3rem 3% 0.3rem 0.7rem;
+    border-top-left-radius: var(--radius-large);
+    border-bottom-left-radius: var(--radius-large);
     text-align: right;
 }
 .mottoTop span,
 .mottoBottom span {
-        color: var(--clr-primary);
+    color: var(--clr-primary);
 }
 
 .heroLinks {
@@ -63,17 +61,17 @@
 .toProductsLink {
     bottom: 3%;
     left: 0;
-    border-top-right-radius: var(--radius-small);
-    border-bottom-right-radius: var(--radius-small);
-    padding: 0 0.7em 0 3%;
+    border-top-right-radius: var(--radius-large);
+    border-bottom-right-radius: var(--radius-large);
+    padding: 0.3rem 0.7rem 0.3rem 3%;
 }
 .toCartLink {
     top: 3%;
     right: 0;
-    border-top-left-radius: var(--radius-small);
-    border-bottom-left-radius: var(--radius-small);
+    border-top-left-radius: var(--radius-large);
+    border-bottom-left-radius: var(--radius-large);
     text-align: right;
-    padding: 0 3% 0 0.7em;
+    padding: 0.3rem 3% 0.3rem 0.7rem;
 }
 @media(width <= 325px) {
         .toProductsLink {
