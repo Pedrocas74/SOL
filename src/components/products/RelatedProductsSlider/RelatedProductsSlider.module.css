@@ -1,19 +1,24 @@
 .relatedProductsSection {
     width: 100%;
-    margin-bottom: 10vh;
-
+    margin-bottom: var(--space-xxl);
 }
 
-.relatedProductsSection h3 {
+.relatedProductsSection h2 {
     width: 90%;
     margin: 0 auto;
 }
+/* @media (width >= 850px) {
+  .relatedProductsSection h2 {
+    width: 75%;
+    
+  }
+} */
 
 .sliderContainer {
   display: flex;
   overflow-x: auto;
-  gap: 2em;
-  padding: 1.5em 5%;
+  gap: 2rem;
+  padding: 1.5rem 5%;
   border-top: 1px solid var(--border-muted);
   border-bottom: 1px solid var(--border-muted);
   scrollbar-width: thin; 
@@ -53,7 +58,7 @@
     background: var(--clr-bg);
 }
 .productCard img {
-    padding: 0.5em;
+    padding: 0.5rem;
     width: 150px;
     height: 220px;
     object-fit: contain;

@@ -31,7 +31,7 @@ export default function RelatedProductsSlider({ category, id }) {
 
   return (
     <section className={styles.relatedProductsSection}>
-      <h3>You may also like</h3>
+      <h2 className="youMayAlsoLike">You may also like</h2>
       <div className={styles.sliderContainer}>
         {relatedProducts.map((product) => (
           <div key={product.id} className={styles.productCard}>

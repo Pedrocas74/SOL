@@ -97,6 +97,7 @@ export default function Cart() {
           id="warning" //to scroll the view to the top of the page
           items={[
             { label: "Home", href: "/" },
+            { label: "Products", href: "/#products-list" },
             { label: "Cart", href: "/cart" },
           ]}
         />

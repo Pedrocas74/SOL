@@ -3,9 +3,9 @@
 import styles from "./ProductDetails.module.css";
 import { useParams } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../../../../features/cart/cartSlice";
+import { addToCart } from "../../../features/cart/cartSlice";
 import { useState, useEffect } from "react";
-import Skeleton from "@components/Skeleton";
+// import Skeleton from "@components/Skeleton";
 import Image from "next/image";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import RelatedProductsSlider from "@components/products/RelatedProductsSlider";
@@ -74,30 +74,30 @@ export default function ProductDetails() {
     }));
   };
 
-  if (!mounted || !product) {
-    return (
-      <div
-        style={{
-          height: "85vh",
-          padding: "1em",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-around",
-        }}
-      >
-        <Skeleton width="20%" height="1rem" style={{ margin: "0 5%" }} />
-        <Skeleton width="45%" height="2rem" style={{ margin: "0 5%" }} />
-        <Skeleton width="15%" height="1.5rem" style={{ margin: "0 5%" }} />
-        <Skeleton width="90%" height="50vh" style={{ margin: "0 auto" }} />
-        <Skeleton
-          width="120px"
-          height="2.5rem"
-          borderRadius="5px"
-          style={{ margin: "0 auto" }}
-        />
-      </div>
-    );
-  }
+  // if (!mounted || !product) {
+  //   return (
+  //     <div
+  //       style={{
+  //         height: "85vh",
+  //         padding: "1em",
+  //         display: "flex",
+  //         flexDirection: "column",
+  //         justifyContent: "space-around",
+  //       }}
+  //     >
+  //       <Skeleton width="20%" height="1rem" style={{ margin: "0 5%" }} />
+  //       <Skeleton width="45%" height="2rem" style={{ margin: "0 5%" }} />
+  //       <Skeleton width="15%" height="1.5rem" style={{ margin: "0 5%" }} />
+  //       <Skeleton width="90%" height="50vh" style={{ margin: "0 auto" }} />
+  //       <Skeleton
+  //         width="120px"
+  //         height="2.5rem"
+  //         borderRadius="5px"
+  //         style={{ margin: "0 auto" }}
+  //       />
+  //     </div>
+  //   );
+  // }
 
   const handleAddToCart = () => {
     if (product.sizes && !sizeSelected) {
@@ -127,6 +127,8 @@ export default function ProductDetails() {
       .join(" ");
   };
 
+
+
   return (
     <div className={styles.pageContainer}>
       <section
@@ -141,8 +143,8 @@ export default function ProductDetails() {
           ]}
         />
 
-        <h1 id="product-title">{product.title}</h1>
-        <h2 className={styles.price}>
+        <h1 className="itemTitle" id="product-title">{product.title}</h1>
+        <p className={styles.price}>
           {symbolPosition === "left" ? (
             <>
               {symbol}
@@ -154,7 +156,7 @@ export default function ProductDetails() {
               {symbol}
             </>
           )}
-        </h2>
+        </p>
         <figure
           style={{
             position: "relative",

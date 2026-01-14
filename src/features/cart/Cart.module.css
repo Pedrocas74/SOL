@@ -2,14 +2,14 @@
 .warningBanner {
   background: var( --clr-bg-warning);
   color: var(--clr-warning);
-  padding: 2em;
+  padding: var(--space-lg);
   margin: 0 auto 5vh auto;
   border-radius: var(--radius-big);
-  line-height: 1.7;
+  line-height: var(--lh-list);
   max-width: 800px;
 }
 .warningBanner p {
-    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-size: var(--fs-md);
 }
 .removeAllContainer {
     width: 100%;
@@ -18,16 +18,16 @@
     align-items: center;
 }
 .warningBanner button {
-    margin: 5vh 0;
+    margin: var(--space-md);
     box-shadow: var(--shadow-button);
 }
 .warningBanner ul {
-    font-weight: 600;
+    font-weight: 800;
     letter-spacing: var(--ls-big);
-    margin-top: 3vh;
-    padding-left: 1em;
+    margin-top: var(--space-sm);
+    padding-left: var(--space-sm);
     color: var(--clr-accent);
-    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-size: var(--fs-md);
 }
 .unavailableItem {
   position: relative;
@@ -44,7 +44,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: clamp(1.5rem, 2vw, 1.7rem);
+  font-size: var(--fs-lg);
   letter-spacing: var(--ls);
   color: var(--clr-accent);
 }
@@ -53,31 +53,36 @@
     width: 90%;
     margin: 0 auto;
     transition: var(--transition);
+    margin: 2.5rem auto 0;
 }
-.cartSection h1 {
-    text-align: start;
-    margin: 5vh 0 10vh 0;
+@media (width >= 850px) {
+    .cartSection {
+        width: 75%;
+    }
 }
 
 .itemsContainer {
-    margin-bottom: 7vh;
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .cartItem {
     border: 1px solid var(--border);
     display: flex;
     min-height: 140px;
-    height: 160px;
+    height: 170px;
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
     border-radius: var(--radius-small);
     box-shadow: var(--shadow-light);
-    margin: 0 auto 3vh auto;
+    margin-bottom: var(--space-md);
 }
 .cartItem img {
     flex: 1;
     min-width: 25%;
     max-width: 35%;
-    padding: var(--pd-td) var(--pd-lr);
+    padding: var(--pd-button);
     min-height: 100%;
     position: relative;
     object-fit: contain;
@@ -90,26 +95,24 @@
     justify-content: space-between;
 }
 .itemInformation {
-    padding: 0 0.3em;
-    line-height: 1.7;
+    padding: var(--space-xs) ;
     flex: 2;
 }
 .title {
-    font-weight: 600;
-    font-size: clamp(0.95rem, 3vw, 1.1rem);
-    letter-spacing: var(--ls);
+    font-weight: 700;
+    font-size: var(--fs-md);
 }
 .price,
 .quantity,
 .size {
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: var(--fs-sm)
 }
 .size span,
 .price span,
 .quantity span {
     color: var(--clr-text-muted);
-    font-weight: 100;
-    letter-spacing: var(--ls-big);
+    font-weight: 300;
+    letter-spacing: var(--ls);
 }
 .buttonsContainer {
     flex: 1;
@@ -131,27 +134,29 @@
 
 .clearAllContainer {
     text-align: center;
-    margin-bottom: 10vh;
+    margin-bottom: var(--space-xxl);
 }
 /* ------------------SUMMARY---------------------------- */
 .summarySection {
-    margin-bottom: 15vh;
-    line-height: 1.7;
-    text-align: center;
+    margin-bottom: var(--space-xxl);   
 }
 .summarySection h2 {
-    margin: 10vh 0 7vh 0;
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-sm);
+    margin-top: var(--space-lg);
 }
+
 .summaryInfoContainer {
     display: inline-block;
     text-align: left;
+    font-size: var(--fs-md);
 }
 .totalItems {
-    letter-spacing: var(--ls-big);
+    letter-spacing: var(--ls);
 }
 .subtotalPrice {
-    letter-spacing: var(--ls-big);
-    margin-bottom: 7vh;
+    letter-spacing: var(--ls);
+    margin-bottom: var(--space-lg);
 }
 .totalItems span,
 .subtotalPrice span {
@@ -168,11 +173,11 @@
 }
 /* ------------------------------------------- */
 .emptyCartAction {
-    margin-bottom: 20vh;
+    margin-bottom: var(--space-xxl);
     display: flex;
     flex-direction: column;
     min-height: 250px;
-    height: 60vh;
+    height: 50vh;
     justify-content: space-between;
 }
 .emptyCartImg {
@@ -184,7 +189,7 @@
     opacity: 0.5;
 }
 .emptyCartAction a {
-    margin: 1vh auto 0 auto;
+    margin: var(--space-md) auto 0 auto;
     min-width: 186px;
     width: 55%;
 }

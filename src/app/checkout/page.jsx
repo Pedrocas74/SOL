@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 import FooterSimple from "@components/layout/Footer/FooterSimple";
 import Breadcrumbs from "@components/ui/Breadcrumbs";
-import { motion } from "framer-motion";
+import LoadingSVG from "@components/ui/LoadingSVG/LoadingSVG";
 import { CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 
@@ -139,9 +139,8 @@ export default function Checkout() {
   };
 
   return (
-    <>
+    <div className={styles.checkoutPage}>
       <section
-        style={{}}
         className={styles.checkoutSection}
         aria-labelledby="checkout-heading"
       >
@@ -257,7 +256,7 @@ export default function Checkout() {
               : `${convert(discountedTotal)}${symbol}`}{" "}
           </p>
         </div>
-
+              
         <section
           className={styles.paymentSection}
           aria-labelledby="payment-heading"
@@ -357,7 +356,7 @@ export default function Checkout() {
             </label>
           </div>
         </section>
-
+            
         <button
           type="button"
           className={`buttonPrimary ${styles.placeOrderButton}`}
@@ -365,7 +364,11 @@ export default function Checkout() {
         >
           Place Order
         </button>
+        <FooterSimple />
+        
+      
       </section>
+      
       {isPlaced && (
         <section
           className={styles.placeContainer}
@@ -379,40 +382,19 @@ export default function Checkout() {
           <div className={styles.placeInfo}>
             {isProcessing ? (
               <>
-                <h3>Your payment is being processed...</h3>
-                <motion.svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={{ display: "block" }}
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 1,
-                    ease: "linear",
-                  }}
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-                </motion.svg>
+                <p>Your payment is being processed...</p>
+                <LoadingSVG />
               </>
             ) : (
               <>
-                <h3>Payment successful!</h3>
+                <p>Payment successful!</p>
                 <CheckCircle size={50} aria-hidden="true" />
               </>
             )}
           </div>
         </section>
       )}
-      <FooterSimple />
-    </>
+     
+    </div>
   );
 }

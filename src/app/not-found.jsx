@@ -21,7 +21,7 @@ export default function NotFound() {
     <section
       style={{
         width: "90%",
-        margin: "0 auto",
+        margin: "2.5rem auto 0",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

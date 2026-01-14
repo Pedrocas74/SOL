@@ -1,14 +1,15 @@
 .footer {
-    width: 100%;
+    width: 100vw;
     height: 10vh;
     background: var(--clr-text);
     position: absolute; 
-    bottom: 0;  
+    left: 0; 
+    
 }
 
 .footer a {
     color: var(--clr-bg);
-    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-size: var(--fs-sm);
     position: relative;
 }
 .footer a:not(.madeByPedro) {

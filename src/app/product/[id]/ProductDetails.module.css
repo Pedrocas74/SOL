@@ -3,24 +3,23 @@
 }
 .detailsContainer {
     width: 90%;
-    margin: 0 auto;
-    margin-top: 2.5em;
+    margin: 2.5rem auto 0;
 }
-.detailsContainer h1 {
-    text-transform: uppercase;
-    margin-top: 1em;
+@media (width >= 850px) {
+    .detailsContainer {
+        width: 75%;
+    }
 }
 .price {
-    margin-top: 0.2em;
-    font-family: var(--acma);
-    letter-spacing: var(--ls-big);
+    letter-spacing: var(--ls);
+    font-size: var(--fs-md);
 }
 .detailsContainer figure {
-    border: 2px outset var(--clr-hoverInLight);
+    border: 1.5px outset var(--clr-hover-light);
     display: flex;
     justify-content: center;
-    padding: 2em 0;
-    margin-top: 2em;
+    padding: var(--space-lg) 0;
+    margin-top: var(--space-lg);
     overflow: hidden;
     box-shadow: var(--shadow-combined);
     border-radius: var(--radius-small);
@@ -31,14 +30,11 @@
     height: 200px;
     transition: var(--transition);
 }
-.productImage:hover {
-  transform: scale(1.3);  
-}
 
 .sizeSelector {
     display: flex;
     justify-content: center;
-    margin: 2em auto;
+    margin: 2rem auto;
     width: 100%;
     gap: 5px;
 }
@@ -48,8 +44,7 @@
     box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.4) !important;
 }
 .sizeSelector button {
-    width: 60px;
-    max-width: 80px;
+    width: clamp(60px, 70px, 80px);
 }
 .sizeSelectorSelected {
     background: var(--clr-bg-dark);
@@ -57,20 +52,20 @@
 }
 
 .buttonAddContainer {
-    margin: 1.5em 0 20vh 0;
+    margin: 1.5rem 0 var(--space-xl) 0;
     display: flex;
     justify-content: center;
 }
 
 .summariesContainer {
-    margin-bottom: 20vh;
+    margin-bottom: var(--space-xxl);
 }
 .instructions {
     border: 1px solid var(--border);
     border-top-left-radius: var(--radius-small);
     border-top-right-radius: var(--radius-small);
     padding: var(--pd-td) var(--pd-lr);
-    margin: 0.7em 0 0 0;
+    margin: var(--space-sm) 0 0 0;
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -79,7 +74,7 @@
     color: var(--clr-text-muted);
     transition: var(--transition);
     cursor: pointer;
-    font-size: clamp(1.1rem, 3vw, 1.2rem);
+    font-size: var(--fs-md);
 }
 .instructions:hover {
     color: var(--clr-text);
@@ -89,17 +84,15 @@ details[open] > .instructions {
   color: var(--clr-text);
   border-color: var(--clr-text);
 }
-.instructions span {
-    height: 24px;
-}
+
 .careList {
     list-style: none;
 }
 .careList li {
     display: flex;
     align-items: center;
-    gap: 7px;
-    margin: 0.5em 0;
+    gap: var(--space-xs);
+    margin: var(--space-sm) 0;
 }
 .productDescription,
 .careList {
@@ -108,10 +101,8 @@ details[open] > .instructions {
     border-bottom: 1px solid var(--border-muted);
     border-bottom-left-radius: var(--radius-small);
     border-bottom-right-radius: var(--radius-small);
-    padding: var(--pd-td) var(--pd-lr);
-    text-align: justify;
-    line-height: 1.7;
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    padding: var(--space-lg);
+    font-size: var(--fs-md);
 }
 
 .iconWrapper {
@@ -120,13 +111,16 @@ details[open] > .instructions {
     width: 20px;
     height: 20px;
 }
+
+.instructions,
+    .productDescription,
+    .careList {
+        padding: 0.5rem 5%;
+    }
 @media (width >= 850px) {
     .instructions,
     .productDescription,
     .careList {
-        padding: 0.5em 10%;
-    }
-    .productDescription {
-        padding-right: 40%;
+        padding: 1rem 10%;
     }
 }

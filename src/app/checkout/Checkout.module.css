@@ -1,37 +1,37 @@
+.checkoutPage {
+    position: relative;
+}
+
 .checkoutSection {
     width: 90%;
-    margin: 0 auto;
+    margin: 2.5rem auto;
     transition: var(--transition);
-}
-.checkoutSection h1 {
-    margin: 5vh 0 10vh;
 }
 
 .summarySection {
-    margin-bottom: 10vh;
+    margin-bottom: var(--space-xxl);
 }
 .summaryTable {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
-    margin: 0 auto 10vh auto;
+    font-size: var(--fs-sm);
+    margin: 0 auto var(--space-xl) auto;
 }
 
 .summaryTable th,
 .summaryTable td {
     text-align: left;
-    padding: 0.7em 1.5em;
+    padding: var(--space-sm) var(--space-md);
     border-bottom: 1px solid #e0e0e0;
-    
 }
 .summaryTable td {
-    letter-spacing: var(--ls-big);
+    letter-spacing: var(--ls);
 }
 .summaryTable thead th {
     background-color: #f7f7f7;
     border-top: 1px solid #e0e0e0;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: var(--fs-md);
 }
 .summaryTable tbody tr:nth-child(even) {
   background-color: #fcfcfc;
@@ -42,7 +42,7 @@
 }
 .summaryTable tfoot {
   background-color: #f2f4f8;
-  font-size: 1rem;
+  font-size: var(--fs-md);
 }
 .summaryTable tfoot th {
     text-align: left;
@@ -53,8 +53,19 @@
     letter-spacing: var(--ls);
 }
 
+@media (width >= 850px) {
+    .checkoutSection {
+        width: 75%;
+    }
+    .summaryTable th,
+    .summaryTable td {
+        padding: var(--space-sm) 5%;
+    }
+}
+
+
 .toggleCode {
-    margin: 0.5em 0 7vh 0;
+    margin: var(--space-xs) 0 var(--space-md) 0;
     cursor: pointer;
     width: fit-content;
 }
@@ -62,13 +73,13 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 7vh;
+    margin-bottom: var(--space-xl);
 }
 .promoCodeContainer input {
     min-height: fit-content;
     min-width: 25%;
-    font-size: 1rem;
-    padding-left: 1.5em;
+    font-size: var(--fs-md);
+    padding-left: var(--space-md);
     flex: 2;
     border: none;
     border-bottom: 1px solid var(--border);
@@ -78,7 +89,7 @@
     flex: 1;
     margin-left: 1.5em;
 }
-@media (width >= 1080px) {
+@media (width >= 1024px) {
     .promoCodeContainer {
         justify-content: start;
     }
@@ -92,21 +103,21 @@
 
 .subtotalPrice {
     letter-spacing: var(--ls);
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
 }
 .totalPrice {
     font-weight: 600;
-    letter-spacing: var(--ls);
-    font-size: 1.15rem;
+    font-size: var(--fs-md);
 }
 
 .paymentSection {
-    margin-bottom: 10vh;
-    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+
 }
 .paymentSection h2 {
     text-align: center;
-    margin-bottom: 7vh;
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-sm);
 }
 
 .paymentMethodsContainer {
@@ -114,21 +125,26 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1em;
-    padding: 1.5em;
-    border-radius: var(--radius);
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-large);
     box-shadow: var(--shadow-light);
     margin: 0 auto;
     background: var(--clr-bg-dark);
+}
+@media (width >= 450px) {
+    .paymentMethodsContainer {
+        width: 75%;
+    }
 }
 .paymentMethodsContainer label {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: clamp(0.95rem, 3vw, 1.2rem);
+    font-size: var(--fs-md);
     border: 1px solid transparent;
     width: 100%;
-    padding: var(--pd-td) var(--pd-lr);
+    padding: var(--space-sm) var(--space-sm);
     border-radius: 40px;
     box-shadow: var(--shadow-light);
     background: var(--clr-bg-light);
@@ -136,17 +152,18 @@
 }
 .paymentMethodsContainer label:hover {
     box-shadow: var(--shadow-combined);
-    border: 1px solid var(--clr-hoverInLight);
     background: var(--clr-bg);
     cursor: pointer;
 }
-.paymentMethodsContainer label:active, 
+.paymentMethodsContainer label:active {
+    background: var(--clr-bg-dark);
+}
 .paymentMethodsContainer label:has(input[type="radio"]:checked) {
     box-shadow: var(--shadow-combined);
     background: var(--clr-bg);
 }
 .paymentInput {
-    margin-right: 0.5em;
+    margin-right: var(--space-xxs);
     accent-color: var(--clr-text);
 }
 .paymentInput:focus-visible {
@@ -156,14 +173,14 @@
 .paymentIcons {
     display: inline-flex;
     min-height: fit-content;
-    margin-left: 1em;
-    gap: 0.5em;
+    margin-left: var(--space-xxs);
+    gap: var(--space-xs);
 }
 
 .placeOrderButton {
     width: 55%;
     display: block;
-    margin: 0 auto 15vh auto;
+    margin: 0 auto var(--space-xxl) auto;
 }
 @media(width >= 850px) {
     .paymentMethodsContainer {
@@ -175,8 +192,8 @@
 }
 
 .placeContainer {
-    border: 2px ridge var(--clr-primary);
-    border-radius: var(--radius-big);
+    border: 2px inset var(--clr-primary);
+    border-radius: var(--radius-large);
     height: 60vh;
     width: 75vw;
     position: fixed;
@@ -204,13 +221,13 @@
     flex-direction: column;
     align-items: center;
 }
-.placeInfo h3 {
-    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-    padding: 0.7em;
+.placeInfo p {
+    font-size: var(--fs-lg);
+    padding: var(--space-sm);
     text-align: center;
-    font-weight: 200;
-    margin-top: 1em;
+    font-weight: 500;
+    margin-top: var(--space-sm);
 }
 .placeInfo svg {
-    margin-top: 0.5em;
+    margin-top: var(--space-xs);
 }

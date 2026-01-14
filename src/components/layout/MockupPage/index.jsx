@@ -33,7 +33,7 @@ export default function MockupPage({ title, description }) {
             size={150}
             color="black"
             strokeWidth={1.5}
-            fill="#ffbf04"
+            fill="var(--clr-secondary)"
             aria-hidden="true"
           />
         </div>

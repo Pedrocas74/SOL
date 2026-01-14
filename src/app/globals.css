@@ -53,7 +53,7 @@
   --pd-card: 0.7rem;
   
   /* spacing  */
-  --space-xxs: 0.25rem;
+  --space-xxs: 0.25rem; 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
@@ -90,6 +90,7 @@
 html {
   scroll-behavior: smooth;
   scrollbar-color: var(--clr-text) var(--clr-bg);
+  overflow-x: hidden;
 }
 
 body {
@@ -101,19 +102,23 @@ body {
 
 p {
   line-height: var(--lh-text);
-  max-width: 74ch;
 }
 
 
 h1, h2 {
   font-family: var(--font-gatwick-jet);
 }
-h1:not(.heroTitle),
-h2:not(#products-heading) {
+h1:not(.heroTitle) {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+/* h1:not(.heroTitle, .itemTitle, #cart-heading), */
+h2:not(#products-heading, .youMayAlsoLike, #payment-heading, #cart-summary-heading) {
   font-size: var(--fs-lg);
   font-weight: 600;
   margin: var(--space-xl) 0;
 }
+
 
 
 button,
@@ -123,11 +128,12 @@ a.buttonTertiary {
   font-weight: 600;
   color: var(--clr-bg);
   padding: var(--pd-button);
-  border-radius: var(--radius-large);
+  border-radius: var(--radius-small);
   border: none;
   font-size: var(--fs-button);
   cursor: pointer;
   transition: var(--transition);
+  text-align: center;
 }
 /* Primary (default) */
 .buttonPrimary,
@@ -163,7 +169,7 @@ a.buttonSecondary {
   background: transparent;
   color: var(--clr-text-muted);           
   border: none;
-  padding-inline: 1.5em;                   
+  padding-inline: 1.5rem;                   
 }
 .buttonTertiary:hover {
   color: var(--clr-text);
