@@ -1,7 +1,7 @@
 .heroPage {
-    height: 100vh;
+    min-height: 100dvh;
     width: 100%;
-    overflow-x: hidden; 
+    overflow: hidden; 
     position: fixed;
     z-index: 1000;
     inset: 0;
@@ -44,7 +44,7 @@
     position: fixed;
     color: var(--clr-text);
     font-weight: 600;
-    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    font-size: var(--fs-md);
     transition: var(--transition);
     z-index: 999;
     background: var(--clr-bg);

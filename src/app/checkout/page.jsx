@@ -33,9 +33,8 @@ export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("card"); //defaul for card payment method
   const [isPlaced, setIsPlaced] = useState(false); //place order button click
   const [isProcessing, setIsProcessing] = useState(false); //payment processing -> successful
-  const [showSuccess, setShowSuccess] = useState(false); //payment sucessfull before redirection to homepage
-  const [supportsApplePay, setSupportsApplePay] = useState(false);
-  const [supportsGooglePay, setSupportsGooglePay] = useState(false);
+  const [supportsApplePay, setSupportsApplePay] = useState(false); //if IOS system -> displays apple pay
+  const [supportsGooglePay, setSupportsGooglePay] = useState(false); //if Android system -> displays google pay
 
   const router = useRouter();
 
@@ -58,7 +57,6 @@ export default function Checkout() {
 
     const processingTimer = setTimeout(() => {
       setIsProcessing(false);
-      setShowSuccess(true);
     }, 4000);
 
     const successTimer = setTimeout(() => {
@@ -168,7 +166,12 @@ export default function Checkout() {
               {items.map((item) => (
                 <tr key={item.id} className={styles.itemRow}>
                   <td>
-                    {item.title} × {item.quantity}
+                    {item.title} × {item.quantity}{" "}
+                    {item.selectedSize && (
+                      <span style={{ fontWeight: 300 }}>
+                        ({item.selectedSize})
+                      </span>
+                    )}
                   </td>
                   <td className={styles.cellPrice}>
                     {convert(item.price * item.quantity)}
@@ -256,7 +259,7 @@ export default function Checkout() {
               : `${convert(discountedTotal)}${symbol}`}{" "}
           </p>
         </div>
-              
+
         <section
           className={styles.paymentSection}
           aria-labelledby="payment-heading"
@@ -356,7 +359,7 @@ export default function Checkout() {
             </label>
           </div>
         </section>
-            
+
         <button
           type="button"
           className={`buttonPrimary ${styles.placeOrderButton}`}
@@ -365,10 +368,8 @@ export default function Checkout() {
           Place Order
         </button>
         <FooterSimple />
-        
-      
       </section>
-      
+
       {isPlaced && (
         <section
           className={styles.placeContainer}
@@ -394,7 +395,6 @@ export default function Checkout() {
           </div>
         </section>
       )}
-     
     </div>
   );
 }
