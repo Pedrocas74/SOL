@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# SOL - Modern E‑commerce Experience
 
-First, run the development server:
+SOL is a **technical, performance‑focused e‑commerce project** built to demonstrate advanced frontend architecture using **Next.js App Router** and **Redux Toolkit**. It is designed primarily as a **portfolio project for recruiters and technical reviewers**, emphasizing state management, performance, and scalable UI patterns.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+A defining feature of SOL is its **dynamic inventory simulation**: every page reload represents a significant time jump, recalculating stock levels across all products as if thousands of users had been shopping meanwhile. This creates a living storefront where availability constantly changes.
+
+* **Live Demo:** https://sol-shop.vercel.app/
+
+## Tech Stack
+
+* **Next.js (App Router)** — modern routing, layouts, and server/client separation
+
+* **Redux Toolkit** — predictable global state management
+
+* **CSS Modules** — scoped, maintainable styling
+
+* **LocalStorage** — cart persistence across sessions
+
+* **Turbopack** — fast development builds
+
+* **MUI (Skeleton only)** — loading states
+
+* **Headless UI** — accessible, unstyled *select* components
+
+* *FakeStore API* - https://fakestoreapi.com/
+
+## Key Features
+
+### Dynamic Inventory Simulation
+
+* On every browser reload, stock levels are recalculated
+
+* Products can sell out or restock dynamically
+
+* Simulates real‑world demand and inventory fluctuation
+
+### Advanced Cart Logic (Redux)
+
+* Size‑aware cart items (e.g. clothing variants)
+
+* Quantity management per variant
+
+* Stock status validation before adding items
+
+* Currency conversion support
+
+* Persistent cart state via LocalStorage
+
+### High‑Performance Hero Animation
+
+* Scroll‑based hero animation
+
+* Optimized for **excellent Lighthouse performance metrics**
+
+* Minimal layout shift and efficient rendering
+
+### UX & UI Enhancements
+
+* Skeleton loading states for perceived performance
+
+* Image magnifier for product details
+
+* Related products slider
+
+* Accessible custom select components
+
+---
+## Architecture Highlights
+
+* Clear separation between **UI**, **state**, and **business logic**
+
+* Redux slices designed for scalability and extension
+
+* Client‑only logic isolated where required
+
+* Layout‑driven App Router structure
+
+* Reusable, composable components
+
+## Authentication (In Progress)
+
+Authentication logic is currently under implementation. The existing architecture is designed to support:
+
+* User sessions
+
+* Auth‑aware cart behavior
+
+* Protected routes
+
+## Getting Started 
+
+### Prerequisites
+
+* Node.js 18+
+
+* npm 
+
+### Installation
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development Server 
+```
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Open http://localhost:3000 to view the app.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build
+```
+npm run build
+npm run start 
+``` 
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Project Status
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Core functionality: **Complete**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Inventory simulation: **Complete**
 
-## Deploy on Vercel
+* Cart logic:  **Complete**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Authentication:  *In progress*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Purpose
+
+This project was built to:
+
+* Demonstrate **real‑world Redux usage** in a Next.js App Router environment
+
+* Showcase performance‑conscious UI decisions
+
+* Simulate complex e‑commerce behavior without a backend dependency
+
+* Serve as a technical portfolio piece for frontend engineering roles
+
+##License
+
+This project is for educational and portfolio purposes.
