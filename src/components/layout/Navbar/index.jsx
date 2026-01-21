@@ -8,6 +8,14 @@ import { useEffect, useRef, useState } from "react";
 import CartIcon from "@components/ui/CartIcon";
 import { usePathname } from "next/navigation";
 
+import {
+  UserButton,
+  SignedIn,
+  SignInButton,
+  SignedOut,
+  SignUpButton
+} from '@clerk/nextjs'
+
 const CurrencySelector = dynamic(
   () => import("../../ui/CurrencySelector"),
   {
@@ -100,11 +108,26 @@ export default function Navbar() {
           <div className={styles.sun} aria-hidden="true"></div>
         </div>
 
-        <div className={styles.cartAndCurrency}>
+        <div className={styles.right}>
           <Link href="/cart" aria-label="Open cart">
             <CartIcon count={mounted ? totalQuantity : 0} />
           </Link>
           <CurrencySelector />
+
+            {/* clerk user button  */}
+            <SignedOut>
+              <SignInButton />
+              <SignUpButton>
+                <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          
+          
         </div>
       </div>
     </nav>

@@ -1,38 +1,74 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const loadCartFromLocalStorage = () => {
+const DEFAULT_KEY = "cart:guest";
+
+const emptyCart = (storageKey = DEFAULT_KEY) => ({
+  items: [],
+  totalQuantity: 0,
+  totalPrice: 0,
+  cartEvents: 0, //to inform navbar everytime an item is added to cart (movement) 
+  storageKey,
+});
+
+const loadCartFromLocalStorage = (key = DEFAULT_KEY) => {
   try {
-    const serializedState = localStorage.getItem('cart');
-    if (serializedState === null) return { items: [], totalQuantity: 0, totalPrice: 0 };
-    return JSON.parse(serializedState);
+    const serializedState = localStorage.getItem(key);
+    if (!serializedState) return emptyCart(key);
+
+    const parsed = JSON.parse(serializedState);
+
+    //always reset cartEvents on load.
+    return {
+      ...emptyCart(key),
+      items: parsed.items || [],
+      totalQuantity: parsed.totalQuantity || 0,
+      totalPrice: parsed.totalPrice || 0,
+    };
   } catch (e) {
-    console.error('Could not load cart from localStorage', e);
-    return { items: [], totalQuantity: 0, totalPrice: 0 };
+    console.error("Could not load cart from localStorage", e);
+    return emptyCart(key);
   }
 };
 
 const saveCartToLocalStorage = (state) => {
   try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem('cart', serializedState);
+    const key = state.storageKey || DEFAULT_KEY;
+
+    //don’t persist unused cartEvents or the storageKey itself.
+    const toPersist = {
+      items: state.items,
+      totalQuantity: state.totalQuantity,
+      totalPrice: state.totalPrice,
+    };
+
+    localStorage.setItem(key, JSON.stringify(toPersist));
   } catch (e) {
-    console.error('Could not save cart to localStorage', e);
+    console.error("Could not save cart to localStorage", e);
   }
 };
 
-const initialState = {
-  items: [],
-  totalQuantity: 0,
-  totalPrice: 0,
-  cartEvents: 0,  //to show navbar everytime user adds item to cart
-};
+const initialState =
+  typeof window !== "undefined" ? loadCartFromLocalStorage(DEFAULT_KEY) : emptyCart(DEFAULT_KEY);
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: typeof window !== 'undefined' 
-    ? loadCartFromLocalStorage() || initialState
-    : initialState,
+  initialState,
   reducers: {
+    setCartStorageKey: (state, action) => {
+      const nextKey = action.payload || DEFAULT_KEY;
+
+      //if key doesn’t change, do nothing
+      if (state.storageKey === nextKey) return;
+
+      const loaded = loadCartFromLocalStorage(nextKey);
+
+      state.storageKey = nextKey;
+      state.items = loaded.items;
+      state.totalQuantity = loaded.totalQuantity;
+      state.totalPrice = loaded.totalPrice;
+      state.cartEvents = 0;
+    },
+
     addToCart: (state, action) => {
       const { product, selectedSize } = action.payload;
       const itemKey = `${product.id}-${selectedSize || 'default'}`;
@@ -124,6 +160,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, reconcileWithProducts } = cartSlice.actions;
+export const {setCartStorageKey, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, reconcileWithProducts } = cartSlice.actions;
 export default cartSlice.reducer;
 

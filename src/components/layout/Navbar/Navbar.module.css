@@ -55,8 +55,9 @@
     pointer-events: none;
 }
 
-.cartAndCurrency {
-    width: 85px;
+.right {
+    /* border: 1px solid red; */
+    /* width: clamp(120px, 140px, 160px); */
     display: flex;
     align-items: center;
     justify-content: space-between;

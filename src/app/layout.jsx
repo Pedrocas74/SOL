@@ -1,7 +1,10 @@
 import "./globals.css";
 import Navbar from "../components/layout/Navbar";
+import CartStorageBridge from "@components/auth/CartStorageBridge";
 import ReduxProvider from "../components/ReduxProvider";
 import { Toaster } from "sonner";
+
+import { ClerkProvider } from "@clerk/nextjs";
 
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
@@ -36,31 +39,34 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="google" content="notranslate" />
-      </head>
-      <body className={`${inter.variable} ${gatwickJet.variable}`}>
-        <ReduxProvider>
-          <Navbar />
-          <main>
-            {children}
-            <Toaster
-              position="top-center"
-              expand
-              richColors
-              duration={4000}
-              toastOptions={{
-                style: {
-                  fontSize: "1rem",
-                  borderRadius: "15px",
-                  color: "black",
-                },
-              }}
-            />
-          </main>
-        </ReduxProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          <meta name="google" content="notranslate" />
+        </head>
+        <body className={`${inter.variable} ${gatwickJet.variable}`}>
+          <ReduxProvider>
+            <CartStorageBridge />
+            <Navbar />
+            <main>
+              {children}
+              <Toaster
+                position="top-center"
+                expand
+                richColors
+                duration={4000}
+                toastOptions={{
+                  style: {
+                    fontSize: "1rem",
+                    borderRadius: "15px",
+                    color: "black",
+                  },
+                }}
+              />
+            </main>
+          </ReduxProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

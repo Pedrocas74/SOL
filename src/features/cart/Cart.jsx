@@ -16,6 +16,7 @@ import {
 import Footer from "@components/layout/Footer/Footer";
 import Breadcrumbs from "@components/ui/Breadcrumbs";
 import { fetchProducts } from "../products/productsSlice.js";
+import CartSummaryButtons from "./CartSummaryButtons";
 
 export default function Cart() {
   const { items = [] } = useSelector((state) => state.cart || { items: [] }); //items in cart
@@ -281,18 +282,7 @@ export default function Cart() {
                 : `${convert(totalPrice)}${symbol}`}
             </p>
           </div>
-          <div className={styles.summaryButtonsContainer}>
-            <Link href="/#products-list" className="buttonSecondary">
-              Continue Shopping
-            </Link>
-            <Link
-              href={unavailableItems.length > 0 ? "#warning" : "/checkout"}
-              scroll={true}
-              className="buttonPrimary"
-            >
-              Proceed to Checkout
-            </Link>
-          </div>
+          <CartSummaryButtons unavailableItems={unavailableItems}/>
         </section>
       </section>
       <Footer />
