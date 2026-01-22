@@ -8,20 +8,30 @@ import { useEffect, useRef, useState } from "react";
 import CartIcon from "@components/ui/CartIcon";
 import { usePathname } from "next/navigation";
 
-import {
-  UserButton,
-  SignedIn,
-  SignInButton,
-  SignedOut,
-  SignUpButton
-} from '@clerk/nextjs'
-
-const CurrencySelector = dynamic(
-  () => import("../../ui/CurrencySelector"),
-  {
-    ssr: false,
-  }
+const UserButton = dynamic(
+  () => import("@clerk/nextjs").then((mod) => ({ default: mod.UserButton })),
+  { ssr: false },
 );
+const SignedIn = dynamic(
+  () => import("@clerk/nextjs").then((mod) => ({ default: mod.SignedIn })),
+  { ssr: false },
+);
+const SignInButton = dynamic(
+  () => import("@clerk/nextjs").then((mod) => ({ default: mod.SignInButton })),
+  { ssr: false },
+);
+const SignedOut = dynamic(
+  () => import("@clerk/nextjs").then((mod) => ({ default: mod.SignedOut })),
+  { ssr: false },
+);
+const SignUpButton = dynamic(
+  () => import("@clerk/nextjs").then((mod) => ({ default: mod.SignUpButton })),
+  { ssr: false },
+);
+
+const CurrencySelector = dynamic(() => import("../../ui/CurrencySelector"), {
+  ssr: false,
+});
 
 export default function Navbar() {
   const { items, cartEvents } = useSelector((state) => state.cart);
@@ -114,20 +124,18 @@ export default function Navbar() {
           </Link>
           <CurrencySelector />
 
-            {/* clerk user button  */}
-            <SignedOut>
-              <SignInButton />
-              <SignUpButton>
-                <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-                  Sign Up
-                </button>
-              </SignUpButton>
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          
-          
+          {/* clerk user button  */}
+          <SignedOut>
+            <SignInButton />
+            <SignUpButton>
+              <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                Sign Up
+              </button>
+            </SignUpButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </div>
       </div>
     </nav>

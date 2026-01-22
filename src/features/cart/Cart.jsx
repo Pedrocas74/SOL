@@ -26,7 +26,7 @@ export default function Cart() {
 
   //fetch products if they're not loaded
   useEffect(() => {
-    if (!products.length) {
+    if (!products) {
       dispatch(fetchProducts());
     }
   }, [dispatch, products.length]);

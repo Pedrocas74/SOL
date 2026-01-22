@@ -17,6 +17,8 @@ A defining feature of SOL is its **dynamic inventory simulation**: every page re
 
 * **LocalStorage** — cart persistence across sessions
 
+* **Clerk** - user authentication API component
+
 * **Turbopack** — fast development builds
 
 * **MUI (Skeleton only)** — loading states
