@@ -108,7 +108,7 @@ const productSlice = createSlice({
         state.loading = false;
         
         
-        const { products, cartItems } = action.payload;
+        const { products } = action.payload;
 
         const nameMap = {
           "fjallraven - foldsack no. 1 backpack, fits 15 laptops": "Urban Backpack",
@@ -141,7 +141,7 @@ const productSlice = createSlice({
           const cleanTitle = p.title.trim().toLowerCase();
           const hasSizes =
             (p.category === "men's clothing" || p.category === "women's clothing") &&
-            p.title.toLowerCase().trim() !== "fjallraven - foldsack no. 1 backpack, fits 15 laptops"; //ignore the backpack
+            p.id !== 1; // backpack (id: 1) should never have sizes
 
           return {
             ...p,

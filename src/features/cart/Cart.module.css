@@ -153,6 +153,7 @@
 }
 .totalItems {
     letter-spacing: var(--ls);
+    margin-bottom: var(--space-xs);
 }
 .subtotalPrice {
     letter-spacing: var(--ls);
@@ -160,16 +161,17 @@
 }
 .totalItems span,
 .subtotalPrice span {
-    font-weight: 600;
+    font-weight: 300;
 }
 .summaryButtonsContainer {
      display: flex;
      flex-direction: column;
 }
 .summaryButtonsContainer a {
-    min-width: 186px;
-    width: 55%;
-    margin: 0.3em auto;
+    margin: var(--space-xs) auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* ------------------------------------------- */
 .emptyCartAction {
@@ -196,9 +198,11 @@
 
 @media(width >= 850px) {
     .emptyCartAction a {
-        width: 40%;
+        width: 25%;
+        height: 4rem;
     }
     .summaryButtonsContainer a {
-        width: 40%;
+        width: 30%;
+        height: 4rem;
     }
 }

@@ -4,8 +4,9 @@
 
 .checkoutSection {
     width: 90%;
-    margin: 2.5rem auto;
+    margin: 2.5rem auto 0 auto;
     transition: var(--transition);
+    padding-bottom: var(--space-xxl);
 }
 
 .summarySection {
@@ -97,7 +98,7 @@
         flex: 0.35;
     }
     .promoCodeContainer button {
-        flex: 0.25;
+        flex: 0.1;
     }
 }
 
@@ -184,10 +185,11 @@
 }
 @media(width >= 850px) {
     .paymentMethodsContainer {
-        width: 55%;
+        width: 50%;
     }
     .placeOrderButton {
-        width: 40%;
+        width: 25%;
+        height: 4rem;
     }
 }
 

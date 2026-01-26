@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import ProductsListSkeleton from "./ProductsListSkeleton";
+import LoadingSVG from "@components/ui/LoadingSVG/LoadingSVG";
 
 
 const ProductsList = dynamic(
@@ -63,6 +64,7 @@ export default function LazyProductsSection() {
           <p style={{ fontWeight: 100, letterSpacing: "0.08em", opacity: 0.5 }}>
             Scroll down to discover the collection…
           </p>
+          <LoadingSVG />
         </section>
       )}
     </div>

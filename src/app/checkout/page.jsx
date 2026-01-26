@@ -380,9 +380,9 @@ export default function Checkout() {
         >
           Place Order
         </button>
-        <FooterSimple />
+        
       </section>
-
+            <FooterSimple />
       {isPlaced && (
         <section
           className={styles.placeContainer}
@@ -408,6 +408,7 @@ export default function Checkout() {
           </div>
         </section>
       )}
+      
     </div>
   );
 }
