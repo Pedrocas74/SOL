@@ -69,6 +69,7 @@
     margin: var(--space-xs) 0 var(--space-md) 0;
     cursor: pointer;
     width: fit-content;
+    
 }
 .promoCodeContainer {
     display: flex;

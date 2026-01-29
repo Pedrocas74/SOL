@@ -134,6 +134,9 @@ a.buttonTertiary {
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* Primary (default) */
 .buttonPrimary,
@@ -179,20 +182,19 @@ a.buttonSecondary {
 /* Tertiary */
 .buttonTertiary {
   background: transparent;
-  color: var(--clr-text-muted);           
+  color: var(--clr-primary-dark);           
   border: none;
-  padding-inline: 1.5rem;                   
+  padding-inline: 1.5rem;   
+  border-radius: 30px;           
 }
 .buttonTertiary:hover {
-  color: var(--clr-text);
+  color: var(--clr-primary);
   background: var(--clr-bg-light);
-  box-shadow: var(--shadow-button);
-  text-decoration: underline;
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-dark);
 }
 .buttonTertiary:active {
   background: transparent;
-  transform: translateY(0px);
+  transform: translateY(2px);
 }
 /* ButtonLink */
 .buttonLink {

@@ -1,5 +1,4 @@
 .bigContainer {
-    /* height: 75vh; */
     display: flex;
     flex-direction: column;
 }
@@ -19,9 +18,10 @@
     width: 90%;
     font-size: var(--fs-xl);
     letter-spacing: var(--ls);
+    font-weight: 900;
 }
 .promotionContainer span {
-    font-weight: 900;
+    font-weight: 800;
     
 }
 .promotionContainer p {
@@ -82,7 +82,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--fs-md);
+    font-size: var(--fs-lg);
+    text-transform: uppercase;
     margin-bottom: var(--space-lg);
 }
 .creditContainer {

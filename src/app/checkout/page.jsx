@@ -206,7 +206,6 @@ export default function Checkout() {
             type="button"
             className={`${styles.toggleCode} buttonTertiary`}
             onClick={() => setShowCode(!showCode)}
-            style={{ textDecoration: "underline" }}
             aria-expanded={showCode}
             aria-controls="promo-code-section"
           >

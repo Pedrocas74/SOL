@@ -82,7 +82,7 @@ export default function Cart() {
               role="img"
               aria-label="Your cart is currently empty"
             ></div>
-            <Link href="/#products-list" className="buttonSecondary">
+            <Link href="/#products-list" className={`buttonSecondary ${styles.emptyCartBtn}`}>
               Continue Shopping
             </Link>
           </div>

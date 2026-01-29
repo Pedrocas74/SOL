@@ -26,7 +26,7 @@ export default function CartSummaryButtons({ unavailableItems }) {
       ? "Proceed to Checkout"
       : userId
         ? "Proceed to Checkout"
-        : "Sign in to Checkout";
+        : "Log in to Checkout";
 
   return (
     <div className={styles.summaryButtonsContainer}>

@@ -57,11 +57,12 @@ export default function LazyProductsSection() {
           style={{
             minHeight: "50vh",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <p style={{ fontWeight: 100, letterSpacing: "0.08em", opacity: 0.5 }}>
+          <p style={{ fontWeight: 100, opacity: 0.5 }}>
             Scroll down to discover the collection…
           </p>
           <LoadingSVG />
