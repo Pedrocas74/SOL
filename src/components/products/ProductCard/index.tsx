@@ -2,7 +2,7 @@
 
 import styles from "./ProductCard.module.css";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@app/hooks";
 import { addToCart } from "../../../features/cart/cartSlice";
 import { useState } from "react";
 import { Ruler } from "lucide-react";
@@ -13,10 +13,10 @@ import Image from "next/image";
 export default function ProductCard({ product }) {
   const [sizeSelected, setSizeSelected] = useState("");
   const [showSizeError, setShowSizeError] = useState(false);
-  const dispatch = useDispatch();
-  const { current, rates } = useSelector((state) => state.currency);
+  const dispatch = useAppDispatch();
+  const { current, rates } = useAppSelector((state) => state.currency);
 
-  const convert = (price) => (price * rates[current]).toFixed(2);
+  const convert = (price: number) => (price * rates[current]).toFixed(2);
   let symbolPosition = "right"; //euro as default
   const getSymbol = () => {
     switch (current) {
@@ -118,8 +118,8 @@ export default function ProductCard({ product }) {
             isDisabled={stockStatus !== "In stock"}
             selectedKeys={sizeSelected ? [sizeSelected] : []}
             onSelectionChange={(keys) => {
-              const value = Array.from(keys)[0];
-              setSizeSelected(value);
+              const first = Array.from(keys)[0];
+              setSizeSelected(first != null ? String(first) : "");  //convert KEY (string | number) to STRING
             }}
             selectorIcon={
               <Ruler
@@ -140,14 +140,12 @@ export default function ProductCard({ product }) {
               value: styles.sizeValue,
               popoverContent: styles.dropdownContent,
               listbox: styles.dropdownList,
-              item: styles.dropdownItem,
             }}
           >
-            {product.sizes.map((size) => (
+            {product.sizes.map((size: string) => (
               <SelectItem
                 className={styles.dropdownItem}
                 key={size}
-                value={size}
               >
                 {size}
               </SelectItem>

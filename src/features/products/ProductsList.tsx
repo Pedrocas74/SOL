@@ -2,17 +2,16 @@
 
 import styles from "./ProductsList.module.css";
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@app/hooks";
 import { fetchProducts } from "./productsSlice";
 import ProductCard from "../../components/products/ProductCard";
 import Image from "next/image";
-// import LoadingSVG from "@components/ui/LoadingSVG/LoadingSVG";
 import ProductsListSkeleton from "./ProductsListSkeleton";
 
 export default function ProductsList() {
   const [selectedCategory, setSelectedCategory] = useState(null); //null = show all products
-  const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((state) => state.products);
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector((state) => state.products);
 
   const categoryMap = {
     Clothing: ["men's clothing", "women's clothing"],

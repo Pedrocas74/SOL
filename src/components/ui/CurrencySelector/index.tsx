@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./CurrencySelector.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@app/hooks";
 import { setCurrency } from "../../../features/currency/currencySlice";
 import { Euro, DollarSign, PoundSterling } from "lucide-react";
 
@@ -14,8 +14,8 @@ import {
 import { Button } from "@heroui/button";
 
 export default function CurrencySelector() {
-  const dispatch = useDispatch();
-  const current = useSelector((state) => state.currency.current);
+  const dispatch = useAppDispatch();
+  const current = useAppSelector((state) => state.currency.current);
 
   const currencies = [
     { key: "EUR", icon: <Euro size={25} /> },

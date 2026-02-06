@@ -12,7 +12,7 @@ import Image from "next/image";
 import { toast } from "sonner";
 //hooks
 import { useParams } from "next/navigation";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@app/hooks";
 import { useState, useEffect } from "react";
 //Redux actions
 import { addToCart } from "../../../features/cart/cartSlice";
@@ -29,15 +29,21 @@ export default function ProductDetails() {
     summary3: false,
   });
   const [mounted, setMounted] = useState(false);
-  const { id } = useParams();
-  const dispatch = useDispatch();
 
-  const product = useSelector((state) =>
-    state.products.products.find((p) => p.id === parseInt(id)),
+  const params = useParams();
+  const idParam = params.id;
+
+  const idStr = Array.isArray(idParam) ? idParam[0] : idParam;
+  const productId = Number(idStr); 
+
+  const dispatch = useAppDispatch();
+
+  const product = useAppSelector((state) =>
+    state.products.products.find((p) => p.id === productId),
   );
-  const loading = useSelector((state) => state.products.loading);
+  const loading = useAppSelector((state) => state.products.loading);
 
-  const { current, rates } = useSelector((state) => state.currency);
+  const { current, rates } = useAppSelector((state) => state.currency);
   useEffect(() => setMounted(true), []);
 
   //allow browser refreshment
@@ -88,7 +94,7 @@ export default function ProductDetails() {
     }));
   };
 
-  //show skeletons
+  //-----------SKELETONS---------
   if (!mounted || !product) {
     return <ProductDetailsSkeleton />;
   }
@@ -112,7 +118,7 @@ export default function ProductDetails() {
     setSizeSelected("");
   };
 
-  const upperFirstChars = (str) => {
+  const upperFirstChars = (str: string) => {
     return str
       .toLowerCase()
       .split(" ")

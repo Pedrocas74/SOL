@@ -3,10 +3,100 @@
 import styles from "./Reviews.module.css";
 import { AnimatePresence, motion, wrap, useReducedMotion } from "framer-motion";
 import { forwardRef, useEffect, useState } from "react";
+import type { LucideIcon } from "lucide-react";
 import { UserCircle2, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
+type Review = {
+  pic: LucideIcon;
+  text: string;
+  author: string;
+  date: string;
+};
+
+type SlideProps = {
+  review: Review;
+  direction: number;
+  index: number;
+  total: number;
+};
+
+const Slide = forwardRef<HTMLElement, SlideProps>(function Slide(
+  { review, direction }: SlideProps,
+  ref,
+) {
+  const shouldReduceMotion = useReducedMotion();
+  const Pic = review.pic;
+
+  return (
+    <motion.article
+      ref={ref}
+      id="review-slide"
+      className={styles.cardContainer}
+      role="group"
+      aria-roledescription="slide"
+      aria-label={`${review.author}'s review`}
+      aria-live="polite"
+      initial={
+        shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * 100 }
+      }
+      animate={
+        shouldReduceMotion
+          ? { opacity: 1, x: 0 }
+          : {
+              opacity: 1,
+              x: 0,
+              transition: {
+                type: "spring",
+                visualDuration: 0.6,
+                bounce: 0.5,
+              },
+            }
+      }
+      exit={
+        shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * -100 }
+      }
+    >
+      <div className={styles.mainReview}>
+        <div className={styles.user}>
+          <Pic
+            color="#0a0a0a"
+            className={styles.userIcon}
+            aria-hidden="true"
+            focusable="false"
+          />
+
+          <div className={styles.authorAndStars}>
+            <p>{review.author}</p>
+
+            <div
+              className={styles.starRow}
+              role="img"
+              aria-label="5 out of 5 stars"
+            >
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  size={11}
+                  color="var(--clr-text)"
+                  fill="var(--clr-text)"
+                  aria-hidden="true"
+                  focusable="false"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p className={styles.reviewText}>{review.text}</p>
+      </div>
+
+      <p className={styles.reviewDate}>{review.date}</p>
+    </motion.article>
+  );
+});
+
 export default function Reviews() {
-  const reviews = [
+  const reviews: Review[] = [
     {
       pic: UserCircle2,
       text: "Changed the way I shop - five stars.",
@@ -38,20 +128,21 @@ export default function Reviews() {
       date: "01/10/2025",
     },
   ];
-  const [[page, direction], setPage] = useState([0, 1]);
+
+  const [[page, direction], setPage] = useState<[number, number]>([0, 1]);
   const reviewIndex = wrap(0, reviews.length, page);
   const [isPaused, setIsPaused] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
-  function paginate(newDirection) {
+  function paginate(newDirection: number) {
     setPage(([currentPage]) => [currentPage + newDirection, newDirection]);
   }
 
   useEffect(() => {
     if (isPaused || shouldReduceMotion) return;
 
-    const timer = setTimeout(() => paginate(1), 5000);
-    return () => clearTimeout(timer);
+    const timer = window.setTimeout(() => paginate(1), 5000);
+    return () => window.clearTimeout(timer);
   }, [page, isPaused, shouldReduceMotion]);
 
   return (
@@ -99,79 +190,3 @@ export default function Reviews() {
     </section>
   );
 }
-
-
-const Slide = forwardRef(function Slide(
-  { review, direction, index, total },
-  ref
-) {
-  const shouldReduceMotion = useReducedMotion();
-  
-  return (
-    <motion.article
-      ref={ref}
-      id="review-slide"
-      className={styles.cardContainer}
-      role="group"
-      aria-roledescription="slide"
-      aria-label={`${review.author}'s review`}
-      aria-live="polite"
-      initial={
-        shouldReduceMotion
-          ? { opacity: 0 }
-          : { opacity: 0, x: direction * 100 }
-      }
-      animate={
-        shouldReduceMotion
-          ? { opacity: 1, x: 0 }
-          : {
-              opacity: 1,
-              x: 0,
-              transition: {
-                type: "spring",
-                visualDuration: 0.6,
-                bounce: 0.5,
-              },
-            }
-      }
-      exit={
-        shouldReduceMotion
-          ? { opacity: 0 }
-          : { opacity: 0, x: direction * -100 }
-      }
-    >
-      <div className={styles.mainReview}>
-        <div className={styles.user}>
-          <review.pic
-            color="#0a0a0a"
-            className={styles.userIcon}
-            aria-hidden="true"
-            focusable="false"
-          />
-
-          <div className={styles.authorAndStars}>
-            <p>{review.author}</p>
-            <div
-              className={styles.starRow}
-              role="img"
-              aria-label="5 out of 5 stars"
-            >
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  size={11}
-                  color="var(--clr-text)"
-                  fill="var(--clr-text)"
-                  aria-hidden="true"
-                  focusable="false"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-        <p className={styles.reviewText}>{review.text}</p>
-      </div>
-      <p className={styles.reviewDate}>{review.date}</p>
-    </motion.article>
-  );
-});

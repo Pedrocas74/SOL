@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Navbar.module.css";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@app/hooks";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
@@ -34,8 +34,8 @@ const CurrencySelector = dynamic(() => import("../../ui/CurrencySelector"), {
 });
 
 export default function Navbar() {
-  const { items, cartEvents } = useSelector((state) => state.cart);
-  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+  const { items, cartEvents } = useAppSelector((state) => state.cart);
+  const totalQuantity = items.reduce((sum: number, item) => sum + item.quantity, 0);
 
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);

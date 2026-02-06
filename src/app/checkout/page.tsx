@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useAppSelector } from "@app/hooks";
 import styles from "./Checkout.module.css";
 import { useRouter } from "next/navigation";
 import {
@@ -20,14 +20,15 @@ import { CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@clerk/nextjs";
 
+
 export default function Checkout() {
   const { isLoaded, isSignedIn } = useAuth();
-  const { items } = useSelector((state) => state.cart);
-  const { current, rates } = useSelector((state) => state.currency);
+  const { items } = useAppSelector((state) => state.cart);
+  const { current, rates } = useAppSelector((state) => state.currency);
   const [showCode, setShowCode] = useState(false); //promo code input display set | hidden -> visible
   const [code, setCode] = useState(""); //promo code input
   const [isApplied, setIsApplied] = useState(false); //promo code validation
-  const totalPrice = items.reduce(
+  const totalPrice: number = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
@@ -81,7 +82,7 @@ export default function Checkout() {
 
   const convert = (price) => (price * rates[current]).toFixed(2);
 
-  let symbolPosition = "right"; //euro as default
+  let symbolPosition = "right"; //euro as default (symbol to the right)
   const getSymbol = () => {
     switch (current) {
       case "USD":
@@ -95,7 +96,7 @@ export default function Checkout() {
         return "€";
     }
   };
-  const symbol = getSymbol();
+  const symbol: "$" | "£" | "€" = getSymbol();
 
   const applyDiscount = () => {
     if (isApplied) return;
@@ -226,7 +227,6 @@ export default function Checkout() {
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && !isApplied) {
                       applyDiscount();
-                      e.target.blur();
                     }
                   }}
                   disabled={isApplied}

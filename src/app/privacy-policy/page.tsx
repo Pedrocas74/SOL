@@ -1,4 +1,4 @@
-import MockupPage from "../../components/layout/MockupPage/index.jsx";
+import MockupPage from "../../components/layout/MockupPage/index";
 
 export default function PrivacyPolicyPage() {
   return (

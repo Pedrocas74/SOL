@@ -2,13 +2,13 @@
 
 import { useEffect } from "react";
 import { useAuth } from "@clerk/nextjs";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@app/hooks";
 import { setCartStorageKey } from "@features/cart/cartSlice";
 
 //cart updates whenever a user logs in
 export default function CartStorageBridge() {
   const { userId, isLoaded } = useAuth();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const loadCartFromLocalStorage = (key) => {
     try {

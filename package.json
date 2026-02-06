@@ -2,7 +2,7 @@
   "name": "redux-shop",
   "version": "1.0.0",
   "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
@@ -32,5 +32,10 @@
     "react-intersection-observer": "^9.16.0",
     "react-redux": "^9.2.0",
     "sonner": "^2.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "@types/react": "^19.2.13",
+    "typescript": "^5.9.3"
   }
 }

@@ -1,13 +1,13 @@
 "use client";
 
 import styles from "./RelatedProductsSlider.module.css";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@app/hooks";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function RelatedProductsSlider({ category, id }) {
-  const products = useSelector((state) => state.products.products);
-  const { current, rates } = useSelector((state) => state.currency);
+  const products = useAppSelector((state) => state.products.products);
+  const { current, rates } = useAppSelector((state) => state.currency);
   const relatedProducts = products.filter(
     (product) => product.category === category && product.id !== id
   );

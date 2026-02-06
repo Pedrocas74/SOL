@@ -2,9 +2,8 @@
 
 import styles from "./Cart.module.css";
 import Link from "next/link";
-import React from "react";
 import { Minus, Plus } from "lucide-react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@app/hooks";
 import { useEffect } from "react";
 import {
   removeFromCart,
@@ -15,14 +14,14 @@ import {
 } from "./cartSlice";
 import Footer from "@components/layout/Footer/Footer";
 import Breadcrumbs from "@components/ui/Breadcrumbs";
-import { fetchProducts } from "../products/productsSlice.js";
+import { fetchProducts } from "../products/productsSlice";
 import CartSummaryButtons from "./CartSummaryButtons";
 
 export default function Cart() {
-  const { items = [] } = useSelector((state) => state.cart || {}); //items in cart
-  const { current, rates } = useSelector((state) => state.currency);
-  const { products = [] } = useSelector((state) => state.products); //products in productList
-  const dispatch = useDispatch();
+  const items = useAppSelector((state) => state.cart.items);
+  const { current, rates } = useAppSelector((state) => state.currency);
+  const { products = [] } = useAppSelector((state) => state.products); //products in productList
+  const dispatch = useAppDispatch();
 
   //fetch products if they're not loaded
   useEffect(() => {
@@ -43,7 +42,7 @@ export default function Cart() {
   const totalPrice =
     items?.reduce((sum, item) => sum + item.price * item.quantity, 0) || 0;
 
-  const convert = (price) => (price * rates[current]).toFixed(2);
+  const convert = (price: number) => (price * rates[current]).toFixed(2);
   let symbolPosition = "right"; //euro as default
   const getSymbol = () => {
     switch (current) {
@@ -64,7 +63,7 @@ export default function Cart() {
 
 
   // EMPTY CARD MESSAGE
-  if (!items?.length) {
+  if (!items) {
     return (
       <>
         <section className={styles.cartSection} aria-labelledby="cart-heading">
@@ -96,7 +95,6 @@ export default function Cart() {
     <>
       <section className={styles.cartSection} aria-labelledby="cart-heading">
         <Breadcrumbs
-          id="warning" //to scroll the view to the top of the page
           items={[
             { label: "Home", href: "/" },
             { label: "Products", href: "/#products-list" },
