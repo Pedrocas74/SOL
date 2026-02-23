@@ -1,8 +1,11 @@
 "use client";
 
+//hooks
 import { useEffect } from "react";
-import { useAuth } from "@clerk/nextjs";
 import { useAppDispatch } from "@app/hooks";
+//auth 
+import { useAuth } from "@clerk/nextjs";
+//redux actions
 import { setCartStorageKey } from "@features/cart/cartSlice";
 
 //cart updates whenever a user logs in

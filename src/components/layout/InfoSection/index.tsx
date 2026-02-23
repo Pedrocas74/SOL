@@ -1,12 +1,15 @@
 "use client";
 
 import styles from "./InfoSection.module.css";
+//dependencies
 import CountUp from "react-countup";
+//hooks
 import { useInView } from "react-intersection-observer";
+//icons
 import { Star } from "lucide-react";
 
 export default function InfoSection() {
-  const { ref, inView } = useInView({
+  const { ref, inView } = useInView({ //to detect component's visibility on viewport and activate CountUp (numbers ascending)
     triggerOnce: true,
     threshold: 0.5,
   });

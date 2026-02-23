@@ -1,13 +1,17 @@
 "use client";
 
 import styles from "./Navbar.module.css";
+//hooks
 import { useAppSelector } from "@app/hooks";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+//built-in
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+//custom components
 import CartIcon from "@components/ui/CartIcon";
-import { usePathname } from "next/navigation";
 
+//client-side rendering (AUTH CLERK COMPONENTS)
 const UserButton = dynamic(
   () => import("@clerk/nextjs").then((mod) => ({ default: mod.UserButton })),
   { ssr: false },
@@ -28,17 +32,16 @@ const SignUpButton = dynamic(
   () => import("@clerk/nextjs").then((mod) => ({ default: mod.SignUpButton })),
   { ssr: false },
 );
-
+//client-side rendering (CUSTOM COMPONENTS)
 const CurrencySelector = dynamic(() => import("../../ui/CurrencySelector"), {
   ssr: false,
 });
 
 export default function Navbar() {
-  const { items, cartEvents } = useAppSelector((state) => state.cart);
-  const totalQuantity = items.reduce((sum: number, item) => sum + item.quantity, 0);
-
-  const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const { items, cartEvents } = useAppSelector((state) => state.cart); //items in cart + number of cart events to detect additions to the cart (icon signaling)
+  const totalQuantity = items.reduce((sum: number, item) => sum + item.quantity, 0); //total number of cart's items
+  const [visible, setVisible] = useState(false); //toogle for navbar visibility (animation)
+    const [mounted, setMounted] = useState(false);
 
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
@@ -50,19 +53,19 @@ export default function Navbar() {
     setMounted(true);
     lastScrollY.current = window.scrollY;
 
-    const HERO_END = 850;
+    const HERO_END = 850; //vertical breakpoint of Hero to InfoSection
 
-    const handleScroll = () => {
+    const handleScroll = () => { //control navbar visibility across all routes, according to vertical scroll
       const current = window.scrollY;
 
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
           const onHome = pathname === "/";
 
-          if (onHome && current < HERO_END) {
+          if (onHome && current < HERO_END) { //don't show navbar while displaying Hero component
             setVisible(false);
           } else {
-            if (current > lastScrollY.current && current > 50) {
+            if (current > lastScrollY.current && current > 50) { //50px up or down to animate the Navbar movement
               //down
               setVisible(false);
             } else {
@@ -70,15 +73,12 @@ export default function Navbar() {
               setVisible(true);
             }
           }
-
           lastScrollY.current = current;
           ticking.current = false;
         });
-
         ticking.current = true;
       }
     };
-
     //run once so the navbar is correct immediately on mount/route change
     handleScroll();
 
@@ -88,7 +88,7 @@ export default function Navbar() {
     };
   }, [pathname]);
 
-  useEffect(() => {
+  useEffect(() => { //every time an item is added to the cart (cartEvents++), the navbar is shown
     if (typeof window === "undefined") return;
     if (cartEvents <= 0) return;
 

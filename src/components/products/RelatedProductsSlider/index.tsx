@@ -1,7 +1,9 @@
 "use client";
 
 import styles from "./RelatedProductsSlider.module.css";
+//hooks
 import { useAppSelector } from "@app/hooks";
+//built in
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,7 +12,7 @@ export default function RelatedProductsSlider({ category, id }) {
   const { current, rates } = useAppSelector((state) => state.currency);
   const relatedProducts = products.filter(
     (product) => product.category === category && product.id !== id
-  );
+  ); //array of products from the same category as current product[id]
 
   const convert = (price) => (price * rates[current]).toFixed(2);
   let symbolPosition = "right"; //euro as default

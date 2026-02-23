@@ -21,9 +21,9 @@ import { fetchProducts } from "../../../features/products/productsSlice";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function ProductDetails() {
-  const [sizeSelected, setSizeSelected] = useState("");
-  const [showSizeError, setShowSizeError] = useState(false);
-  const [openStates, setOpenStates] = useState({
+  const [sizeSelected, setSizeSelected] = useState(""); //size selected before adding to cart (max 1)
+  const [showSizeError, setShowSizeError] = useState(false); //sets true if clothing product is added to the cart without selecting a size 
+  const [openStates, setOpenStates] = useState({ //product's info -> toogles for summary elements
     summary1: false,
     summary2: false,
     summary3: false,
@@ -31,12 +31,11 @@ export default function ProductDetails() {
   const [mounted, setMounted] = useState(false);
 
   const params = useParams();
-  const idParam = params.id;
-
-  const idStr = Array.isArray(idParam) ? idParam[0] : idParam;
+  const idParam = params.id; //get id of the product (product[id])
+  const idStr = Array.isArray(idParam) ? idParam[0] : idParam; 
   const productId = Number(idStr); 
 
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch(); 
 
   const product = useAppSelector((state) =>
     state.products.products.find((p) => p.id === productId),
@@ -87,7 +86,7 @@ export default function ProductDetails() {
     <ChevronDown color="#333" />
   );
 
-  const toggleSummary = (key) => {
+  const toggleSummary = (key) => {  //toggle summary element (open <-> close)
     setOpenStates((prev) => ({
       ...prev,
       [key]: !prev[key],
@@ -99,17 +98,15 @@ export default function ProductDetails() {
     return <ProductDetailsSkeleton />;
   }
 
-  const handleAddToCart = () => {
-    if (product.sizes && !sizeSelected) {
+  const handleAddToCart = () => { 
+    if (product.sizes && !sizeSelected) { //set warning if user tries to add clothing product without selecting a size 
       toast.warning("Must select a size before adding to cart.");
-
       setShowSizeError(true);
       setTimeout(() => setShowSizeError(false), 2000);
-
       return;
     }
 
-    dispatch(
+    dispatch( //else adds product to cart (along with size selected, if clothing product)
       addToCart({
         product,
         selectedSize: product.sizes ? sizeSelected : null,
@@ -118,7 +115,7 @@ export default function ProductDetails() {
     setSizeSelected("");
   };
 
-  const upperFirstChars = (str: string) => {
+  const upperFirstChars = (str: string) => { //to uppercase only the first letter of the product.category (on breadcrumbs)
     return str
       .toLowerCase()
       .split(" ")

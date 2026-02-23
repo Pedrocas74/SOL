@@ -1,32 +1,45 @@
 "use client";
 
 import styles from "./ProductsList.module.css";
+//hooks
 import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "@app/hooks";
+//redux actions
 import { fetchProducts } from "./productsSlice";
+//custom components
 import ProductCard from "../../components/products/ProductCard";
-import Image from "next/image";
 import ProductsListSkeleton from "./ProductsListSkeleton";
+//built-in
+import Image from "next/image";
+//types
+import { RootState } from "@app/store";
+import { Product } from "./productsSlice";
 
 export default function ProductsList() {
-  const [selectedCategory, setSelectedCategory] = useState(null); //null = show all products
+  const [selectedCategory, setSelectedCategory] = useState<Category>(null); //null = show all products
   const dispatch = useAppDispatch();
-  const { products, loading, error } = useAppSelector((state) => state.products);
+  const { products, loading, error } = useAppSelector(
+  (state: RootState) => state.products
+);
 
-  const categoryMap = {
-    Clothing: ["men's clothing", "women's clothing"],
-    Jewelry: ["jewelery"],
-    Electronics: ["electronics"],
-  };
+  const categoryMap: Record<Exclude<Category, null>, Product["category"][]> = {
+  Clothing: ["men's clothing", "women's clothing"],
+  Jewelry: ["jewelery"],
+  Electronics: ["electronics"],
+};
+
+  type Category = "Clothing" | "Jewelry" | "Electronics" | null;
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const onToggle = (cat) => {
+  //to change category selected (NULL when none selected)
+  const onToggle = (cat: Exclude<Category, null>) => {
     setSelectedCategory((prev) => (prev === cat ? null : cat));
   };
 
+  //fallbackUI
   if (loading) return <ProductsListSkeleton />;
   if (error)
     return (
@@ -45,7 +58,7 @@ export default function ProductsList() {
     >
       <h2 id="products-heading">Our Products</h2>
       <p>Select a category</p>
-
+      {/* CATEGORIES SELECTOR  */}
       <div
         className={`${styles.productsSelector} ${
           selectedCategory ? styles.hasSelected : ""
@@ -82,7 +95,7 @@ export default function ProductsList() {
           tabIndex={0}
           aria-pressed={selectedCategory === "Jewelry"}
           onClick={() => onToggle("Jewelry")}
-          onKeyDown={(e) =>
+          onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) =>
             (e.key === "Enter" || e.key === " ") && onToggle("Jewelry")
           }
         >
@@ -119,7 +132,7 @@ export default function ProductsList() {
       <button
         className="buttonTertiary"
         style={{
-          marginBottom: "7vh",
+          marginBottom: "var(--space-xxl)",
           display: selectedCategory === null ? "none" : "inline-block",
         }}
         type="button"
@@ -128,13 +141,11 @@ export default function ProductsList() {
         Show all products
       </button>
       <div className={styles.grid}>
-        {products
-          .filter(
-            (product) =>
-              !selectedCategory ||
-              categoryMap[selectedCategory].includes(product.category)
-          )
-          .map((product) => (
+        {products.filter((product: Product) => {  //to only display products from a certain category if any is selected
+          if (!selectedCategory) return true;
+          return categoryMap[selectedCategory].includes(product.category);
+        })
+          .map((product: Product) => (
             <ProductCard key={product.id} product={product} />
           ))}
       </div>

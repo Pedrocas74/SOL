@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
 import styles from "./ImageMagnifier.module.css";
+//hooks
+import { useRef, useState } from "react";
+//built in
 import Image from "next/image";
 
 export default function ImageMagnifier({

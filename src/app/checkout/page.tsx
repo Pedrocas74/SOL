@@ -1,8 +1,12 @@
 "use client";
+
+import styles from "./Checkout.module.css";
+//hooks
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@app/hooks";
-import styles from "./Checkout.module.css";
 import { useRouter } from "next/navigation";
+//icons
+import { CheckCircle } from "lucide-react";
 import {
   FaCcVisa,
   FaCcMastercard,
@@ -13,17 +17,19 @@ import {
   FaCcStripe,
   FaGooglePay,
 } from "react-icons/fa";
+//custom components
 import FooterSimple from "@components/layout/Footer/FooterSimple";
 import Breadcrumbs from "@components/ui/Breadcrumbs";
 import LoadingSVG from "@components/ui/LoadingSVG/LoadingSVG";
-import { CheckCircle } from "lucide-react";
+//dependecies
 import { toast } from "sonner";
+//auth 
 import { useAuth } from "@clerk/nextjs";
 
 
 export default function Checkout() {
-  const { isLoaded, isSignedIn } = useAuth();
-  const { items } = useAppSelector((state) => state.cart);
+  const { isLoaded, isSignedIn } = useAuth();  //clerk auth properties
+  const { items } = useAppSelector((state) => state.cart); //array of items objects
   const { current, rates } = useAppSelector((state) => state.currency);
   const [showCode, setShowCode] = useState(false); //promo code input display set | hidden -> visible
   const [code, setCode] = useState(""); //promo code input
@@ -31,7 +37,7 @@ export default function Checkout() {
   const totalPrice: number = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
-  );
+  ); //total price at the end of the checkout
   const [discountedTotal, setDiscountedTotal] = useState(totalPrice); //total price BEFORE|AFTER discount
   const [paymentMethod, setPaymentMethod] = useState("card"); //defaul for card payment method
   const [isPlaced, setIsPlaced] = useState(false); //place order button click
@@ -44,12 +50,12 @@ export default function Checkout() {
   // clerk auth logic
   useEffect(() => {
     if (!isLoaded) return;
-    if (!isSignedIn) {
+    if (!isSignedIn) { //if it's not signed in when the user enters checkout, it's redirected to signed in component
       router.replace("/sign-in?redirect_url=/checkout");
     }
   }, [isLoaded, isSignedIn, router]);
 
-  useEffect(() => {
+  useEffect(() => { //to check which operative system is the current device using (apple VS android)
     if (typeof window === "undefined" || typeof navigator === "undefined")
       return;
 
@@ -58,21 +64,21 @@ export default function Checkout() {
     const isApple = /Macintosh|Mac OS X|iPhone|iPad|iPod/i.test(ua);
     const isAndroid = /Android/i.test(ua);
     setSupportsApplePay(isApple);
-    setSupportsGooglePay(isAndroid || !isApple);
+    setSupportsGooglePay(isAndroid || !isApple); //states that are later used to remove one of the payment options
   }, []);
 
-  useEffect(() => {
-    if (!isPlaced) return;
+  useEffect(() => { //payment simulation after clicking "Place Order" button
+    if (!isPlaced) return; 
 
     setIsProcessing(true);
 
-    const processingTimer = setTimeout(() => {
+    const processingTimer = setTimeout(() => { // 4s for processing after click
       setIsProcessing(false);
     }, 4000);
 
     const successTimer = setTimeout(() => {
       router.replace("/?payment=success");
-    }, 6000);
+    }, 6000); //6s after click for, 2 last seconds showing "payment successful"
 
     return () => {
       clearTimeout(processingTimer);
@@ -80,7 +86,7 @@ export default function Checkout() {
     };
   }, [isPlaced, router]);
 
-  const convert = (price) => (price * rates[current]).toFixed(2);
+  const convert = (price) => (price * rates[current]).toFixed(2); 
 
   let symbolPosition = "right"; //euro as default (symbol to the right)
   const getSymbol = () => {
@@ -98,7 +104,7 @@ export default function Checkout() {
   };
   const symbol: "$" | "£" | "€" = getSymbol();
 
-  const applyDiscount = () => {
+  const applyDiscount = () => { 
     if (isApplied) return;
     if (code !== "PEDRO74") {
       setCode("");
@@ -142,7 +148,7 @@ export default function Checkout() {
     }
   };
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = () => { //handler click on Place order button 
     setIsPlaced(true);
     setIsProcessing(true);
   };

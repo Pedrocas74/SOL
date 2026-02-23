@@ -1,10 +1,14 @@
 "use client";
 
 import styles from "./Cart.module.css";
+//built in
 import Link from "next/link";
+//icons
 import { Minus, Plus } from "lucide-react";
+//hooks
 import { useAppSelector, useAppDispatch } from "@app/hooks";
 import { useEffect } from "react";
+//redux actions
 import {
   removeFromCart,
   increaseQuantity,
@@ -12,13 +16,14 @@ import {
   clearCart,
   reconcileWithProducts,
 } from "./cartSlice";
+import { fetchProducts } from "../products/productsSlice";
+//custom components
 import Footer from "@components/layout/Footer/Footer";
 import Breadcrumbs from "@components/ui/Breadcrumbs";
-import { fetchProducts } from "../products/productsSlice";
 import CartSummaryButtons from "./CartSummaryButtons";
 
 export default function Cart() {
-  const items = useAppSelector((state) => state.cart.items);
+  const items = useAppSelector((state) => state.cart.items); //items in cart
   const { current, rates } = useAppSelector((state) => state.currency);
   const { products = [] } = useAppSelector((state) => state.products); //products in productList
   const dispatch = useAppDispatch();
@@ -59,6 +64,7 @@ export default function Cart() {
   };
   const symbol = getSymbol();
 
+  //items that become unavailable after stock status update
   const unavailableItems = items?.filter((item) => item.unavailable) || [];
 
 

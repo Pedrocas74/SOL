@@ -1,48 +1,52 @@
 "use client";
 
 import styles from "./Hero.module.css";
+//motion
 import {
   motion,
   useScroll,
   useTransform,
   useMotionValueEvent,
 } from "framer-motion";
+//icons
 import { SquareArrowDown } from "lucide-react";
+//hooks
 import { useState, useEffect } from "react";
+//built-in
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
-  const { scrollY } = useScroll();
-  const [isMoving, setIsMoving] = useState(false);
-  const [isHeroGone, setIsHeroGone] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
+  const { scrollY } = useScroll(); //detects vertical scroll made 
+  const [isMoving, setIsMoving] = useState(false); //false if no vertical scroll detected
+  const [isHeroGone, setIsHeroGone] = useState(false); //detects if hero component is displaying on the screen
+  const [isTouch, setIsTouch] = useState(false); 
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const isCoarsePointer =
+    const isCoarsePointer = //if computer
       window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
 
-    const hasTouchSupport =
+    const hasTouchSupport = //if mobile device
       "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
     setIsTouch(isCoarsePointer || hasTouchSupport);
   }, []);
-
-  const actionVerb = isTouch ? "SWIPE" : "SCROLL";
+  //arrows hint at the beggining of hero (according to type of device)
+  const actionVerb = isTouch ? "SWIPE" : "SCROLL"; 
   const actionDir = isTouch ? "UP" : "DOWN";
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
+  useMotionValueEvent(scrollY, "change", (latest) => { //detects end of hero component display (transition to Info section)
     setIsMoving((prev) => (prev === latest > 0 ? prev : latest > 0));
-
+    //detect 850px scrolled down as the breaking point 
     if (latest > 850 && !isHeroGone) {
       setIsHeroGone(true);
     } else if (latest <= 850 && isHeroGone) {
       setIsHeroGone(false);
     }
   });
-
+      //------------SCROLL TRANSFORMATIONS (cities, logo, plane)----------------
   const topCityY = useTransform(scrollY, [0, 425], ["0%", "-50%"]);
   const bottomCityY = useTransform(scrollY, [0, 425], ["0%", "50%"]);
   const titleOpacity = useTransform(scrollY, [100, 200], [0, 1]);
@@ -61,9 +65,8 @@ export default function Hero() {
   const opacities = offsets.map(([a, b, c, d]) =>
     useTransform(scrollY, [a, b, c, d], ["0%", "100%", "100%", "0%"])
   );
-
+  
   const planeX = useTransform(scrollY, [125, 500], ["-100%", "110%"]);
-
   const sunZoom = useTransform(scrollY, [125, 600], [1, 1.4]);
   const heroOpacity = useTransform(scrollY, [0, 600, 800], [1, 1, 0]);
 

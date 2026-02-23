@@ -1,8 +1,11 @@
 "use client";
 
 import styles from "./Reviews.module.css";
+//motion
 import { AnimatePresence, motion, wrap, useReducedMotion } from "framer-motion";
+//hooks
 import { forwardRef, useEffect, useState } from "react";
+//icons
 import type { LucideIcon } from "lucide-react";
 import { UserCircle2, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -24,7 +27,8 @@ const Slide = forwardRef<HTMLElement, SlideProps>(function Slide(
   { review, direction }: SlideProps,
   ref,
 ) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useReducedMotion(); //if user prefers reduced motion -> no slide animation
+                                                //otherwise -> smooth animation
   const Pic = review.pic;
 
   return (
@@ -129,8 +133,8 @@ export default function Reviews() {
     },
   ];
 
-  const [[page, direction], setPage] = useState<[number, number]>([0, 1]);
-  const reviewIndex = wrap(0, reviews.length, page);
+  const [[page, direction], setPage] = useState<[number, number]>([0, 1]); 
+  const reviewIndex = wrap(0, reviews.length, page); 
   const [isPaused, setIsPaused] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 

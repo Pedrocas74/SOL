@@ -1,7 +1,9 @@
 "use client";
 
 import styles from "./Cart.module.css";
+//built in
 import Link from "next/link";
+//auth
 import { useAuth } from "@clerk/nextjs";
 
 export default function CartSummaryButtons({ unavailableItems }) {
@@ -9,7 +11,7 @@ export default function CartSummaryButtons({ unavailableItems }) {
 
   const hasUnavailable = unavailableItems.length > 0;
 
-  const checkoutHref = hasUnavailable
+  const checkoutHref = hasUnavailable //redirection according to user auth status (logged in/out)
     ? "#warning"
     : !isLoaded
       ? "/checkout"
@@ -20,7 +22,7 @@ export default function CartSummaryButtons({ unavailableItems }) {
   //disable while Clerk is loading, to avoid a weird “wrong link” click
   const disableCTA = !hasUnavailable && !isLoaded;
 
-  const ctaLabel = hasUnavailable
+  const ctaLabel = hasUnavailable //cart main button according to user auth status
     ? "Resolve items to continue"
     : !isLoaded
       ? "Proceed to Checkout"

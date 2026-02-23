@@ -4,7 +4,6 @@ import { StockStatus } from "@features/products/productsSlice";
 const DEFAULT_KEY = "cart:guest";
 
 //--------- TYPES -------
-
 export interface ProductInCart {
   id: number;
   title?: string;
@@ -20,7 +19,7 @@ export interface ProductInCart {
   unavailable?: boolean;
 }
 
-export interface CartState {
+export interface CartState { 
   items: ProductInCart[];
   totalQuantity: number;
   totalPrice: number;
@@ -29,7 +28,7 @@ export interface CartState {
 }
 
 type AddToCartPayload = {
-  product: Omit<ProductInCart, "quantity" | "selectedSize" | "itemKey" | "unavailable">;
+  product: Omit<ProductInCart, "quantity" | "selectedSize" | "itemKey" | "unavailable">; //omit these as they are cart-specific
   selectedSize?: string | null;
 };
 
@@ -45,7 +44,7 @@ const emptyCart = (storageKey: string = DEFAULT_KEY): CartState => ({
   storageKey,
 });
 
-type PersistedCart = Pick<CartState, "items" | "totalQuantity" | "totalPrice">;
+type PersistedCart = Pick<CartState, "items" | "totalQuantity" | "totalPrice">; 
 
 const loadCartFromLocalStorage = (key: string = DEFAULT_KEY): CartState => {
   try {

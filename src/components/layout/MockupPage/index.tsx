@@ -1,8 +1,11 @@
 "use client";
 
 import styles from "./MockupPage.module.css";
+//built-in
 import Link from "next/link";
+//icons
 import { CornerDownLeft, Smile } from "lucide-react";
+//custom components
 import FooterSimple from "../Footer/FooterSimple";
 
 export default function MockupPage({ title, description }) {

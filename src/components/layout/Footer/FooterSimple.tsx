@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./FooterSimple.module.css";
+//built-in
 import Image from "next/image";
 
 export default function FooterSimple() {

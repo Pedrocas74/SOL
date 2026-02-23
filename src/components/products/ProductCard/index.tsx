@@ -1,18 +1,24 @@
 "use client";
 
 import styles from "./ProductCard.module.css";
+//built in
 import Link from "next/link";
+import Image from "next/image";
+//hooks
 import { useAppSelector, useAppDispatch } from "@app/hooks";
-import { addToCart } from "../../../features/cart/cartSlice";
 import { useState } from "react";
+//redux actions
+import { addToCart } from "../../../features/cart/cartSlice";
+//icons
 import { Ruler } from "lucide-react";
+//external libraries 
 import { Select, SelectItem } from "@heroui/select";
 import { toast } from "sonner";
-import Image from "next/image";
+
 
 export default function ProductCard({ product }) {
-  const [sizeSelected, setSizeSelected] = useState("");
-  const [showSizeError, setShowSizeError] = useState(false);
+  const [sizeSelected, setSizeSelected] = useState(""); //size selected for clothing item (max 1)
+  const [showSizeError, setShowSizeError] = useState(false); //true, if user tries to add clothing item to cart without selecting a size
   const dispatch = useAppDispatch();
   const { current, rates } = useAppSelector((state) => state.currency);
 
@@ -37,7 +43,7 @@ export default function ProductCard({ product }) {
   const stockColor = stockStatus === "In stock" ? "#1a1a1abd " : "#8f1010ff";
 
 
-  const handleAddToCart = () => {
+  const handleAddToCart = () => { //error shown when user tries add clothing item to the cart before selecting a size
     if (product.sizes && !sizeSelected) {
       toast.warning("Must select a size before adding to cart.");
 

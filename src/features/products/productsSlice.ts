@@ -12,7 +12,6 @@ export interface ApiProduct {
   description: string;
   category: string;
   image: string;
-  // rating?: { rate: number; count: number };
 }
 
 export type ProductSize = "XS" | "S" | "M" | "L" | "XL";

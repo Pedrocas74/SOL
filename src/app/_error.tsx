@@ -11,7 +11,7 @@ function GlobalError({ error, reset }) {
       // eslint-disable-next-line no-console
       console.error("App Error Boundary:", error);
     }
-    // optionally send to monitoring service here
+    
   }, [error]);
 
   const isProd = process.env.NODE_ENV === "production";

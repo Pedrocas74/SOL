@@ -1,7 +1,10 @@
 "use client";
 
 import styles from "./Footer.module.css";
+//built-in
 import Link from "next/link";
+import Image from "next/image";
+//icons
 import {
   FaCcVisa,
   FaCcMastercard,
@@ -12,7 +15,7 @@ import {
   FaCcStripe,
   FaGooglePay,
 } from "react-icons/fa";
-import Image from "next/image";
+//hooks
 import { usePathname } from "next/navigation";
 
 export default function Footer() {
@@ -21,7 +24,7 @@ export default function Footer() {
   return (
     <section className={styles.bigContainer}>
       <div className={styles.promotionContainer}
-        style={{paddingBottom: isInHome ? "2em" : "0"}}
+        style={{paddingBottom: isInHome ? "var(--space-lg)" : "0"}}
       >
         <h4>
           10% DISCOUNT

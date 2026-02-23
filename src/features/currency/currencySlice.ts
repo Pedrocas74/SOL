@@ -2,7 +2,7 @@
 
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-export type CurrencyCode = "EUR" | "USD" | "GBP";
+export type CurrencyCode = "EUR" | "USD" | "GBP"; //3 only options 
 
 const defaultCurrency: CurrencyCode = "EUR";
 
@@ -12,6 +12,7 @@ const conversionRates: Record<CurrencyCode, number> = {
   GBP: 0.85,
 };
 
+//maintained in localStorage
 const loadCurrency = (): CurrencyCode => {
   if (typeof window === "undefined") return defaultCurrency;
 
