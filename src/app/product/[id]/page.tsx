@@ -12,8 +12,9 @@ import Image from "next/image";
 import { toast } from "sonner";
 //hooks
 import { useParams } from "next/navigation";
-import { useAppSelector, useAppDispatch } from "@app/hooks";
+import { useAppSelector, useAppDispatch } from "@app/hooks/typedReduxHooks";
 import { useState, useEffect } from "react";
+import { useCurrency } from "@app/hooks/useCurrency";
 //Redux actions
 import { addToCart } from "../../../features/cart/cartSlice";
 import { fetchProducts } from "../../../features/products/productsSlice";
@@ -42,7 +43,7 @@ export default function ProductDetails() {
   );
   const loading = useAppSelector((state) => state.products.loading);
 
-  const { current, rates } = useAppSelector((state) => state.currency);
+  
   useEffect(() => setMounted(true), []);
 
   //allow browser refreshment
@@ -52,22 +53,6 @@ export default function ProductDetails() {
     }
   }, [dispatch, product, loading]);
 
-  const convert = (price) => (price * rates[current]).toFixed(2);
-  let symbolPosition = "right"; //euro as default
-  const getSymbol = () => {
-    switch (current) {
-      case "USD":
-        symbolPosition = "left";
-        return "$";
-      case "GBP":
-        symbolPosition = "left";
-        return "£";
-      default:
-        symbolPosition = "right";
-        return "€";
-    }
-  };
-  const symbol = getSymbol();
   const stockStatus = product?.stock;
 
   const arrow1 = openStates.summary1 ? (
@@ -124,6 +109,8 @@ export default function ProductDetails() {
       .join(" ");
   };
 
+  const { format } = useCurrency();
+
   return (
     <div className={styles.pageContainer}>
       <section
@@ -142,17 +129,7 @@ export default function ProductDetails() {
           {product.title}
         </h1>
         <p className={styles.price}>
-          {symbolPosition === "left" ? (
-            <>
-              {symbol}
-              {convert(product.price)}
-            </>
-          ) : (
-            <>
-              {convert(product.price)}
-              {symbol}
-            </>
-          )}
+          {format(product.price)}
         </p>
 
         <figure

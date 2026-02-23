@@ -3,7 +3,7 @@
 import styles from "./ProductsList.module.css";
 //hooks
 import React, { useEffect, useState } from "react";
-import { useAppSelector, useAppDispatch } from "@app/hooks";
+import { useAppSelector, useAppDispatch } from "@app/hooks/typedReduxHooks";
 //redux actions
 import { fetchProducts } from "./productsSlice";
 //custom components

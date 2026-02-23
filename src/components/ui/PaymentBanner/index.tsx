@@ -2,7 +2,7 @@
 
 //hooks
 import { useEffect } from "react";
-import { useAppDispatch } from "@app/hooks";
+import { useAppDispatch } from "@app/hooks/typedReduxHooks";
 import { useSearchParams, useRouter } from "next/navigation";
 //external libraries
 import { toast } from "sonner";

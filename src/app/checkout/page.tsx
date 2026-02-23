@@ -3,8 +3,9 @@
 import styles from "./Checkout.module.css";
 //hooks
 import { useState, useEffect } from "react";
-import { useAppSelector } from "@app/hooks";
+import { useAppSelector } from "@app/hooks/typedReduxHooks";
 import { useRouter } from "next/navigation";
+import { useCurrency } from "@app/hooks/useCurrency";
 //icons
 import { CheckCircle } from "lucide-react";
 import {
@@ -66,7 +67,7 @@ export default function Checkout() {
     setSupportsApplePay(isApple);
     setSupportsGooglePay(isAndroid || !isApple); //states that are later used to remove one of the payment options
   }, []);
-
+  // -----------------------------------------------------------------------------
   useEffect(() => { //payment simulation after clicking "Place Order" button
     if (!isPlaced) return; 
 
@@ -86,23 +87,7 @@ export default function Checkout() {
     };
   }, [isPlaced, router]);
 
-  const convert = (price) => (price * rates[current]).toFixed(2); 
-
-  let symbolPosition = "right"; //euro as default (symbol to the right)
-  const getSymbol = () => {
-    switch (current) {
-      case "USD":
-        symbolPosition = "left";
-        return "$";
-      case "GBP":
-        symbolPosition = "left";
-        return "£";
-      default:
-        symbolPosition = "right";
-        return "€";
-    }
-  };
-  const symbol: "$" | "£" | "€" = getSymbol();
+  const { format } = useCurrency();
 
   const applyDiscount = () => { 
     if (isApplied) return;
@@ -178,7 +163,7 @@ export default function Checkout() {
               <tr>
                 <th scope="col">Items</th>
                 <th style={{ textAlign: "right" }} scope="col">
-                  Subtotal ({symbol})
+                  Subtotal ({current})
                 </th>
               </tr>
             </thead>
@@ -194,15 +179,15 @@ export default function Checkout() {
                     )}
                   </td>
                   <td className={styles.cellPrice}>
-                    {convert(item.price * item.quantity)}
+                    {format(item.price * item.quantity)}
                   </td>
                 </tr>
               ))}
             </tbody>
             <tfoot>
               <tr>
-                <th scope="row">Subtotal ({symbol})</th>
-                <td>{convert(totalPrice.toFixed(2))}</td>
+                <th scope="row">Subtotal ({ current })</th>
+                <td>{format(totalPrice)}</td>
               </tr>
             </tfoot>
           </table>
@@ -265,16 +250,12 @@ export default function Checkout() {
             }}
           >
             Subtotal:{" "}
-            {symbolPosition === "left"
-              ? `${symbol}${convert(totalPrice)}`
-              : `${convert(totalPrice)}${symbol}`}
+            {format(totalPrice)}
           </p>
           {/* total price */}
           <p className={styles.totalPrice}>
             Total:{" "}
-            {symbolPosition === "left"
-              ? `${symbol}${convert(discountedTotal)}`
-              : `${convert(discountedTotal)}${symbol}`}{" "}
+            {format(discountedTotal)}
           </p>
         </div>
 

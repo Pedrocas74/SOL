@@ -2,7 +2,7 @@
 
 import styles from "./Navbar.module.css";
 //hooks
-import { useAppSelector } from "@app/hooks";
+import { useAppSelector } from "@app/hooks/typedReduxHooks";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 //built-in

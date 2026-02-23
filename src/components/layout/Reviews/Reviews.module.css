@@ -8,8 +8,7 @@
 }
 .reviewSection h2 {
     text-align: center;
-    padding-top: 0.5em;
-    color: var(--clr-bg);
+    color: var(--clr-bg); 
 }
 
 .sliderContainer {
@@ -30,14 +29,14 @@
   background: var(--clr-bg);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow);
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 @media (width >= 850px) {
   .cardContainer {
-    width: 65%;
+    width: minmax(50%, 65%);
   }
 }
 
@@ -48,7 +47,6 @@
   border-radius: 50%;
   transform: translateY(-50%);
   background: var(--clr-bg);
-  box-shadow: var(--shadow);
   border: none;
   cursor: pointer;
   color: var(--clr-txt);
@@ -61,11 +59,13 @@
   opacity: 0.5;
   transition: var(--transition);
 }
-.navButton:hover {
+@media (hover: hover) and (pointer: fine) {
+  .navButton:hover {
   background: rgba(0, 0, 0, 0.15);
   transform: translateY(-50%) scale(1.7);
   opacity: 1;
   color: var(--clr-bg);
+}
 }
 .navButton:active {
   scale: 0.9;
@@ -97,10 +97,12 @@
 }
 .reviewText {
   font-size: var(--fs-md);
-  max-width: 90%;
+  max-width: 85%;
+  opacity: var(--oh);
 }
 .reviewDate {
   font-size: var(--fs-xs);
   text-align: right;
   font-weight: 300;
+  opacity: var(--om);
 }

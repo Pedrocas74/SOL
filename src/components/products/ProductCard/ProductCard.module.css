@@ -13,10 +13,12 @@
     justify-content: center;
     align-items: center;
     transition: var(--transition);
-    
-}.productCard:hover {
+}
+@media (hover: hover) and (pointer: fine) {
+    .productCard:hover {
   box-shadow: var(--shadow-combined);
   border-color: var(--clr-primary);
+}
 }
 .productCard a {
   height: 55%;

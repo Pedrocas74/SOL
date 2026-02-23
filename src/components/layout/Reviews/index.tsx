@@ -103,7 +103,7 @@ export default function Reviews() {
   const reviews: Review[] = [
     {
       pic: UserCircle2,
-      text: "Changed the way I shop - five stars.",
+      text: "Changed the way I shop... five stars.",
       author: "Ana O.",
       date: "07/04/2025",
     },
@@ -121,7 +121,7 @@ export default function Reviews() {
     },
     {
       pic: UserCircle2,
-      text: "Customer service was incredible - resolved my issue same day.",
+      text: "Customer service was incredible! Resolved my issue same day.",
       author: "Peter M.",
       date: "18/08/2025",
     },

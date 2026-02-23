@@ -6,8 +6,9 @@ import Link from "next/link";
 //icons
 import { Minus, Plus } from "lucide-react";
 //hooks
-import { useAppSelector, useAppDispatch } from "@app/hooks";
+import { useAppSelector, useAppDispatch } from "@app/hooks/typedReduxHooks";
 import { useEffect } from "react";
+import { useCurrency } from "@app/hooks/useCurrency";
 //redux actions
 import {
   removeFromCart,
@@ -24,7 +25,6 @@ import CartSummaryButtons from "./CartSummaryButtons";
 
 export default function Cart() {
   const items = useAppSelector((state) => state.cart.items); //items in cart
-  const { current, rates } = useAppSelector((state) => state.currency);
   const { products = [] } = useAppSelector((state) => state.products); //products in productList
   const dispatch = useAppDispatch();
 
@@ -47,26 +47,10 @@ export default function Cart() {
   const totalPrice =
     items?.reduce((sum, item) => sum + item.price * item.quantity, 0) || 0;
 
-  const convert = (price: number) => (price * rates[current]).toFixed(2);
-  let symbolPosition = "right"; //euro as default
-  const getSymbol = () => {
-    switch (current) {
-      case "USD":
-        symbolPosition = "left";
-        return "$";
-      case "GBP":
-        symbolPosition = "left";
-        return "£";
-      default:
-        symbolPosition = "right";
-        return "€";
-    }
-  };
-  const symbol = getSymbol();
-
   //items that become unavailable after stock status update
   const unavailableItems = items?.filter((item) => item.unavailable) || [];
 
+  const { format } = useCurrency();
 
   // EMPTY CARD MESSAGE
   if (!items) {
@@ -164,17 +148,7 @@ export default function Cart() {
                   <p className={styles.title}>{item.title}</p>
                   <p className={styles.price}>
                     <span>Price: </span>
-                    {symbolPosition === "left" ? (
-                      <>
-                        {symbol}
-                        {convert(item.price)}
-                      </>
-                    ) : (
-                      <>
-                        {convert(item.price)}
-                        {symbol}
-                      </>
-                    )}
+                    {format(item.price)}
                   </p>
                   <p className={styles.quantity}>
                     <span>Quantity: </span>
@@ -281,9 +255,7 @@ export default function Cart() {
             </p>
             <p className={styles.subtotalPrice}>
               <span>Subtotal:</span>{" "}
-              {symbolPosition === "left"
-                ? `${symbol}${convert(totalPrice)}`
-                : `${convert(totalPrice)}${symbol}`}
+              {format(totalPrice)}
             </p>
           </div>
           <CartSummaryButtons unavailableItems={unavailableItems}/>

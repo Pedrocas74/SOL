@@ -5,8 +5,9 @@ import styles from "./ProductCard.module.css";
 import Link from "next/link";
 import Image from "next/image";
 //hooks
-import { useAppSelector, useAppDispatch } from "@app/hooks";
+import { useAppSelector, useAppDispatch } from "@app/hooks/typedReduxHooks";
 import { useState } from "react";
+import { useCurrency } from "@app/hooks/useCurrency";
 //redux actions
 import { addToCart } from "../../../features/cart/cartSlice";
 //external libraries 
@@ -21,24 +22,6 @@ export default function ProductCard({ product }) {
   const [sizeSelected, setSizeSelected] = useState<string | undefined>(""); //size selected for clothing item (max 1)
   const [showSizeError, setShowSizeError] = useState<boolean>(false); //true, if user tries to add clothing item to cart without selecting a size
   const dispatch = useAppDispatch();
-  const { current, rates } = useAppSelector((state) => state.currency);
-
-  const convert = (price: number) => (price * rates[current]).toFixed(2);
-  let symbolPosition = "right"; //euro as default
-  const getSymbol = () => {
-    switch (current) {
-      case "USD":
-        symbolPosition = "left";
-        return "$";
-      case "GBP":
-        symbolPosition = "left";
-        return "£";
-      default:
-        symbolPosition = "right";
-        return "€";
-    }
-  };
-  const symbol = getSymbol();
 
   const stockStatus = product.stock;
   const stockColor = stockStatus === "In stock" ? "#1a1a1abd " : "#8f1010ff";
@@ -60,6 +43,8 @@ export default function ProductCard({ product }) {
     );
   };
 
+  const { format } = useCurrency();
+
   return (
     <article
       className={styles.productCard}
@@ -80,17 +65,7 @@ export default function ProductCard({ product }) {
         <h3 className={styles.productTitle} id={`product-title-${product.id}`}>{product.title}</h3>
       </Link>
       <h4>
-        {symbolPosition === "left" ? (
-          <>
-            {symbol}
-            {convert(product.price)}
-          </>
-        ) : (
-          <>
-            {convert(product.price)}
-            {symbol}
-          </>
-        )}
+        {format(product.price)}
       </h4>
       <p
         className={`${styles.stockInfo} stockP`}
@@ -116,7 +91,7 @@ export default function ProductCard({ product }) {
         </button>
       )}
 
-      {/* sizes */}
+      {/*------------------------ sizes ------------------*/}
       {product.sizes && (
         <SizeSelector
           sizes={product.sizes}
@@ -126,7 +101,6 @@ export default function ProductCard({ product }) {
           isDisabled={stockStatus !== "In stock"}
         />
       )}
-          
     </article>
   );
 }

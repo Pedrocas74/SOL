@@ -43,10 +43,15 @@
   /* font-sizes  */
   --fs-xs: clamp(0.75rem, 1vw, 0.85rem);
   --fs-sm: clamp(0.85rem, 1.2vw, 1rem);
-  --fs-button: clamp(0.87rem, 1.3vw, 1.05rem);
+  --fs-button: clamp(0.87rem, 2vw, 1.05rem);
   --fs-md: clamp(1rem, 2vw, 1.3rem);
   --fs-lg: clamp(1.3rem, 3vw, 2rem);
   --fs-xl: clamp(2.4rem, 4.5vw, 5.5rem);
+
+  /* text opacity  */
+  --oh: 0.87;
+  --om: 0.6;
+  --ol: 0.38;
 
   /* padding */
   --pd-button: 0.5rem 0.9rem;
@@ -96,12 +101,12 @@ body {
   font-family: var(--font-acma);
   color: var(--clr-text);
   font-family: var(--font-inter), system-ui, sans-serif;
+  
 }
 
 p:not(.stockP) {
   line-height: var(--lh-text);
 }
-
 
 h1, h2 {
   font-family: var(--font-gatwick-jet);
@@ -141,10 +146,6 @@ a.buttonTertiary {
 a.buttonPrimary {
   background: var(--clr-text);
 }
-.buttonPrimary:hover {
-  background: var(--clr-primary-light);
-  box-shadow: var(--shadow-button);
-}
 .buttonPrimary:active {
   background: var(--clr-primary-dark);
 }
@@ -152,9 +153,6 @@ a.buttonPrimary {
 .buttonLog {
   background: transparent;
   border: 2px solid var(--clr-bg);
-}
-.buttonLog:hover {
-  color: var(--clr-primary-light);
 }
 .buttonLog:active {
   color: var(--clr-primary-dark);
@@ -165,13 +163,6 @@ a.buttonSecondary {
   background: transparent;
   color: var(--clr-text);             
   border: 1px solid var(--clr-text);
-}
-
-.buttonSecondary:hover {
-  border-color: var(--clr-primary-light);
-  color: var(--clr-primary);
-  background: var(--clr-bg-light);
-  box-shadow: var(--shadow-button);
 }
 .buttonSecondary:active {
   background: var(--clr-bg-dark);
@@ -185,11 +176,6 @@ a.buttonSecondary {
   padding-inline: 1.5rem;   
   border-radius: 30px;           
 }
-.buttonTertiary:hover {
-  color: var(--clr-primary);
-  background: var(--clr-bg-light);
-  box-shadow: var(--shadow-dark);
-}
 .buttonTertiary:active {
   background: transparent;
   transform: translateY(2px);
@@ -202,24 +188,37 @@ a.buttonSecondary {
   transition: var(--transition);
   padding: var(--space-xxs) 0;
 }
-.buttonLink:hover {
-  color: var(--clr-primary);
-  background: var(--clr-bg-light);
-}
 .buttonLink:active {
   color: var(--clr-primary-dark);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .buttonPrimary:hover {
+    background: var(--clr-primary-light);
+    box-shadow: var(--shadow-button);
+}
+  .buttonLog:hover {
+    color: var(--clr-primary-light);
+}
+.buttonSecondary:hover {
+    border-color: var(--clr-primary-light);
+    color: var(--clr-primary);
+    background: var(--clr-bg-light);
+    box-shadow: var(--shadow-button);
+}
+.buttonTertiary:hover {
+    color: var(--clr-primary);
+    background: var(--clr-bg-light);
+    box-shadow: var(--shadow-dark);
+}
+.buttonLink:hover {
+    color: var(--clr-primary);
+    background: var(--clr-bg-light);
+}
 }
 
 a {
   text-decoration: none;
 }
 
-/* skeletons */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
+

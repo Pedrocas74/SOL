@@ -2,7 +2,7 @@
 
 //hooks
 import { useEffect } from "react";
-import { useAppDispatch } from "@app/hooks";
+import { useAppDispatch } from "@app/hooks/typedReduxHooks";
 //auth 
 import { useAuth } from "@clerk/nextjs";
 //redux actions

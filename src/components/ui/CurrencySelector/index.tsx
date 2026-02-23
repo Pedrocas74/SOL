@@ -2,7 +2,7 @@
 
 import styles from "./CurrencySelector.module.css";
 //hooks
-import { useAppSelector, useAppDispatch } from "@app/hooks";
+import { useAppSelector, useAppDispatch } from "@app/hooks/typedReduxHooks";
 //redux actions
 import { setCurrency } from "../../../features/currency/currencySlice";
 //icons
