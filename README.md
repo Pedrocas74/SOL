@@ -13,6 +13,8 @@ A defining feature of SOL is its **dynamic inventory simulation**: every page re
 
 * **Redux Toolkit** — predictable global state management
 
+* **TypeScript** - type-safe
+
 * **CSS Modules** — scoped, maintainable styling
 
 * **LocalStorage** — cart persistence across sessions
@@ -23,7 +25,7 @@ A defining feature of SOL is its **dynamic inventory simulation**: every page re
 
 * **MUI (Skeleton only)** — loading states
 
-* **Headless UI** — accessible, unstyled *select* components
+* **Hero UI** — accessible, unstyled *select* components
 
 * *FakeStore API* - https://fakestoreapi.com/
 
