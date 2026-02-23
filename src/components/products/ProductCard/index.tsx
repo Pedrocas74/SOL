@@ -9,16 +9,17 @@ import { useAppSelector, useAppDispatch } from "@app/hooks";
 import { useState } from "react";
 //redux actions
 import { addToCart } from "../../../features/cart/cartSlice";
-//icons
-import { Ruler } from "lucide-react";
 //external libraries 
-import { Select, SelectItem } from "@heroui/select";
 import { toast } from "sonner";
+//custom components 
+import SizeSelector from "@components/ui/Size Selector";
+
+
 
 
 export default function ProductCard({ product }) {
-  const [sizeSelected, setSizeSelected] = useState(""); //size selected for clothing item (max 1)
-  const [showSizeError, setShowSizeError] = useState(false); //true, if user tries to add clothing item to cart without selecting a size
+  const [sizeSelected, setSizeSelected] = useState<string | undefined>(""); //size selected for clothing item (max 1)
+  const [showSizeError, setShowSizeError] = useState<boolean>(false); //true, if user tries to add clothing item to cart without selecting a size
   const dispatch = useAppDispatch();
   const { current, rates } = useAppSelector((state) => state.currency);
 
@@ -46,8 +47,7 @@ export default function ProductCard({ product }) {
   const handleAddToCart = () => { //error shown when user tries add clothing item to the cart before selecting a size
     if (product.sizes && !sizeSelected) {
       toast.warning("Must select a size before adding to cart.");
-
-      setShowSizeError(true);
+      setShowSizeError(true); 
       setTimeout(() => setShowSizeError(false), 2000);
       return;
     }
@@ -118,47 +118,15 @@ export default function ProductCard({ product }) {
 
       {/* sizes */}
       {product.sizes && (
-        <div className={styles.selectWrapper}>
-          <Select
-            aria-label="Select size"
-            isDisabled={stockStatus !== "In stock"}
-            selectedKeys={sizeSelected ? [sizeSelected] : []}
-            onSelectionChange={(keys) => {
-              const first = Array.from(keys)[0];
-              setSizeSelected(first != null ? String(first) : "");  //convert KEY (string | number) to STRING
-            }}
-            selectorIcon={
-              <Ruler
-                className={styles.selectIcon}
-                size={22}
-                opacity={0.4}
-                color="black"
-                style={{
-                  visibility: sizeSelected === "" ? "visible" : "hidden",
-                }}
-              />
-            }
-            className={styles.sizeSelector}
-            classNames={{
-              trigger: `${styles.sizeTrigger} ${
-                showSizeError ? styles.sizeError : ""
-              }`,
-              value: styles.sizeValue,
-              popoverContent: styles.dropdownContent,
-              listbox: styles.dropdownList,
-            }}
-          >
-            {product.sizes.map((size: string) => (
-              <SelectItem
-                className={styles.dropdownItem}
-                key={size}
-              >
-                {size}
-              </SelectItem>
-            ))}
-          </Select>
-        </div>
+        <SizeSelector
+          sizes={product.sizes}
+          value={sizeSelected ?? ""}
+          onChange={setSizeSelected}
+          error={showSizeError}
+          isDisabled={stockStatus !== "In stock"}
+        />
       )}
+          
     </article>
   );
 }

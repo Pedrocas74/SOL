@@ -1,7 +1,7 @@
 "use client";
 
 //hooks
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 //custom components
 import Hero from "@components/layout/Hero";
 import InfoSection from "@components/layout/InfoSection";
@@ -9,6 +9,7 @@ import Reviews from "@components/layout/Reviews";
 import Footer from "@components/layout/Footer/Footer";
 import PaymentBanner from "@components/ui/PaymentBanner";
 import LazyProductsSection from "@features/products/LazyProductsSection";
+
 
 export default function Home() {
   useEffect((): (() => void) => {
@@ -51,9 +52,9 @@ export default function Home() {
 
   return (
     <main>
-      {/* <Suspense> */}
+      <Suspense>
         <PaymentBanner />
-      {/* </Suspense> */}
+      </Suspense>
       <Hero />
       <div style={{ height: "180vh" }} />
       <InfoSection />

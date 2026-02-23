@@ -3,10 +3,18 @@
     "target": "ES2017",
     "baseUrl": "src",
     "paths": {
-      "@app/*": ["app/*"],
-      "@components/*": ["components/*"],
-      "@features/*": ["features/*"],
-      "@lib/*": ["lib/*"]
+      "@app/*": [
+        "app/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@features/*": [
+        "features/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ]
     },
     "lib": [
       "dom",
@@ -23,7 +31,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "next"
@@ -36,11 +44,11 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/_error.tsx", "src/proxy.js"  ],
+    "**/*.tsx",
+    "src/app/_error.tsx",
+    "src/proxy.js"
+  ],
   "exclude": [
     "node_modules"
   ]
-  
 }
-

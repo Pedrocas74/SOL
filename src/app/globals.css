@@ -17,7 +17,7 @@
   --clr-bg-dark: hsl(0 0% 90%);
   --clr-bg-light: hsl(0, 0%, 98%);
   --clr-hover: #6161615b;
-  --clr-hover-light:rgba(179, 179, 179, 0.452);
+  --clr-hover-light:rgba(160, 160, 160, 0.2);
 
   --clr-text: #0a0a0a;
   --clr-text-muted: #474747;
@@ -25,7 +25,7 @@
   --border: hsl(300 0% 50%);
   --border-muted: hsl(340 0% 62%);
 
-  --clr-primary-light: hsl(28, 100%, 45%);
+  --clr-primary-light: hsl(28, 100%, 47%);
   --clr-primary: #e16900;
   --clr-primary-dark: hsl(28, 100%, 32%);
 
@@ -35,7 +35,7 @@
   --clr-bg-warning: hsl(51, 100%, 81%);
   --clr-warning: hsl(48, 22%, 24%);
   --clr-success: hsl(147 19% 36%);
-  --clr-error: hsl(0, 39%, 36%);
+  --clr-error: #c62828;
 
   --font-acma: 'Acma', sans-serif; 
   --font-gatwick-jet: 'PPGatwick-Jet', serif;
@@ -62,7 +62,7 @@
   --space-xxl: 4rem;
 
   /* Border radius */
-  --radius-small: 5px;
+  --radius-small: 4px;
   --radius-large: 10px;
   --radius-max: 999px;
   --radius-full: 50%;
@@ -83,8 +83,6 @@
 
   /* transitions  */
   --transition: 0.3s ease-in-out;
-
-
 }
 
 html {
