@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import ProductsListSkeleton from "./ProductsListSkeleton";
-import LoadingSVG from "@components/ui/LoadingSVG/LoadingSVG";
+import LoadingSVG from "@components/ui/LoadingSVG";
 
 
 const ProductsList = dynamic(

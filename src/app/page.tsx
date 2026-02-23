@@ -7,7 +7,7 @@ import Hero from "@components/layout/Hero";
 import InfoSection from "@components/layout/InfoSection";
 import Reviews from "@components/layout/Reviews";
 import Footer from "@components/layout/Footer/Footer";
-import PaymentBanner from "@components/ui/PaymentBanner";
+import PaymentBanner from "@components/ui/PaymentToast";
 import LazyProductsSection from "@features/products/LazyProductsSection";
 
 

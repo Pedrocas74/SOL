@@ -1,0 +1,122 @@
+.paymentSection {
+    margin-bottom: var(--space-lg);
+}
+.paymentSection h2 {
+    text-align: center;
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-sm);
+}
+
+.paymentMethodsContainer {
+    border: 1px solid var(--clr-bg-light);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-light);
+    margin: 0 auto;
+    background: var(--clr-bg-dark);
+}
+@media (width >= 450px) {
+    .paymentMethodsContainer {
+        width: 75%;
+    }
+}
+.paymentMethodsContainer label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--fs-md);
+    border: 1px solid transparent;
+    width: 100%;
+    padding: var(--space-sm) var(--space-sm);
+    border-radius: 40px;
+    box-shadow: var(--shadow-light);
+    background: var(--clr-bg-light);
+    transition: var(--transition);
+}
+.paymentMethodsContainer label:hover {
+    box-shadow: var(--shadow-combined);
+    background: var(--clr-bg);
+    cursor: pointer;
+}
+.paymentMethodsContainer label:active {
+    background: var(--clr-bg-dark);
+}
+.paymentMethodsContainer label:has(input[type="radio"]:checked) {
+    box-shadow: var(--shadow-combined);
+    background: var(--clr-bg);
+}
+.paymentInput {
+    margin-right: var(--space-xxs);
+    accent-color: var(--clr-text);
+}
+.paymentInput:focus-visible {
+  outline: 2px solid var(--clr-primary);
+  outline-offset: 2px;
+}
+.paymentIcons {
+    display: inline-flex;
+    min-height: fit-content;
+    margin-left: var(--space-xxs);
+    gap: var(--space-xs);
+}
+
+.placeOrderButton {
+    width: 55%;
+    display: block;
+    margin: var(--space-xl) auto var(--space-xxl) auto;
+}
+@media(width >= 850px) {
+    .paymentMethodsContainer {
+        width: 50%;
+    }
+    .placeOrderButton {
+        width: 25%;
+        height: 4rem;
+    }
+}
+
+
+.placeContainer {
+    border: 2px inset var(--clr-primary);
+    border-radius: var(--radius-large);
+    height: 60vh;
+    width: 75vw;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--clr-bg);
+    box-shadow: var(--shadow-combined);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.placePaymentIcons {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+.placeInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.placeInfo p {
+    font-size: var(--fs-lg);
+    padding: var(--space-sm);
+    text-align: center;
+    font-weight: 500;
+    margin-top: var(--space-sm);
+}
+.placeInfo svg {
+    margin-top: var(--space-xs);
+}

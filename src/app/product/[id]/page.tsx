@@ -78,6 +78,8 @@ export default function ProductDetails() {
     }));
   };
 
+  const { format } = useCurrency();
+
   //-----------SKELETONS---------
   if (!mounted || !product) {
     return <ProductDetailsSkeleton />;
@@ -109,7 +111,6 @@ export default function ProductDetails() {
       .join(" ");
   };
 
-  const { format } = useCurrency();
 
   return (
     <div className={styles.pageContainer}>
