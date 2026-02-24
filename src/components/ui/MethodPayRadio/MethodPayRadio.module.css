@@ -1,13 +1,6 @@
-.paymentSection {
-    margin-bottom: var(--space-lg);
-}
-.paymentSection h2 {
-    text-align: center;
-    font-size: var(--fs-lg);
-    margin-bottom: var(--space-sm);
-}
 
-.paymentMethodsContainer {
+
+.methodContainer {
     border: 1px solid var(--clr-bg-light);
     width: 100%;
     display: flex;
@@ -15,16 +8,14 @@
     gap: var(--space-md);
     padding: var(--space-md);
     border-radius: var(--radius-large);
-    box-shadow: var(--shadow-light);
+    /* box-shadow: var(--shadow-light); */
     margin: 0 auto;
     background: var(--clr-bg-dark);
+    flex: 1;
+
 }
-@media (width >= 450px) {
-    .paymentMethodsContainer {
-        width: 75%;
-    }
-}
-.paymentMethodsContainer label {
+
+.methodContainer label {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,15 +28,15 @@
     background: var(--clr-bg-light);
     transition: var(--transition);
 }
-.paymentMethodsContainer label:hover {
+.methodContainer label:hover {
     box-shadow: var(--shadow-combined);
     background: var(--clr-bg);
     cursor: pointer;
 }
-.paymentMethodsContainer label:active {
+.methodContainer label:active {
     background: var(--clr-bg-dark);
 }
-.paymentMethodsContainer label:has(input[type="radio"]:checked) {
+.methodContainer label:has(input[type="radio"]:checked) {
     box-shadow: var(--shadow-combined);
     background: var(--clr-bg);
 }
@@ -63,24 +54,23 @@
     margin-left: var(--space-xxs);
     gap: var(--space-xs);
 }
+/* -------------------------- */
 
-.placeOrderButton {
-    width: 55%;
-    display: block;
-    margin: var(--space-xl) auto var(--space-xxl) auto;
-}
-@media(width >= 850px) {
-    .paymentMethodsContainer {
-        width: 50%;
-    }
-    .placeOrderButton {
-        width: 25%;
-        height: 4rem;
-    }
+@media(width >= 768px) {
+   .methodContainer label {
+    font-size: calc(var(--fs-md) - 0.2rem);
+   }
+
 }
 
 
-.placeContainer {
+
+
+
+
+
+
+/* .placeContainer {
     border: 2px inset var(--clr-primary);
     border-radius: var(--radius-large);
     height: 60vh;
@@ -119,4 +109,4 @@
 }
 .placeInfo svg {
     margin-top: var(--space-xs);
-}
+} */

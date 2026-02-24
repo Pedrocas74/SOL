@@ -1,6 +1,5 @@
-import styles from "./PaymentSection.module.css";
+import styles from "./MethodPayRadio.module.css";
 //icons
-import { CheckCircle } from "lucide-react";
 import {
   FaCcVisa,
   FaCcMastercard,
@@ -13,18 +12,14 @@ import {
 } from "react-icons/fa";
 //hooks
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-//custom components 
-import LoadingSVG from "../LoadingSVG";
 
-export default function PaymentSection() {
+
+export default function MethodPayRadio() {
   const [paymentMethod, setPaymentMethod] = useState("card"); //defaul for card payment method
-  const [isPlaced, setIsPlaced] = useState(false); //place order button click
-  const [isProcessing, setIsProcessing] = useState(false); //payment processing -> successful
   const [supportsApplePay, setSupportsApplePay] = useState(false); //if IOS system -> displays apple pay
   const [supportsGooglePay, setSupportsGooglePay] = useState(false); //if Android system -> displays google pay
-  const router = useRouter();
 
+  
   useEffect(() => { //to check which operative system is the current device using (apple VS android)
       if (typeof window === "undefined" || typeof navigator === "undefined")
         return;
@@ -37,24 +32,7 @@ export default function PaymentSection() {
       setSupportsGooglePay(isAndroid || !isApple); //states that are later used to remove one of the payment options
     }, []);
 
-    useEffect(() => { //payment simulation after clicking "Place Order" button
-        if (!isPlaced) return; 
     
-        setIsProcessing(true);
-    
-        const processingTimer = setTimeout(() => { // 4s for processing after click
-          setIsProcessing(false);
-        }, 4000);
-    
-        const successTimer = setTimeout(() => {
-          router.replace("/?payment=success");
-        }, 6000); //6s after click for, 2 last seconds showing "payment successful"
-    
-        return () => {
-          clearTimeout(processingTimer);
-          clearTimeout(successTimer);
-        };
-      }, [isPlaced, router]);
 
     const renderPaymentIcons = () => {
         switch (paymentMethod) {
@@ -84,19 +62,8 @@ export default function PaymentSection() {
         }
       };
 
-       const handlePlaceOrder = () => { //handler click on Place order button 
-          setIsPlaced(true);
-          setIsProcessing(true);
-        };
-
-    return (
-        <>
-            <section
-          className={styles.paymentSection}
-          aria-labelledby="payment-heading"
-        >
-          <h2 id="payment-heading">Payment</h2>
-          <div className={styles.paymentMethodsContainer}>
+    return (           
+          <div className={styles.methodContainer}>
             <label>
               <div>
                 <input
@@ -191,40 +158,23 @@ export default function PaymentSection() {
           </div>
         
 
-        <button
-          type="button"
-          className={`buttonPrimary ${styles.placeOrderButton}`}
-          onClick={handlePlaceOrder}
-        >
-          Place Order
-        </button>
-        </section>
+          
+        
 
-        {isPlaced && (
-        <section
-          className={styles.placeContainer}
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          <span className={styles.placePaymentIcons} aria-hidden="true">
-            {renderPaymentIcons()}
-          </span>
-          <div className={styles.placeInfo}>
-            {isProcessing ? (
-              <>
-                <p>Your payment is being processed...</p>
-                <LoadingSVG />
-              </>
-            ) : (
-              <>
-                <p>Payment successful!</p>
-                <CheckCircle size={50} aria-hidden="true" />
-              </>
-            )}
-          </div>
-        </section>
-      )}
-        </>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        
+        
     );
 }
