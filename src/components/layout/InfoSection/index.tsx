@@ -1,8 +1,8 @@
 "use client";
 
 import styles from "./InfoSection.module.css";
-//icons
-import { Star } from "lucide-react";
+//custom components
+import Orbit from "./Orbit";
 
 export default function InfoSection() {
 
@@ -10,75 +10,7 @@ export default function InfoSection() {
     <section className={styles.infoContainer} aria-labelledby="info-heading">
       <h2 id="info-heading">Why Us?</h2>
 
-      <div className={styles.checksWrapper}>
-        <div className={styles.infoChecks}>
-          <div className={styles.starOrbit} aria-hidden="true">
-            <Star
-              className={`${styles.star} ${styles.star1}`}
-              size={7}
-              color={"var(--clr-bg)"}
-              fill={"var(--clr-bg)"}
-              opacity={0.7}
-              aria-hidden="true"
-              focusable="false"
-            />
-            <Star
-              className={`${styles.star} ${styles.star2}`}
-              size={6}
-              color={"var(--clr-bg)"}
-              fill={"var(--clr-bg)"}
-              aria-hidden="true"
-              focusable="false"
-            />
-            <Star
-              className={`${styles.star} ${styles.star3}`}
-              size={7}
-              color={"var(--clr-bg)"}
-              fill={"var(--clr-bg)"}
-              aria-hidden="true"
-              focusable="false"
-            />
-            <Star
-              className={`${styles.star} ${styles.star4}`}
-              size={10}
-              color={"var(--clr-bg)"}
-              fill={"var(--clr-bg)"}
-              opacity={0.7}
-              aria-hidden="true"
-              focusable="false"
-            />
-            <Star
-              className={`${styles.star} ${styles.star5}`}
-              size={7}
-              color={"var(--clr-bg)"}
-              fill={"var(--clr-bg)"}
-              aria-hidden="true"
-              focusable="false"
-            />
-            <Star
-              className={`${styles.star} ${styles.star6}`}
-              size={5}
-              color={"var(--clr-bg)"}
-              fill={"var(--clr-bg)"}
-              opacity={0.7}
-              aria-hidden="true"
-              focusable="false"
-            />
-            <Star
-              className={`${styles.star} ${styles.star7}`}
-              size={10}
-              color={"var(--clr-bg)"}
-              fill={"var(--clr-bg)"}
-              aria-hidden="true"
-              focusable="false"
-            />
-          </div>
-          <span className={styles.bestSpan}>BEST</span>
-          <span className={`${styles.check} ${styles.check1}`}>quality</span>
-          <span className={`${styles.check} ${styles.check2}`}>prices</span>
-          <span className={`${styles.check} ${styles.check3}`}>service</span>
-        </div>
-      </div>
+      <Orbit />
 
       <ul className={styles.infoStats}>
         <li
