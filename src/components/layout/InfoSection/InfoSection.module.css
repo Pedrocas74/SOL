@@ -42,38 +42,4 @@
     padding-right: 0.7em;
 }
 
-.loopContainer {
-  width: 100vw;
-  overflow-x: hidden;
-  margin-bottom: var(--space-xxl);
-}
-.loopTrack {
-  display: inline-flex;
-  white-space: nowrap;
-  will-change: transform;
-  animation: loop 30s linear infinite;
-}
-.loopText {
-  padding-right: 3em;
-  letter-spacing: var(--ls);
-  font-weight: 900;
-  font-size: var(--fs-lg);
-  background: radial-gradient(circle at center, #ff9d00 0%, #ff6a00 100%);
-  -webkit-background-clip: text;
-  background-clip: border-box;
-  color: var(--clr-text); 
-  border-top: 3px solid var(--clr-hoverInLight);
-  border-bottom: 3px solid var(--clr-hoverInLight);
-}
-.loopText span {
-  color: var(--clr-bg);
-  font-weight: 100;
-}
-@keyframes loop {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0); 
-  }
-}
+

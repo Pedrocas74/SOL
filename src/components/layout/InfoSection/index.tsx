@@ -3,6 +3,7 @@
 import styles from "./InfoSection.module.css";
 //custom components
 import Orbit from "./Orbit";
+import Slogan from "./Slogan";
 
 export default function InfoSection() {
 
@@ -66,112 +67,7 @@ export default function InfoSection() {
         </li>
       </ul>
 
-      <div
-        id="products-list"
-        className={styles.loopContainer}
-        aria-hidden="true"
-      >
-        <div className={styles.loopTrack}>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-          <span className={styles.loopText}>
-            <em>WE KNOW </em>•{" "}
-            <span>
-              <em>WHAT</em>
-            </span>{" "}
-            • <em>YOU NEED</em>{" "}
-          </span>
-        </div>
-      </div>
+      <Slogan />
     </section>
   );
 }
