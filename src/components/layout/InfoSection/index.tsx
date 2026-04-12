@@ -1,18 +1,10 @@
 "use client";
 
 import styles from "./InfoSection.module.css";
-//dependencies
-import CountUp from "react-countup";
-//hooks
-import { useInView } from "react-intersection-observer";
 //icons
 import { Star } from "lucide-react";
 
 export default function InfoSection() {
-  const { ref, inView } = useInView({ //to detect component's visibility on viewport and activate CountUp (numbers ascending)
-    triggerOnce: true,
-    threshold: 0.5,
-  });
 
   return (
     <section className={styles.infoContainer} aria-labelledby="info-heading">
@@ -88,14 +80,14 @@ export default function InfoSection() {
         </div>
       </div>
 
-      <ul ref={ref} className={styles.infoStats}>
+      <ul className={styles.infoStats}>
         <li
           className={styles.statsItems}
           aria-label="Over 3 million products sold this year alone"
         >
           {/* +3M products sold this year alone  */}
           <span className={styles.numbers}>
-            +{inView && <CountUp end={3} duration={3} />}M&nbsp;
+            +3M
           </span>
           <p>Products sold this year alone</p>
         </li>
@@ -106,20 +98,7 @@ export default function InfoSection() {
         >
           {/* +1M five star reviews */}
           <span className={styles.numbers}>
-            +
-            {inView && (
-              <CountUp
-                end={1}
-                duration={1}
-                useEasing
-                easingFn={(t, b, c, d) => {
-                  t /= d;
-                  t--;
-                  return c * (t * t * t + 1) + b;
-                }}
-              />
-            )}
-            M&nbsp;
+            +1M
           </span>
           <p>5 star reviews and counting</p>
         </li>
@@ -130,20 +109,7 @@ export default function InfoSection() {
         >
           {/* Join 10M happy customers*/}
           <span className={styles.numbers}>
-            +
-            {inView && (
-              <CountUp
-                end={8}
-                duration={4.5}
-                useEasing
-                easingFn={(t, b, c, d) => {
-                  t /= d;
-                  t--;
-                  return c * (t * t * t + 1) + b;
-                }}
-              />
-            )}
-            M&nbsp;
+            +8M
           </span>
           <p>Happy customers</p>
         </li>
@@ -154,19 +120,7 @@ export default function InfoSection() {
         >
           {/* 74 countries */}
           <span className={styles.numbers}>
-            {inView && (
-              <CountUp
-                end={74}
-                duration={5}
-                useEasing
-                easingFn={(t, b, c, d) => {
-                  t /= d;
-                  t--;
-                  return c * (t * t * t + 1) + b;
-                }}
-              />
-            )}
-            &nbsp;
+            74
           </span>
           <p>Countries</p>
         </li>
@@ -174,19 +128,7 @@ export default function InfoSection() {
         <li className={styles.statsItems} aria-label="27 years of experience">
           {/* 27 Years */}
           <span className={styles.numbers}>
-            {inView && (
-              <CountUp
-                end={27}
-                duration={7}
-                useEasing
-                easingFn={(t, b, c, d) => {
-                  t /= d;
-                  t--;
-                  return c * (t * t * t + 1) + b;
-                }}
-              />
-            )}
-            &nbsp;
+            27
           </span>
           <p>Years</p>
         </li>
