@@ -10,7 +10,7 @@ import { useCurrency } from "@app/hooks/useCurrency";
 import FooterSimple from "@components/layout/Footer/FooterSimple";
 import Breadcrumbs from "@components/ui/Breadcrumbs";
 import LoadingSVG from "@components/ui/LoadingSVG";
-import PaymentSection from "@components/layout/PaymentSection/PaymentSection";
+import PaymentSection from "@app/checkout/PaymentSection/PaymentSection";
 //auth 
 import { useAuth } from "@clerk/nextjs";
 
@@ -97,12 +97,8 @@ export default function Checkout() {
         </div>
           <hr />
         {/* ----------------------------------------------------------------------- */}
-          
-       
+             
           <PaymentSection totalPrice={totalPrice} />
-     
-
-        
         
       </section>
             <FooterSimple />

@@ -1,0 +1,118 @@
+.paymentSection h2 {
+  font-size: var(--fs-lg);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.flexWrapper {
+  /* border: 1px solid red; */
+  margin-bottom: var(--space-xxl);
+}
+
+/* METHODPAYRADIO left container  */
+
+/* MAIN  */
+.rightContainer {
+  border: 2px solid var(--clr-bg-dark);
+  border-radius: var(--radius-large);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: var(--space-lg);
+}
+/* PRICES  */
+.prices {
+  margin-bottom: var(--space-md);
+}
+.subtotalPrice {
+  font-size: var(--fs-md);
+}
+.totalPrice {
+  font-weight: 600;
+  font-size: calc(var(--fs-md) + 0.15rem);
+}
+/* PROMO  */
+.promoAd {
+  margin-bottom: var(--space-xxs);
+  color: var(--clr-primary-dark);
+}
+.promoInputGroup {
+  display: flex;
+  margin-bottom: var(--space-xl);
+}
+.promoInputGroup input {
+  font-size: var(--fs-md);
+  padding: var(--space-xs);
+  border-radius: var(--radius-small);
+  border: 1px solid var(--clr-bg-dark);
+  margin-right: var(--space-xs);
+  width: 70%;
+}
+/* PLACE ORDER BUTTON  */
+.placeOrderButton {
+  width: 70%;
+  margin-top: var(--space-xs);
+}
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.buttonsContainer button,
+.buttonsContainer a {
+  border-radius: 40px;
+}
+
+@media (width >= 768px) {
+  .flexWrapper {
+    display: flex;
+  }
+  .rightContainer {
+    flex: 1;
+    margin-left: var(--space-lg);
+  }
+  .placeOrderButton {
+    width: 100%;
+  }
+  .rightContainer {
+    margin-top: 0;
+  }
+}
+
+/* --------------PLACE CONTAINER (after placing order)----------------- */
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  bottom: 0;
+  left: 0;
+  background: var(--clr-overlay);
+}
+.placeContainer {
+  border: 2px solid var(--clr-text);
+  background: var(--clr-bg);
+  border-radius: var(--radius-large);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 60%;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.placePaymentIcons {
+  width: 160px;
+  display: flex;
+  justify-content: space-around;
+}
+.placeInfo {
+  margin-top: var(--space-md);
+  font-size: var(--space-md);
+  text-align: center;
+}
