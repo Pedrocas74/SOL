@@ -3,7 +3,7 @@
 import styles from "./ProductDetails.module.css";
 //custom components
 import Footer from "@components/layout/Footer/Footer";
-import ImageMagnifier from "@components/ui/ImageMagnifier";
+import ImageMagnifier from "@app/product/[id]/ImageMagnifier";
 import ProductDetailsSkeleton from "./ProductDetailsSkeleton";
 import Breadcrumbs from "@components/ui/Breadcrumbs";
 import RelatedProductsSlider from "@components/products/RelatedProductsSlider";

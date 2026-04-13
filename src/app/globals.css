@@ -21,6 +21,7 @@
 
   --clr-text: #0a0a0a;
   --clr-text-muted: #474747;
+  --clr-overlay: #0a0a0ab6;
   
   --border: hsl(300 0% 50%);
   --border-muted: hsl(340 0% 62%);
