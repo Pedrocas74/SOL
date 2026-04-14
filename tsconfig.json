@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "baseUrl": "src",
     "paths": {
       "@app/*": [
-        "app/*"
+        "./src/app/*"
       ],
       "@components/*": [
-        "components/*"
+        "./src/components/*"
       ],
       "@features/*": [
-        "features/*"
+        "./src/features/*"
       ],
       "@lib/*": [
-        "lib/*"
+        "./src/lib/*"
       ]
     },
     "lib": [
@@ -26,9 +25,9 @@
     "strict": false,
     "noEmit": true,
     "incremental": true,
-    "module": "esnext",
+    "module": "Node16",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
