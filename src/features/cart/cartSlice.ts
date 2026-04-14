@@ -196,7 +196,7 @@ const cartSlice = createSlice({
       saveCartToLocalStorage(state);
     },
 
-    reconcileWithProducts: (state, action: PayloadAction<ProductForReconcile[]>) => {
+    reconcileWithProducts: (state, action: PayloadAction<ProductForReconcile[]>) => { //adapts stockstatus from items in cart according to current products list stock
       const products = action.payload;
 
       state.items = state.items.map((item) => {

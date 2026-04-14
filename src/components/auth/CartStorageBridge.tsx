@@ -13,7 +13,7 @@ export default function CartStorageBridge() {
   const { userId, isLoaded } = useAuth();
   const dispatch = useAppDispatch();
 
-  const loadCartFromLocalStorage = (key) => {
+  const loadCartFromLocalStorage = (key: string) => {
     try {
       const serializedState = localStorage.getItem(key);
       if (!serializedState)
