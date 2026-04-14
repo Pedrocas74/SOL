@@ -4,7 +4,8 @@
   "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
@@ -33,8 +34,13 @@
     "sonner": "^2.0.7"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.2.1",
     "@types/react": "^19.2.13",
+    "jest": "^30.3.0",
     "typescript": "^5.9.3"
   }
 }
